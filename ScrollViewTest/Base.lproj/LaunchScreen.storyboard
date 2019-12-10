@@ -1,25 +1,59 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="EHf-IW-A2E">
+        <scene sceneID="REZ-MP-LZe">
             <objects>
-                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="8Xg-RS-hUL" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mrc-jr-JsH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle 1" translatesAutoresizingMaskIntoConstraints="NO" id="n6y-b0-ZRH">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading CheckPoint..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01V-OD-lZk">
+                                <rect key="frame" x="123.5" y="787" width="167" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="37060-CheckPoint-Logo-SH_03" translatesAutoresizingMaskIntoConstraints="NO" id="FQ1-vu-a3u">
+                                <rect key="frame" x="10" y="202" width="394" height="493"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="n6y-b0-ZRH" firstAttribute="trailing" secondItem="YOj-cJ-TSP" secondAttribute="trailing" id="1vR-Tf-Q8W"/>
+                            <constraint firstItem="n6y-b0-ZRH" firstAttribute="top" secondItem="Mrc-jr-JsH" secondAttribute="top" id="82y-HR-7w0"/>
+                            <constraint firstItem="01V-OD-lZk" firstAttribute="top" secondItem="YOj-cJ-TSP" secondAttribute="top" constant="743" id="FbC-xu-xHO"/>
+                            <constraint firstItem="01V-OD-lZk" firstAttribute="top" secondItem="FQ1-vu-a3u" secondAttribute="bottom" constant="200" id="IB2-DH-L6r"/>
+                            <constraint firstItem="FQ1-vu-a3u" firstAttribute="top" secondItem="YOj-cJ-TSP" secondAttribute="top" constant="50" id="Ouw-ec-Mtp"/>
+                            <constraint firstItem="FQ1-vu-a3u" firstAttribute="leading" secondItem="YOj-cJ-TSP" secondAttribute="leading" constant="10" id="RnZ-IV-EmV"/>
+                            <constraint firstItem="n6y-b0-ZRH" firstAttribute="leading" secondItem="YOj-cJ-TSP" secondAttribute="leading" id="Wdu-nF-Kdu"/>
+                            <constraint firstItem="YOj-cJ-TSP" firstAttribute="trailing" secondItem="FQ1-vu-a3u" secondAttribute="trailing" constant="10" id="h2E-ZH-3Et"/>
+                            <constraint firstAttribute="bottom" secondItem="n6y-b0-ZRH" secondAttribute="bottom" id="sdQ-Dq-eii"/>
+                            <constraint firstItem="01V-OD-lZk" firstAttribute="centerX" secondItem="Mrc-jr-JsH" secondAttribute="centerX" id="v1x-D8-6YB"/>
+                            <constraint firstItem="01V-OD-lZk" firstAttribute="centerX" secondItem="Mrc-jr-JsH" secondAttribute="centerX" id="yL1-3v-Ehq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YOj-cJ-TSP"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bMc-4F-RwC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="37060-CheckPoint-Logo-SH_03" width="3500" height="2000"/>
+        <image name="Rectangle 1" width="375" height="812"/>
+    </resources>
 </document>
