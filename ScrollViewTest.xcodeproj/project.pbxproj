@@ -18,6 +18,7 @@
 		C4DA83F123936F140047D7B4 /* ScrollViewTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA83F023936F140047D7B4 /* ScrollViewTestUITests.swift */; };
 		C4DCE36123974447002D7487 /* TabBarColorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DCE36023974447002D7487 /* TabBarColorController.swift */; };
 		C4DCE36323974E77002D7487 /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DCE36223974E77002D7487 /* QRCodeScanner.swift */; };
+		C4E3503123C66F37009F347E /* DatabaseConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E3503023C66F37009F347E /* DatabaseConnect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		C4DA83F223936F140047D7B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4DCE36023974447002D7487 /* TabBarColorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarColorController.swift; sourceTree = "<group>"; };
 		C4DCE36223974E77002D7487 /* QRCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
+		C4E3503023C66F37009F347E /* DatabaseConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseConnect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				C4BE694223973C1000C70BA2 /* TabBarColor.swift */,
 				C4DCE36023974447002D7487 /* TabBarColorController.swift */,
 				C4DCE36223974E77002D7487 /* QRCodeScanner.swift */,
+				C4E3503023C66F37009F347E /* DatabaseConnect.swift */,
 			);
 			path = ScrollViewTest;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4DA83D323936F100047D7B4 /* ViewController.swift in Sources */,
+				C4E3503123C66F37009F347E /* DatabaseConnect.swift in Sources */,
 				C486C2D72394B51B0083805E /* TopBarTemplate.swift in Sources */,
 				C4DCE36323974E77002D7487 /* QRCodeScanner.swift in Sources */,
 				C4DA83D123936F100047D7B4 /* AppDelegate.swift in Sources */,

@@ -10,10 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    
+    var phpServiceData = PHPServiceData()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        phpServiceData.getData()
         
         func setupCard(view: UIView!, color1: UIColor!, color2: UIColor!) {
             
@@ -99,6 +102,10 @@ class ViewController: UIViewController {
         deleteAlert.addAction(choice1)
         deleteAlert.addAction(choice2)
         self.present(deleteAlert, animated: true, completion: nil)
+        
+    }
+    
+    func itemsDownloaded(dataFromService: [Any]) {
         
     }
     
