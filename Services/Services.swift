@@ -13,7 +13,7 @@ import Alamofire
 
 class service{
     
-    let baseURL =
+    //let baseURL = 
     
     init(){
     }

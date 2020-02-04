@@ -32,7 +32,18 @@ class Signup: UIViewController {
     @IBAction func SignUp(_ sender: Any) {
         let paramters: [String: AnyObject] = ["name": txtName.text! as AnyObject ,  "Email": txtEmail.text! as AnyObject , "password": txtPass.text! as AnyObject]
         
-        
+        Services().signup(parameters: parameters) { (response) in
+            
+            if response["status"].intValue == 0 {
+                print(repsonse["message"].stringValue)
+            } else {
+                
+                let userid = reponse["message"].intValue
+                print("UserID \(userid )")
+            }
+            
+            
+            
+        }
     }
-    
 }

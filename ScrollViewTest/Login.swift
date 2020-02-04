@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftyJSON
 
 class Login: UIViewController {
  
@@ -27,7 +26,7 @@ class Login: UIViewController {
     let paramters: [String: AnyObject] = ["Email": txtEmail.text! as AnyObject , "password":
     txtPass.text! as AnyObject]
     
-    Service().login(parameters: parameters) { (response) in
+    Services().login(parameters: parameters) { (response) in
     
     if response["status"].intValue == 0 {
         print("Login was incorrect")
