@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class Login: UIViewController {
  
@@ -21,21 +22,21 @@ class Login: UIViewController {
     
     
     @IBAction func LoginClick(_ sender: Any) {
-    }
     
-    let paramters: [String: AnyObject] = ["Email": txtEmail.text! as AnyObject , "password":
-    txtPass.text! as AnyObject]
     
-    Services().login(parameters: parameters) { (response) in
+    let parameters: [String: AnyObject] = ["Email": txtEmail.text! as AnyObject , "password": txtPass.text! as AnyObject]
+    
+    Service().login(parameters: parameters) { (response) in
     
     if response["status"].intValue == 0 {
         print("Login was incorrect")
     } else{
-        //Login was Good!
+        print("Login was Good!")
     
-    Let userid = response["message"].intValue
+    let userid = response["message"].intValue
     print("UserID\(userid )")
     }
 
-}
+        }
+    }
 }

@@ -11,18 +11,18 @@ import SwiftyJSON
 import Alamofire
 
 
-class service{
+class Service{
     
-    //let baseURL = 
+    let baseURL = "http://derhas.dreamhosters.com"
     
     init(){
     }
     
     
     //Login api
-    func login(parameters: [String:AnyObjet], completion: @escaping (_ callback: JSON)->()) {
-        let url = baseURL + "api/auth/login"
-        Alamofire.request(url , method: .post, parameters: parameters).reponseJSON { response in
+    func login(parameters: [String:AnyObject], completion: @escaping (_ callback: JSON)->()) {
+        let url = baseURL + "/api/auth/login"
+        Alamofire.request(url , method: .post, parameters: parameters).responseJSON { response in
             if let json = response.result.value {
                 completion(JSON(json))
             } else {
@@ -32,9 +32,9 @@ class service{
     }
     
     //Sign up api
-    func login(parameters: [String:AnyObjet], completion: @escaping (_ callback: JSON)->()) {
-         let url = baseURL + "api/auth/signup"
-         Alamofire.request(url , method: .post, parameters: parameters).reponseJSON { response in
+    func signup(parameters: [String:AnyObject], completion: @escaping (_ callback: JSON)->()) {
+         let url = baseURL + "/api/auth/signup"
+         Alamofire.request(url , method: .post, parameters: parameters).responseJSON { response in
              if let json = response.result.value {
                  completion(JSON(json))
              } else {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class Signup: UIViewController {
     
@@ -17,10 +18,6 @@ class Signup: UIViewController {
     
     @IBOutlet weak var txtPass: UITextField!
     
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,15 +27,19 @@ class Signup: UIViewController {
     
     
     @IBAction func SignUp(_ sender: Any) {
-        let paramters: [String: AnyObject] = ["name": txtName.text! as AnyObject ,  "Email": txtEmail.text! as AnyObject , "password": txtPass.text! as AnyObject]
         
-        Services().signup(parameters: parameters) { (response) in
+        let parameters: [String: AnyObject] = ["name": txtName.text! as AnyObject ,  "Email": txtEmail.text! as AnyObject , "password": txtPass.text! as AnyObject]
+        
+        Service().signup(parameters: parameters) { (response) in
             
             if response["status"].intValue == 0 {
-                print(repsonse["message"].stringValue)
+                print(response["message"].stringValue)
+                
+                SweetAlert().showAlert("Error", subTitle: response["message"].stringValue, style: .error)
             } else {
                 
-                let userid = reponse["message"].intValue
+                //succesful login
+                let userid = response["message"].intValue
                 print("UserID \(userid )")
             }
             
