@@ -11,9 +11,11 @@ import SwiftyJSON
 
 class Login: UIViewController {
  
+
     @IBOutlet weak var txtEmail: UITextField!
     
-    @IBOutlet weak var txtPass: UITextField!
+    @IBOutlet weak var txtPassword: UITextField!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +26,7 @@ class Login: UIViewController {
     @IBAction func LoginClick(_ sender: Any) {
     
     
-    let parameters: [String: AnyObject] = ["Email": txtEmail.text! as AnyObject , "password": txtPass.text! as AnyObject]
+    let parameters: [String: AnyObject] = ["Email": txtEmail.text! as AnyObject , "password": txtPassword.text! as AnyObject]
     
     Service().login(parameters: parameters) { (response) in
     
