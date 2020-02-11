@@ -14,6 +14,7 @@ class Signup: UIViewController {
     
     @IBOutlet weak var txtName: UITextField!
     
+    
     @IBOutlet weak var txtEmail: UITextField!
     
     @IBOutlet weak var txtPassword: UITextField!
@@ -25,8 +26,9 @@ class Signup: UIViewController {
     }
     
     
+ 
     @IBAction func Signup(_ sender: Any) {
-        
+    
         let parameters: [String: AnyObject] = ["name": txtName.text! as AnyObject ,  "Email": txtEmail.text! as AnyObject , "password": txtPassword.text! as AnyObject]
         
         Service().signup(parameters: parameters) { (response) in
@@ -34,7 +36,7 @@ class Signup: UIViewController {
             if response["status"].intValue == 0 {
                 print(response["message"].stringValue)
                 
-                SweetAlert().showAlert("Error", subTitle: response["message"].stringValue, style: .error)
+                SweetAlert().showAlert("Error", subTitle: response["message"].stringValue, style: AlertStyle.error)
             } else {
                 
                 //succesful login

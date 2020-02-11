@@ -32,8 +32,9 @@ class Login: UIViewController {
     
     if response["status"].intValue == 0 {
         print("Login was incorrect")
-    } else{
-        print("Login was Good!")
+    } else {
+        
+    print("Login was Good!")
     
     let userid = response["message"].intValue
     print("UserID\(userid )")
