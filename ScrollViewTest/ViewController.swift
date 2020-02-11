@@ -74,13 +74,15 @@ class ViewController: UIViewController {
     
     @IBAction func shareCard(_ sender: Any) {
         
+        
+        
         let alert = UIAlertController(title: "Use?", message: "This action cannot be done", preferredStyle: .alert)
         
         let prompt1 = UIAlertAction(title: "Use", style: .default, handler: {ACTION in
 
             //self.Popup.didMoveToSuperview()
             self.Popup.isHidden = false
-            self.Popup.layer.cornerRadius = 10
+            self.Popup.layer.cornerRadius = 20
             let top = UILabel(frame: CGRect(x: 100, y: 20, width: 200, height: 50))
             let code = UILabel(frame: CGRect(x: 70, y: 110, width: 300, height: 100))
             let lb = UILabel(frame: CGRect(x: 70, y: 250, width: 300, height: 30))
