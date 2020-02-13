@@ -25,21 +25,19 @@ class Login: UIViewController {
     
     @IBAction func LoginClick(_ sender: Any) {
     
-    
     let parameters: [String: AnyObject] = ["email": txtEmail.text! as AnyObject , "password": txtPassword.text! as AnyObject]
     
     Service().login(parameters: parameters) { (response) in
     
-    if response["status"].intValue == 0 {
-        print("Login was incorrect")
-    } else {
-        
-    print("Login was Good!")
-    
-    let userid = response["message"].intValue
-    print("UserID\(userid )")
-    }
-
+            if response["status"].intValue == 0 {
+                print("Login was incorrect")
+            } else {
+                
+            print("Login was Good!")
+            
+            let userid = response["message"].intValue
+            print("UserID\(userid )")
+            }
         }
     }
 }

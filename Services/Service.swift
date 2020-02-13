@@ -18,7 +18,6 @@ class Service{
     init(){
     }
     
-    
     //Login api
     func login(parameters: [String:AnyObject], completion: @escaping (_ callback: JSON)->()) {
         let url = baseURL + "/api/auth/login"

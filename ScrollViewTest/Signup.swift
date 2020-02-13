@@ -14,19 +14,17 @@ class Signup: UIViewController {
     
     @IBOutlet weak var txtName: UITextField!
     
-    
     @IBOutlet weak var txtEmail: UITextField!
     
     @IBOutlet weak var txtPassword: UITextField!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
 
     }
     
     
- 
     @IBAction func Signup(_ sender: Any) {
     
         let parameters: [String: AnyObject] = ["name": txtName.text! as AnyObject ,  "email": txtEmail.text! as AnyObject , "password": txtPassword.text! as AnyObject]
@@ -43,9 +41,6 @@ class Signup: UIViewController {
                 let userid = response["message"].intValue
                 print("UserID \(userid )")
             }
-            
-            
-            
         }
     }
 }
