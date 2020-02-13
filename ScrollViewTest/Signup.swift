@@ -29,7 +29,7 @@ class Signup: UIViewController {
  
     @IBAction func Signup(_ sender: Any) {
     
-        let parameters: [String: AnyObject] = ["name": txtName.text! as AnyObject ,  "Email": txtEmail.text! as AnyObject , "password": txtPassword.text! as AnyObject]
+        let parameters: [String: AnyObject] = ["name": txtName.text! as AnyObject ,  "email": txtEmail.text! as AnyObject , "password": txtPassword.text! as AnyObject]
         
         Service().signup(parameters: parameters) { (response) in
             

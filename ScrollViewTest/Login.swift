@@ -26,7 +26,7 @@ class Login: UIViewController {
     @IBAction func LoginClick(_ sender: Any) {
     
     
-    let parameters: [String: AnyObject] = ["Email": txtEmail.text! as AnyObject , "password": txtPassword.text! as AnyObject]
+    let parameters: [String: AnyObject] = ["email": txtEmail.text! as AnyObject , "password": txtPassword.text! as AnyObject]
     
     Service().login(parameters: parameters) { (response) in
     
