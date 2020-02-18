@@ -305,7 +305,7 @@
         <!--Login Scene-->
         <scene sceneID="ytM-8q-DpM">
             <objects>
-                <viewController storyboardIdentifier="Login Scene" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sMY-9C-jqf" userLabel="Login Scene" customClass="Login" customModule="ScrollViewTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sMY-9C-jqf" userLabel="Login Scene" customClass="Login" customModule="ScrollViewTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Rp-D6-BzH" userLabel="Login">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -364,7 +364,7 @@
         <!--Signup Scene-->
         <scene sceneID="jBW-Pf-Te1">
             <objects>
-                <viewController storyboardIdentifier="Signup Scene" useStoryboardIdentifierAsRestorationIdentifier="YES" id="J0K-Yz-3q1" userLabel="Signup Scene" customClass="Signup" customModule="ScrollViewTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Signup" useStoryboardIdentifierAsRestorationIdentifier="YES" id="J0K-Yz-3q1" userLabel="Signup Scene" customClass="Signup" customModule="ScrollViewTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uXY-px-0em" userLabel="Signup">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

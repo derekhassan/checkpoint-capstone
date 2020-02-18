@@ -40,6 +40,10 @@ class Signup: UIViewController {
                 //succesful login
                 let userid = response["message"].intValue
                 print("UserID \(userid )")
+                
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let loggedInViewController = storyBoard.instantiateViewController(withIdentifier: "Login") as! Login
+                self.present(loggedInViewController, animated: true, completion: nil)
             }
         }
     }
