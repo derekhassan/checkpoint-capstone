@@ -8,13 +8,25 @@
 
 import UIKit
 
+struct QR: Decodable{
+    var qridNumber: Int
+    var percentage: Int
+    var cap: Int
+    var busID: Int
+}
+
 class ViewController: UIViewController {
-    
     
     var phpServiceData = PHPServiceData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
+        
+
+        
+        
         
         phpServiceData.getData()
         
@@ -80,7 +92,6 @@ class ViewController: UIViewController {
         
         let prompt1 = UIAlertAction(title: "Use", style: .default, handler: {ACTION in
 
-            //self.Popup.didMoveToSuperview()
             self.Popup.isHidden = false
             self.Popup.layer.cornerRadius = 20
             let top = UILabel(frame: CGRect(x: 100, y: 20, width: 200, height: 50))
@@ -112,7 +123,7 @@ class ViewController: UIViewController {
                 self.present(alert2, animated: true, completion: nil)
         
             
-                //self.performSegue(withIdentifier: "coupontoProfile", sender: nil)
+        
             
         })
         

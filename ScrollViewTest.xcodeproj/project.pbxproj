@@ -19,6 +19,7 @@
 		C4DCE36123974447002D7487 /* TabBarColorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DCE36023974447002D7487 /* TabBarColorController.swift */; };
 		C4DCE36323974E77002D7487 /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DCE36223974E77002D7487 /* QRCodeScanner.swift */; };
 		C4E3503123C66F37009F347E /* DatabaseConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E3503023C66F37009F347E /* DatabaseConnect.swift */; };
+		E2F8C96723FC682B008F1357 /* Qrid-4.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F8C96623FC682B008F1357 /* Qrid-4.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		C4DCE36023974447002D7487 /* TabBarColorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarColorController.swift; sourceTree = "<group>"; };
 		C4DCE36223974E77002D7487 /* QRCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
 		C4E3503023C66F37009F347E /* DatabaseConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseConnect.swift; sourceTree = "<group>"; };
+		E2F8C96623FC682B008F1357 /* Qrid-4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Qrid-4.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			children = (
 				C4DA83D023936F100047D7B4 /* AppDelegate.swift */,
 				C4DA83D223936F100047D7B4 /* ViewController.swift */,
+				E2F8C96623FC682B008F1357 /* Qrid-4.swift */,
 				C4DA83D423936F100047D7B4 /* Main.storyboard */,
 				C4DA83D723936F130047D7B4 /* Assets.xcassets */,
 				C4DA83D923936F130047D7B4 /* LaunchScreen.storyboard */,
@@ -202,19 +205,23 @@
 		C4DA83C523936F100047D7B4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = "";
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Derek Hassan";
 				TargetAttributes = {
 					C4DA83CC23936F100047D7B4 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1140;
 					};
 					C4DA83E023936F130047D7B4 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1140;
 						TestTargetID = C4DA83CC23936F100047D7B4;
 					};
 					C4DA83EB23936F140047D7B4 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1140;
 						TestTargetID = C4DA83CC23936F100047D7B4;
 					};
 				};
@@ -271,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2F8C96723FC682B008F1357 /* Qrid-4.swift in Sources */,
 				C4DA83D323936F100047D7B4 /* ViewController.swift in Sources */,
 				C4E3503123C66F37009F347E /* DatabaseConnect.swift in Sources */,
 				C486C2D72394B51B0083805E /* TopBarTemplate.swift in Sources */,
@@ -453,14 +461,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PK9D8D5B6K;
 				INFOPLIST_FILE = ScrollViewTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = checkpoint.ScrollViewTest;
+				PRODUCT_BUNDLE_IDENTIFIER = checkpoint.RobertLeapTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -470,14 +479,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PK9D8D5B6K;
 				INFOPLIST_FILE = ScrollViewTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = checkpoint.ScrollViewTest;
+				PRODUCT_BUNDLE_IDENTIFIER = checkpoint.RobertLeapTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -488,6 +498,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PK9D8D5B6K;
 				INFOPLIST_FILE = ScrollViewTestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -496,7 +507,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = checkpoint.ScrollViewTestTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ScrollViewTest.app/ScrollViewTest";
 			};
@@ -508,6 +519,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PK9D8D5B6K;
 				INFOPLIST_FILE = ScrollViewTestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -516,7 +528,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = checkpoint.ScrollViewTestTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ScrollViewTest.app/ScrollViewTest";
 			};
@@ -526,7 +538,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PK9D8D5B6K;
 				INFOPLIST_FILE = ScrollViewTestUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -535,7 +549,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = checkpoint.ScrollViewTestUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = ScrollViewTest;
 			};
@@ -545,7 +559,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PK9D8D5B6K;
 				INFOPLIST_FILE = ScrollViewTestUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -554,7 +570,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = checkpoint.ScrollViewTestUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = ScrollViewTest;
 			};
