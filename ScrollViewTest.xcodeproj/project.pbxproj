@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,7 +19,16 @@
 		C4DCE36123974447002D7487 /* TabBarColorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DCE36023974447002D7487 /* TabBarColorController.swift */; };
 		C4DCE36323974E77002D7487 /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DCE36223974E77002D7487 /* QRCodeScanner.swift */; };
 		C4E3503123C66F37009F347E /* DatabaseConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E3503023C66F37009F347E /* DatabaseConnect.swift */; };
+
 		E2F8C96723FC682B008F1357 /* Qrid-4.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F8C96623FC682B008F1357 /* Qrid-4.swift */; };
+
+		D21C499F23E9ED3A008D106B /* SweetAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21C499E23E9ED3A008D106B /* SweetAlerts.swift */; };
+		D2E93B3C23E34735004899F1 /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E93B3B23E34735004899F1 /* Signup.swift */; };
+		D2E93B4323E35510004899F1 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E93B4223E35510004899F1 /* Login.swift */; };
+		D5594DDD23EC636A0037A335 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = D5594DDC23EC636A0037A335 /* SwiftyJSON */; };
+		D5594DE023EC640A0037A335 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D5594DDF23EC640A0037A335 /* Alamofire */; };
+		D5594DE323EC66260037A335 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5594DE223EC66260037A335 /* Service.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +67,14 @@
 		C4DCE36023974447002D7487 /* TabBarColorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarColorController.swift; sourceTree = "<group>"; };
 		C4DCE36223974E77002D7487 /* QRCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
 		C4E3503023C66F37009F347E /* DatabaseConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseConnect.swift; sourceTree = "<group>"; };
+
 		E2F8C96623FC682B008F1357 /* Qrid-4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Qrid-4.swift"; sourceTree = "<group>"; };
+
+		D21C499E23E9ED3A008D106B /* SweetAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweetAlerts.swift; sourceTree = "<group>"; };
+		D2E93B3B23E34735004899F1 /* Signup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
+		D2E93B4223E35510004899F1 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		D5594DE223EC66260037A335 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5594DDD23EC636A0037A335 /* SwiftyJSON in Frameworks */,
+				D5594DE023EC640A0037A335 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +107,8 @@
 		C4DA83C423936F100047D7B4 = {
 			isa = PBXGroup;
 			children = (
+				D5594DE123EC66130037A335 /* Services */,
+				D21C499D23E9ECCB008D106B /* Lib */,
 				C4DA83CF23936F100047D7B4 /* ScrollViewTest */,
 				C4DA83E423936F130047D7B4 /* ScrollViewTestTests */,
 				C4DA83EF23936F140047D7B4 /* ScrollViewTestUITests */,
@@ -121,6 +141,8 @@
 				C4DCE36023974447002D7487 /* TabBarColorController.swift */,
 				C4DCE36223974E77002D7487 /* QRCodeScanner.swift */,
 				C4E3503023C66F37009F347E /* DatabaseConnect.swift */,
+				D2E93B3B23E34735004899F1 /* Signup.swift */,
+				D2E93B4223E35510004899F1 /* Login.swift */,
 			);
 			path = ScrollViewTest;
 			sourceTree = "<group>";
@@ -143,6 +165,22 @@
 			path = ScrollViewTestUITests;
 			sourceTree = "<group>";
 		};
+		D21C499D23E9ECCB008D106B /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				D21C499E23E9ED3A008D106B /* SweetAlerts.swift */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		D5594DE123EC66130037A335 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D5594DE223EC66260037A335 /* Service.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -159,6 +197,10 @@
 			dependencies = (
 			);
 			name = ScrollViewTest;
+			packageProductDependencies = (
+				D5594DDC23EC636A0037A335 /* SwiftyJSON */,
+				D5594DDF23EC640A0037A335 /* Alamofire */,
+			);
 			productName = ScrollViewTest;
 			productReference = C4DA83CD23936F100047D7B4 /* ScrollViewTest.app */;
 			productType = "com.apple.product-type.application";
@@ -212,16 +254,20 @@
 				TargetAttributes = {
 					C4DA83CC23936F100047D7B4 = {
 						CreatedOnToolsVersion = 10.1;
+
 						LastSwiftMigration = 1140;
 					};
 					C4DA83E023936F130047D7B4 = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1140;
+
 						TestTargetID = C4DA83CC23936F100047D7B4;
 					};
 					C4DA83EB23936F140047D7B4 = {
 						CreatedOnToolsVersion = 10.1;
+
 						LastSwiftMigration = 1140;
+            
 						TestTargetID = C4DA83CC23936F100047D7B4;
 					};
 				};
@@ -235,6 +281,10 @@
 				Base,
 			);
 			mainGroup = C4DA83C423936F100047D7B4;
+			packageReferences = (
+				D5594DDB23EC636A0037A335 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				D5594DDE23EC640A0037A335 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = C4DA83CE23936F100047D7B4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -280,10 +330,14 @@
 			files = (
 				E2F8C96723FC682B008F1357 /* Qrid-4.swift in Sources */,
 				C4DA83D323936F100047D7B4 /* ViewController.swift in Sources */,
+				D21C499F23E9ED3A008D106B /* SweetAlerts.swift in Sources */,
+				D2E93B4323E35510004899F1 /* Login.swift in Sources */,
 				C4E3503123C66F37009F347E /* DatabaseConnect.swift in Sources */,
 				C486C2D72394B51B0083805E /* TopBarTemplate.swift in Sources */,
 				C4DCE36323974E77002D7487 /* QRCodeScanner.swift in Sources */,
 				C4DA83D123936F100047D7B4 /* AppDelegate.swift in Sources */,
+				D2E93B3C23E34735004899F1 /* Signup.swift in Sources */,
+				D5594DE323EC66260037A335 /* Service.swift in Sources */,
 				C4BE694323973C1000C70BA2 /* TabBarColor.swift in Sources */,
 				C4DCE36123974447002D7487 /* TabBarColorController.swift in Sources */,
 			);
@@ -616,6 +670,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D5594DDB23EC636A0037A335 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		D5594DDE23EC640A0037A335 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D5594DDC23EC636A0037A335 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5594DDB23EC636A0037A335 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		D5594DDF23EC640A0037A335 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5594DDE23EC640A0037A335 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C4DA83C523936F100047D7B4 /* Project object */;
 }
