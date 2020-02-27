@@ -1,83 +1,204 @@
-//
-//  QRCodeScanner.swift
-//  ScrollViewTest
-//
-//  Created by Derek Hassan on 12/3/19.
-//  Copyright © 2019 Derek Hassan. All rights reserved.
-//
-
 import UIKit
 import AVFoundation
 
 class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
-    var video = AVCaptureVideoPreviewLayer()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
-        let session = AVCaptureSession()
-        
-        let captureDevice = AVCaptureDevice.default(for: .video)
-        let input: AVCaptureDeviceInput?
-        
-        do {
-            input = try AVCaptureDeviceInput(device: captureDevice!) //could cause issue without capture device
-            if let input = input {
-                if session.canAddInput(input) {
-                    session.addInput(input)
-                }
-                
-            } else {
-                print("Camera is nil!")
-            }
-        }
-        catch {
-            print("Something went wrong!")
-        }
-        
-        let output = AVCaptureMetadataOutput()
-        session.addOutput(output)
-        
-        output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-        
-        output.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
-        
-        video = AVCaptureVideoPreviewLayer(session: session)
-        //video.frame = view.layer.bounds
-        video.frame = CGRect(x: 0, y: view.bounds.height - cameraFrameSize.bounds.height, width: cameraFrameSize.bounds.width, height: cameraFrameSize.bounds.height - 80) //not sure how this looks
-        view.layer.addSublayer(video) //may need to change
-        
-        session.startRunning()
-        
-    }
-    
-    func metadataOutput(_ metadataOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
-            if metadataObjects != nil && metadataObjects.count != 0 {
-                if let object = metadataObjects[0] as? AVMetadataMachineReadableCodeObject {
-                    if object.type == AVMetadataObject.ObjectType.qr {
-                        let alert = UIAlertController(title: "QR Code", message: object.stringValue, preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "Retake", style: .default, handler: nil))
-                        alert.addAction(UIAlertAction(title: "Copy", style: .default, handler: {(nil) in UIPasteboard.general.string = object.stringValue}))
-                        
-                        present(alert, animated: true, completion: nil)
-                    }
-                }
-            }
-    }
-    
     @IBOutlet weak var cameraFrameSize: UIView!
     
-    /*
-    // MARK: - Navigation
+    var captureSession: AVCaptureSession!
+    var previewLayer: AVCaptureVideoPreviewLayer!
+    var qrCodeFrameView:UIView?
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = UIColor.black
+        captureSession = AVCaptureSession()
+        captureSession.sessionPreset = .low
+        guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
+        let videoInput: AVCaptureDeviceInput
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        do {
+            videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice)
+
+            
+            //added to create frame
+            DispatchQueue.main.async {
+                var qrCodeFrameView = UIView()
+                qrCodeFrameView = UIView(frame: CGRect(x:60, y:150, width:250, height:250))
+                self.view.addSubview(qrCodeFrameView)
+                self.qrCodeFrameView = UIView()
+                qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
+                qrCodeFrameView.layer.borderWidth = 2
+                qrCodeFrameView.bringSubviewToFront(qrCodeFrameView)
+                //
+                
+            }
+        
+            //qrCodeFrameView = UIView()
+            //if let qrCodeFrameView = qrCodeFrameView {
+              //             qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
+                //           qrCodeFrameView.layer.borderWidth = 2
+                  //         view.bringSubviewToFront(qrCodeFrameView)
+                
+                    //   }
+         
+             
+           
+        } catch {
+            return
+        }
+
+        if (captureSession.canAddInput(videoInput)) {
+            
+            
+            
+            captureSession.addInput(videoInput)
+        } else {
+            failed()
+            return
+        }
+
+        let metadataOutput = AVCaptureMetadataOutput()
+
+        if (captureSession.canAddOutput(metadataOutput)) {
+            captureSession.addOutput(metadataOutput)
+
+            metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+            metadataOutput.metadataObjectTypes = [.qr]
+            
+            
+        } else {
+            failed()
+            return
+        }
+
+        previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        previewLayer.frame = CGRect(x: 0, y: view.bounds.height - cameraFrameSize.bounds.height , width: cameraFrameSize.bounds.width, height: cameraFrameSize.bounds.height)
+        previewLayer.videoGravity = .resizeAspectFill
+        //
+        previewLayer?.frame = view.layer.bounds
+        view.layer.addSublayer(previewLayer)
+        
+       
+        
+        
+       
+        captureSession.startRunning()
     }
-    */
+
+    func failed() {
+        let ac = UIAlertController(title: "Scanning not supported", message: "Your device does not support scanning a code from an item. Please use a device with a camera.", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
+        captureSession = nil
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if (captureSession?.isRunning == false) {
+            captureSession.startRunning()
+            
+
+           
+        }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        if (captureSession?.isRunning == true) {
+            captureSession.stopRunning()
+        }
+    }
+
+    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+        captureSession.stopRunning()
+
+        if let metadataObject = metadataObjects.first {
+            guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
+            guard let stringValue = readableObject.stringValue else
+            
+            { return }
+           AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+            found(code: stringValue)
+            
+                
+             
+            //
+            let barCodeObject = previewLayer!.transformedMetadataObject(for: metadataObject as! AVMetadataMachineReadableCodeObject) as! AVMetadataMachineReadableCodeObject
+             
+            qrCodeFrameView?.frame = barCodeObject.bounds
+        }
+        
+        
+
+    }
+    
+    func downloadJSON(code: String) {
+            
+            if let url = URL(string: code) {
+                URLSession.shared.dataTask(with: url) { (data, response, error) in
+                if let data = data {
+                    do {
+                    
+                        let res = try JSONDecoder().decode(Reponse.self, from: data)
+                        print(res.qrid)
+                        print(res.busID)
+                        print(res.cap)
+                        print(res.percentage)
+                        
+                        
+                        
+                    }catch {
+                        print(error)
+            
+                    }
+                }
+            }.resume()
+        }
+    }
+
+
+    func found(code: String) {
+        
+        
+        let alert = UIAlertController(title: "QR Code", message: code, preferredStyle: .alert)
+        
+        downloadJSON(code: code)
+            
+        
+
+        
+        
+        
+        //alert.addAction(UIAlertAction(title: "Retake", style: .default, handler: nil))
+        
+        alert.addAction(UIAlertAction(title: "Retake", style: .default, handler: { (action) in
+            self.captureSession.startRunning()
+            self.dismiss(animated: true, completion: nil)
+        }))
+
+        alert.addAction(UIAlertAction(title: "Copy", style: .default, handler: { (action) in
+            UIPasteboard.general.string = code
+            self.captureSession.startRunning()
+            self.dismiss(animated: true, completion: nil)
+            
+            
+            
+        }))
+
+        present(alert, animated: true, completion: nil)
+        
+        print(code)
+    }
+
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
 
 }
+

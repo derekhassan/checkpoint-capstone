@@ -8,25 +8,13 @@
 
 import UIKit
 
-struct QR: Decodable{
-    var qridNumber: Int
-    var percentage: Int
-    var cap: Int
-    var busID: Int
-}
-
 class ViewController: UIViewController {
+    
     
     var phpServiceData = PHPServiceData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       
-        
-
-        
-        
         
         phpServiceData.getData()
         
@@ -77,70 +65,36 @@ class ViewController: UIViewController {
     
     //Declarations from Storyboard
     @IBOutlet weak var firstCard: UIView! //first coupon
-    
     @IBOutlet weak var secondCard: UIView! //second coupon
-    
     @IBOutlet weak var thirdCard: UIView! //third coupon
     
-    @IBOutlet var Popup: UIView!
     
     @IBAction func shareCard(_ sender: Any) {
         
+        //let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
+        let alert = UIAlertController(title: "Use?", message: "This action cannot be done.", preferredStyle: .alert)
         
-        let alert = UIAlertController(title: "Use?", message: "This action cannot be done", preferredStyle: .alert)
-        
-        let prompt1 = UIAlertAction(title: "Use", style: .default, handler: {ACTION in
-
-            self.Popup.isHidden = false
-            self.Popup.layer.cornerRadius = 20
-            let top = UILabel(frame: CGRect(x: 100, y: 20, width: 200, height: 50))
-            let code = UILabel(frame: CGRect(x: 70, y: 110, width: 300, height: 100))
-            let lb = UILabel(frame: CGRect(x: 70, y: 250, width: 300, height: 30))
+        let prompt1 = UIAlertAction(title: "Use", style: .default, handler: {action in print("User wants to use coupon")
             
-            let alert2 = UIAlertController(title: "Close?", message: "This will close the coupon", preferredStyle: .actionSheet)
-            let close2 = UIAlertAction(title: "Close", style: .default, handler: {ACTION in self.Popup.isHidden = true; code.removeFromSuperview()} )
-                top.text = "Company name"
-                top.font = UIFont.boldSystemFont(ofSize: 24.0)
-                let length = 9
-                let characters =    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-                let randomCharacters = (0..<length).map{_ in characters.randomElement()!}
-                let randomString = String(randomCharacters)
-                code.text = randomString
-                code.textColor = UIColor.green
-                code.font = UIFont.boldSystemFont(ofSize: 40)
-                code.font = code.font.withSize(40)
-                lb.text="Show this coupon at register"
-                code.center.x = code.center.x
-                lb.center.x = lb.center.x
-                top.center.x = top.center.x
-    
-                self.Popup.backgroundColor = UIColor.white
-                self.Popup.self.addSubview(top)
-                self.Popup.addSubview(code)
-                self.Popup.addSubview(lb)
-                alert2.addAction(close2)
-                self.present(alert2, animated: true, completion: nil)
-        
-            
-        
+            self.performSegue(withIdentifier: "coupontoProfile", sender: nil)
             
         })
         
         let prompt2 = UIAlertAction(title: "Share", style: .default, handler: {action in print("User wants to share coupon")})
         
-        let promptClose = UIAlertAction(title: "Close", style: .cancel, handler: {action in print("User wants to close")})
+        let promptCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: {action in print("User wants to cancel")})
         
         alert.addAction(prompt1)
         alert.addAction(prompt2)
-        alert.addAction(promptClose)
+        alert.addAction(promptCancel)
         self.present(alert, animated: true, completion: nil)
         
     }
     
     
     @IBAction func deleteCoupon(_ sender: Any) {
-                
+        
         let deleteAlert = UIAlertController(title: "Delete Coupon?", message: "This action cannot be done.", preferredStyle: .alert)
         
         let choice1 = UIAlertAction(title: "Cancel", style: .cancel, handler: {action in print("User wants to cancel")})
