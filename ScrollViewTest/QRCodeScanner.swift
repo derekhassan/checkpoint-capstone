@@ -20,7 +20,7 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice)
 
             
-            //added to create frame
+           
             DispatchQueue.main.async {
                 var qrCodeFrameView = UIView()
                 qrCodeFrameView = UIView(frame: CGRect(x:60, y:150, width:250, height:250))
@@ -29,21 +29,21 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
                 qrCodeFrameView.layer.borderWidth = 2
                 qrCodeFrameView.bringSubviewToFront(qrCodeFrameView)
-                //
+                
                 
             }
         
             //qrCodeFrameView = UIView()
             //if let qrCodeFrameView = qrCodeFrameView {
-              //             qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
-                //           qrCodeFrameView.layer.borderWidth = 2
-                  //         view.bringSubviewToFront(qrCodeFrameView)
+              //            qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
+                //        qrCodeFrameView.layer.borderWidth = 2
+                  //    view.bringSubviewToFront(qrCodeFrameView)
                 
                     //   }
          
              
            
-        } catch {
+        } catch  {
             return
         }
 
@@ -56,8 +56,30 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             failed()
             return
         }
+        
+       //ADDED THIS
+        
+        let size = 300
+        let screenWidth = self.view.frame.size.width
+        let xPos = (CGFloat(screenWidth) / CGFloat(2)) - (CGFloat(size) / CGFloat(2))
+        let scanRect = CGRect(x: Int(xPos), y: 150, width: size, height: size)
+        
+        func convertRectOfInterest(rect: CGRect) -> CGRect {
+            let screenRect = self.view.frame
+            let screenWidth = screenRect.width
+            let screenHeight = screenRect.height
+            let newX = 1 / (screenWidth / rect.minX)
+            let newY = 1 / (screenHeight / rect.minY)
+            let newWidth = 1 / (screenWidth / rect.width)
+            let newHeight = 1 / (screenHeight / rect.height)
+            return CGRect(x: newY, y: newX, width: newHeight, height: newWidth)
+            
+        }
 
         let metadataOutput = AVCaptureMetadataOutput()
+        metadataOutput.rectOfInterest = convertRectOfInterest(rect: scanRect)
+
+        
 
         if (captureSession.canAddOutput(metadataOutput)) {
             captureSession.addOutput(metadataOutput)
@@ -133,29 +155,86 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
 
     }
+   
     
-    func downloadJSON(code: String) {
-            
-            if let url = URL(string: code) {
-                URLSession.shared.dataTask(with: url) { (data, response, error) in
-                if let data = data {
-                    do {
+    
+    func downloadJSON(code: String)  {
+        
+        
+        
+        if let url = URL(string: code) {
+            if url.absoluteString.range(of: "http://derhas.dreamhosters.com/api/auth/getqrcode?id=") != nil {return  URLSession.shared.dataTask(with: url) { (data, response, error) in
+                    if let data = data
                     
-                        let res = try JSONDecoder().decode(Reponse.self, from: data)
-                        print(res.qrid)
-                        print(res.busID)
-                        print(res.cap)
-                        print(res.percentage)
+                    {
+                        
+                        do {
+                            let res = try JSONDecoder().decode(Reponse.self, from: data)
+                            print(res.qrid)
+                            print(res.busID)
+                            print(res.cap)
+                            print(res.percentage)
+                            
+                            
+                            
+                        } catch {let err2 = UIAlertController(title: "Sorry", message: "Not a compatible QR code", preferredStyle: .alert)
+                              err2.addAction(UIAlertAction(title: "Retake", style: .default, handler: { (action) in
+                                  self.captureSession.startRunning()
+                                  self.dismiss(animated: true, completion: nil)
+                              }))
+                            
+                              self.present(err2, animated: true, completion: nil)
+                        }
+                          
+                        
+                                
+                                let err = UIAlertController(title: "QR Code", message: code, preferredStyle: .alert)
+                               
+                                  
+                                self.present(err, animated: true, completion: nil)
+                            
+                            
+                        }
+                
+
                         
                         
-                        
-                    }catch {
-                        print(error)
+                    
+                    
+                    
+                    
+                    
+                   
+                }.resume()}
             
-                    }
-                }
-            }.resume()
+            
+            
+            
+            //checks to see if QR code is scannable
+            if url != URL(string: "http://derhas.dreamhosters.com/api/auth/getqrcode?id="){
+                 print("Shoot")
+                  let err2 = UIAlertController(title: "Sorry", message: "Not a compatible QR code", preferredStyle: .alert)
+                  err2.addAction(UIAlertAction(title: "Retake", style: .default, handler: { (action) in
+                      self.captureSession.startRunning()
+                      self.dismiss(animated: true, completion: nil)
+                  }))
+                
+                  self.present(err2, animated: true, completion: nil)
+              }
+               
         }
+    }
+   
+    //function for incompatible QR code
+    func BadQR(code: String){
+         let err2 = UIAlertController(title: "Sorry", message: "Not a compatible QR code", preferredStyle: .alert)
+                         err2.addAction(UIAlertAction(title: "Retake", style: .default, handler: { (action) in
+                             self.captureSession.startRunning()
+                             self.dismiss(animated: true, completion: nil)
+                         }))
+                       
+                         self.present(err2, animated: true, completion: nil)
+        
     }
 
 
@@ -166,11 +245,6 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
         downloadJSON(code: code)
             
-        
-
-        
-        
-        
         //alert.addAction(UIAlertAction(title: "Retake", style: .default, handler: nil))
         
         alert.addAction(UIAlertAction(title: "Retake", style: .default, handler: { (action) in
