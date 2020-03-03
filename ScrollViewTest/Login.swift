@@ -40,6 +40,7 @@ class Login: UIViewController {
           
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let loggedInViewController = storyBoard.instantiateViewController(withIdentifier: "Coupon") as! ViewController
+        loggedInViewController.modalPresentationStyle = .fullScreen
         self.present(loggedInViewController, animated: true, completion: nil)
             }
         }
