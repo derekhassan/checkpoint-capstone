@@ -35,10 +35,10 @@
             </objects>
             <point key="canvasLocation" x="-2123.1884057971015" y="1044.6428571428571"/>
         </scene>
-        <!--Tab Bar Color Controller-->
+        <!--TabBar-->
         <scene sceneID="tAL-lB-1bd">
             <objects>
-                <tabBarController id="hxE-kb-tI4" customClass="TabBarColorController" customModule="ScrollViewTest" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController title="TabBar" id="hxE-kb-tI4" customClass="TabBarColorController" customModule="ScrollViewTest" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="7y5-XK-Lk8"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="pkz-HO-KIp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -126,90 +126,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vH4-zA-CFH">
-                                <rect key="frame" x="0.0" y="80" width="414" height="651"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ky-8c-4FI" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="700"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GWE-ql-HLo">
-                                                <rect key="frame" x="37" y="74" width="340" height="370"/>
-                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="370" id="bPm-cM-ciY"/>
-                                                    <constraint firstAttribute="width" constant="340" id="yvL-yd-T6Y"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5S-Gd-UXH">
-                                                <rect key="frame" x="37" y="150" width="340" height="370"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="370" id="1v6-QS-TbZ"/>
-                                                    <constraint firstAttribute="width" constant="340" id="IVS-y5-5m2"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gAv-ql-9eL" userLabel="Third Card">
-                                                <rect key="frame" x="37" y="217" width="340" height="370"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmP-SP-698">
-                                                        <rect key="frame" x="20" y="330" width="18" height="25"/>
-                                                        <state key="normal" image="ActionIcon"/>
-                                                        <connections>
-                                                            <action selector="shareCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9G8-jK-PIu"/>
-                                                        </connections>
-                                                    </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CompanyName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0K-tJ-GYE">
-                                                        <rect key="frame" x="129" y="17" width="188" height="32"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mwl-vK-6oP">
-                                                        <rect key="frame" x="299" y="330" width="18" height="25"/>
-                                                        <state key="normal" image="TrashIcon"/>
-                                                        <connections>
-                                                            <action selector="deleteCoupon:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jyv-o3-rYR"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstItem="mmP-SP-698" firstAttribute="leading" secondItem="gAv-ql-9eL" secondAttribute="leading" constant="20" id="97I-Ey-0Ne"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Mwl-vK-6oP" secondAttribute="bottom" constant="15" id="KSY-6B-BQz"/>
-                                                    <constraint firstItem="i0K-tJ-GYE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gAv-ql-9eL" secondAttribute="leading" constant="20" symbolic="YES" id="PmF-mB-fck"/>
-                                                    <constraint firstAttribute="width" constant="340" id="Zoo-gO-rfl"/>
-                                                    <constraint firstAttribute="trailing" secondItem="i0K-tJ-GYE" secondAttribute="trailing" constant="23" id="dCI-sL-G8l"/>
-                                                    <constraint firstItem="Mwl-vK-6oP" firstAttribute="top" secondItem="mmP-SP-698" secondAttribute="top" id="dpn-6g-M7n"/>
-                                                    <constraint firstAttribute="height" constant="370" id="gxi-lA-0Sy"/>
-                                                    <constraint firstItem="i0K-tJ-GYE" firstAttribute="trailing" secondItem="Mwl-vK-6oP" secondAttribute="trailing" id="iJh-7n-CTz"/>
-                                                    <constraint firstItem="i0K-tJ-GYE" firstAttribute="top" secondItem="gAv-ql-9eL" secondAttribute="top" constant="17" id="rbp-zl-kV7"/>
-                                                </constraints>
-                                            </view>
-                                            <view hidden="YES" alpha="0.94999999999999996" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XqI-fc-1ze">
-                                                <rect key="frame" x="37" y="148" width="340" height="403"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="gAv-ql-9eL" firstAttribute="leading" secondItem="a5S-Gd-UXH" secondAttribute="leading" id="Rr3-M3-ZIN"/>
-                                            <constraint firstItem="a5S-Gd-UXH" firstAttribute="top" secondItem="6ky-8c-4FI" secondAttribute="top" constant="150" id="SC7-5C-We9"/>
-                                            <constraint firstItem="gAv-ql-9eL" firstAttribute="centerY" secondItem="6ky-8c-4FI" secondAttribute="centerY" constant="52" id="X78-ol-RfR"/>
-                                            <constraint firstItem="GWE-ql-HLo" firstAttribute="top" secondItem="6ky-8c-4FI" secondAttribute="top" constant="74" id="gnl-dD-WIV"/>
-                                            <constraint firstItem="GWE-ql-HLo" firstAttribute="centerX" secondItem="6ky-8c-4FI" secondAttribute="centerX" id="tVs-1V-OZb"/>
-                                            <constraint firstAttribute="height" constant="700" id="uZ6-IE-FJ4"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="6ky-8c-4FI" firstAttribute="leading" secondItem="vH4-zA-CFH" secondAttribute="leading" id="4Ji-Z0-95d"/>
-                                    <constraint firstItem="6ky-8c-4FI" firstAttribute="width" secondItem="vH4-zA-CFH" secondAttribute="width" id="4NL-4D-EKn"/>
-                                    <constraint firstItem="6ky-8c-4FI" firstAttribute="top" secondItem="vH4-zA-CFH" secondAttribute="top" id="XDx-et-X8Z"/>
-                                    <constraint firstAttribute="trailing" secondItem="6ky-8c-4FI" secondAttribute="trailing" id="oyS-dn-nQU"/>
-                                    <constraint firstAttribute="bottom" secondItem="6ky-8c-4FI" secondAttribute="bottom" id="xM6-S3-FYk"/>
-                                </constraints>
-                            </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="74n-hd-1fk" userLabel="Top Bar" customClass="TopBarTemplate" customModule="ScrollViewTest" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
                                 <subviews>
@@ -226,28 +142,25 @@
                                     <constraint firstItem="z2O-KI-2mw" firstAttribute="top" secondItem="74n-hd-1fk" secondAttribute="topMargin" id="ygJ-Em-tij"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZFI-xL-vQd" userLabel="Wallet" customClass="WalletView" customModule="ScrollViewTest" customModuleProvider="target">
+                                <rect key="frame" x="20" y="114" width="374" height="422"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="74n-hd-1fk" secondAttribute="bottom" constant="725" id="0IT-Uf-MEi"/>
-                            <constraint firstItem="74n-hd-1fk" firstAttribute="leading" secondItem="vH4-zA-CFH" secondAttribute="leading" id="0cV-pD-amD"/>
-                            <constraint firstItem="74n-hd-1fk" firstAttribute="trailing" secondItem="vH4-zA-CFH" secondAttribute="trailing" id="UNY-aO-Gld"/>
-                            <constraint firstItem="gAv-ql-9eL" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ZWf-lh-eCj"/>
-                            <constraint firstItem="vH4-zA-CFH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dob-Vc-B8O"/>
-                            <constraint firstItem="a5S-Gd-UXH" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="dyC-HV-OgJ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vH4-zA-CFH" secondAttribute="trailing" id="ezo-9S-vLm"/>
-                            <constraint firstItem="vH4-zA-CFH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="36" id="jAs-IO-OAB"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vH4-zA-CFH" secondAttribute="bottom" constant="82" id="rod-TC-B45"/>
+                            <constraint firstItem="74n-hd-1fk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="6k9-Y8-7M6"/>
+                            <constraint firstAttribute="trailing" secondItem="74n-hd-1fk" secondAttribute="trailing" id="Hot-2h-Grb"/>
+                            <constraint firstItem="74n-hd-1fk" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="nby-SV-gGO"/>
                             <constraint firstItem="74n-hd-1fk" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="tiI-bb-ddI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Coupons" image="CouponIcon-White" selectedImage="CouponIcon-Orange" id="2uh-ub-HaA"/>
                     <connections>
-                        <outlet property="Popup" destination="XqI-fc-1ze" id="9SW-rz-sya"/>
-                        <outlet property="firstCard" destination="GWE-ql-HLo" id="4zf-5X-vhi"/>
-                        <outlet property="secondCard" destination="a5S-Gd-UXH" id="md4-7g-ADH"/>
-                        <outlet property="thirdCard" destination="gAv-ql-9eL" id="pno-2f-iQR"/>
+                        <outlet property="wallet" destination="ZFI-xL-vQd" id="GgV-u5-HIq"/>
                         <segue destination="zR6-N1-O8a" kind="presentation" identifier="coupontoProfile" modalPresentationStyle="fullScreen" id="7oU-dW-Gtf"/>
                     </connections>
                 </viewController>
@@ -316,6 +229,7 @@
                                 <connections>
                                     <action selector="LoginClick:" destination="sMY-9C-jqf" eventType="touchUpInside" id="E6X-8f-rPs"/>
                                     <action selector="LoginClick:" destination="4xP-6x-iyG" eventType="touchUpInside" id="XkE-Ut-S1v"/>
+                                    <segue destination="hxE-kb-tI4" kind="presentation" identifier="ShowMainScreen" modalPresentationStyle="fullScreen" id="mGW-3d-dMd"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="68F-QC-kId" userLabel="Pasword">
@@ -419,7 +333,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ActionIcon" width="18.333333969116211" height="25.666666030883789"/>
         <image name="CameraIcon-Orange" width="34.666667938232422" height="25.666666030883789"/>
         <image name="CameraIcon-White" width="34.666667938232422" height="25.666666030883789"/>
         <image name="CouponIcon-Orange" width="34.666667938232422" height="25.666666030883789"/>
@@ -428,7 +341,6 @@
         <image name="Profile White Background Box" width="375" height="139"/>
         <image name="ProfileIcon-Orange" width="25.666666030883789" height="25.666666030883789"/>
         <image name="ProfileIcon-White" width="25.666666030883789" height="25.666666030883789"/>
-        <image name="TrashIcon" width="18.666666030883789" height="25.666666030883789"/>
         <namedColor name="CheckpointOrange">
             <color red="0.94509803921568625" green="0.47058823529411764" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
