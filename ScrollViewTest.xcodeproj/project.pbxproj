@@ -19,6 +19,7 @@
 		C4DCE36123974447002D7487 /* TabBarColorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DCE36023974447002D7487 /* TabBarColorController.swift */; };
 		C4DCE36323974E77002D7487 /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DCE36223974E77002D7487 /* QRCodeScanner.swift */; };
 		C4E3503123C66F37009F347E /* DatabaseConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E3503023C66F37009F347E /* DatabaseConnect.swift */; };
+		E23580AB240F3F3A00CB10C3 /* Dummm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23580AA240F3F3A00CB10C3 /* Dummm.swift */; };
 		E2F8C96723FC682B008F1357 /* Qrid-4.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F8C96623FC682B008F1357 /* Qrid-4.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		C4DCE36023974447002D7487 /* TabBarColorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarColorController.swift; sourceTree = "<group>"; };
 		C4DCE36223974E77002D7487 /* QRCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
 		C4E3503023C66F37009F347E /* DatabaseConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseConnect.swift; sourceTree = "<group>"; };
+		E23580AA240F3F3A00CB10C3 /* Dummm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummm.swift; sourceTree = "<group>"; };
 		E2F8C96623FC682B008F1357 /* Qrid-4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Qrid-4.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +122,7 @@
 				C4BE694223973C1000C70BA2 /* TabBarColor.swift */,
 				C4DCE36023974447002D7487 /* TabBarColorController.swift */,
 				C4DCE36223974E77002D7487 /* QRCodeScanner.swift */,
+				E23580AA240F3F3A00CB10C3 /* Dummm.swift */,
 				C4E3503023C66F37009F347E /* DatabaseConnect.swift */,
 			);
 			path = ScrollViewTest;
@@ -285,6 +288,7 @@
 				C4DCE36323974E77002D7487 /* QRCodeScanner.swift in Sources */,
 				C4DA83D123936F100047D7B4 /* AppDelegate.swift in Sources */,
 				C4BE694323973C1000C70BA2 /* TabBarColor.swift in Sources */,
+				E23580AB240F3F3A00CB10C3 /* Dummm.swift in Sources */,
 				C4DCE36123974447002D7487 /* TabBarColorController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

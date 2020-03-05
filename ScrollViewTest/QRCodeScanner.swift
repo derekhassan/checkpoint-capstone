@@ -57,6 +57,7 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             return
         }
         
+
        //ADDED THIS
         
         let size = 300
@@ -155,16 +156,21 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
 
     }
+    
+    
    
     
     
     func downloadJSON(code: String)  {
         
         
-        
-        if let url = URL(string: code) {
-            if url.absoluteString.range(of: "http://derhas.dreamhosters.com/api/auth/getqrcode?id=") != nil {return  URLSession.shared.dataTask(with: url) { (data, response, error) in
+       
+        //removed if
+      if let url = URL(string: code){
+            if !code.isEmpty && url.absoluteString.range(of: "http://derhas.dreamhosters.com/api/auth/getqrcode?id=") != nil  {return  URLSession.shared.dataTask(with: url) { (data, response, error) in
                     if let data = data
+                        
+                        
                     
                     {
                         
@@ -179,12 +185,24 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                             
                         } catch {let err2 = UIAlertController(title: "Sorry", message: "Not a compatible QR code", preferredStyle: .alert)
                               err2.addAction(UIAlertAction(title: "Retake", style: .default, handler: { (action) in
+
                                   self.captureSession.startRunning()
                                   self.dismiss(animated: true, completion: nil)
                               }))
                             
                               self.present(err2, animated: true, completion: nil)
-                        }
+                            
+                            
+                                //let err3 = UIAlertController(title: "Whoops", message: "No JSON", preferredStyle: .alert)
+                                      //err3.addAction(UIAlertAction(title: "Retake", style: //.default, handler: { (action) in
+                                       //   self.captureSession.startRunning()
+                                     //     self.dismiss(animated: true, completion: nil)
+                                   //   }))
+                                    
+                                      //self.present(err3, animated: true, completion: nil)
+                                }
+                        
+                        
                           
                         
                                 
@@ -207,12 +225,24 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                    
                 }.resume()}
             
+            //if JSON is empty
+            if code.isEmpty {
+                let err3 = UIAlertController(title: "Whoops", message: "No JSON", preferredStyle: .alert)
+                  err3.addAction(UIAlertAction(title: "Retake", style: .default, handler: { (action) in
+                      self.captureSession.startRunning()
+                      self.dismiss(animated: true, completion: nil)
+                  }))
+                
+                  self.present(err3, animated: true, completion: nil)
+            }
+      
             
             
-            
+          
             //checks to see if QR code is scannable
             if url != URL(string: "http://derhas.dreamhosters.com/api/auth/getqrcode?id="){
-                 print("Shoot")
+                print(warning(statement: "Not a valid code"))
+         
                   let err2 = UIAlertController(title: "Sorry", message: "Not a compatible QR code", preferredStyle: .alert)
                   err2.addAction(UIAlertAction(title: "Retake", style: .default, handler: { (action) in
                       self.captureSession.startRunning()
@@ -220,13 +250,22 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                   }))
                 
                   self.present(err2, animated: true, completion: nil)
+                
+                
+                
               }
                
+            
+            
         }
+        
+        
     }
+
    
     //function for incompatible QR code
     func BadQR(code: String){
+    
          let err2 = UIAlertController(title: "Sorry", message: "Not a compatible QR code", preferredStyle: .alert)
                          err2.addAction(UIAlertAction(title: "Retake", style: .default, handler: { (action) in
                              self.captureSession.startRunning()
@@ -234,9 +273,10 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                          }))
                        
                          self.present(err2, animated: true, completion: nil)
+
         
     }
-
+    
 
     func found(code: String) {
         
