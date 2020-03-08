@@ -175,7 +175,7 @@ class ViewController: UIViewController {
                 cheese.addAction(cheeseprompt)
                 self.present(cheese, animated: true, completion: nil)
                 self.view.addSubview(actionButton)})
-                //End of QR Code Generator 
+                //End of QR Code Generator g
         
         
         let promptClose = UIAlertAction(title: "Close", style: .cancel, handler: {action in print("User wants to close")})
