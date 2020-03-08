@@ -72,10 +72,14 @@ class ViewController: UIViewController {
         setupCard(view: secondCard, color1: secondCardColor1, color2: secondCardColor2)
         setupCard(view: thirdCard, color1: thirdCardColor1, color2: thirdCardColor2)
         
+        
     }
 
     
     //Declarations from Storyboard
+    
+    
+    
     @IBOutlet weak var firstCard: UIView! //first coupon
     
     @IBOutlet weak var secondCard: UIView! //second coupon
@@ -83,11 +87,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var thirdCard: UIView! //third coupon
     
     @IBOutlet var Popup: UIView!
-    
+        
     @IBAction func shareCard(_ sender: Any) {
         
         
         
+       
+        
+        
+        
+        // End of QR Code Generator
+        
+        
+        // Popup for code at register
         let alert = UIAlertController(title: "Use?", message: "This action cannot be done", preferredStyle: .alert)
         
         let prompt1 = UIAlertAction(title: "Use", style: .default, handler: {ACTION in
@@ -127,7 +139,44 @@ class ViewController: UIViewController {
             
         })
         
-        let prompt2 = UIAlertAction(title: "Share", style: .default, handler: {action in print("User wants to share coupon")})
+                //End of popup
+        
+               let prompt2 = UIAlertAction(title: "Share", style: .default, handler: {action in
+               //QR Code Generator
+               // Get define string to encode
+               let myString = "http://derhas.dreamhosters.com/api/auth/getqrcode?id="
+               // Get data from the string
+               let data = myString.data(using: String.Encoding.ascii)
+               // Get a QR CIFilter
+               guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else { return }
+               // Input the data
+               qrFilter.setValue(data, forKey: "inputMessage")
+               // Get the output image
+               guard let qrImage = qrFilter.outputImage else { return }
+               // Scale the image
+               let transform = CGAffineTransform(scaleX: 10, y: 10)
+               let scaledQrImage = qrImage.transformed(by: transform)
+               // Invert the colors
+               guard let colorInvertFilter = CIFilter(name: "CIColorInvert") else { return }
+               colorInvertFilter.setValue(scaledQrImage, forKey: "inputImage")
+               guard let outputInvertedImage = colorInvertFilter.outputImage else { return }
+               // Replace the black with transparency
+               guard let maskToAlphaFilter = CIFilter(name: "CIMaskToAlpha") else { return }
+               maskToAlphaFilter.setValue(outputInvertedImage, forKey: "inputImage")
+               guard let outputCIImage = maskToAlphaFilter.outputImage else { return }
+               // Do some processing to get the UIImage
+               let context = CIContext()
+               guard let cgImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) else { return }
+               let processedImage = UIImage(cgImage: cgImage)
+               let actionButton = UIButton(frame: CGRect(x: 141, y: 274, width: 118, height: 118))
+               actionButton.setImage(processedImage, for: UIControl.State.normal)
+                let cheese = UIAlertController(title: "Close?", message: "This will close", preferredStyle: .actionSheet)
+                let cheeseprompt = UIAlertAction(title: "Close", style: .default, handler: {ACTION in actionButton.removeFromSuperview()})
+                cheese.addAction(cheeseprompt)
+                self.present(cheese, animated: true, completion: nil)
+                self.view.addSubview(actionButton)})
+                //End of QR Code Generator
+        
         
         let promptClose = UIAlertAction(title: "Close", style: .cancel, handler: {action in print("User wants to close")})
         
