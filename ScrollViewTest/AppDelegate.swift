@@ -4,7 +4,6 @@
 //
 //  Created by Derek Hassan on 11/30/19.
 //  Copyright © 2019 Derek Hassan. All rights reserved.
-//
 
 import UIKit
 
