@@ -27,6 +27,7 @@
 		D5594DDD23EC636A0037A335 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = D5594DDC23EC636A0037A335 /* SwiftyJSON */; };
 		D5594DE023EC640A0037A335 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D5594DDF23EC640A0037A335 /* Alamofire */; };
 		D5594DE323EC66260037A335 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5594DE223EC66260037A335 /* Service.swift */; };
+		E23580AB240F3F3A00CB10C3 /* Dummm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23580AA240F3F3A00CB10C3 /* Dummm.swift */; };
 		E2F8C96723FC682B008F1357 /* Qrid-4.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F8C96623FC682B008F1357 /* Qrid-4.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		D2E93B3B23E34735004899F1 /* Signup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
 		D2E93B4223E35510004899F1 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		D5594DE223EC66260037A335 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		E23580AA240F3F3A00CB10C3 /* Dummm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummm.swift; sourceTree = "<group>"; };
 		E2F8C96623FC682B008F1357 /* Qrid-4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Qrid-4.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,6 +142,7 @@
 				C4BE694223973C1000C70BA2 /* TabBarColor.swift */,
 				C4DCE36023974447002D7487 /* TabBarColorController.swift */,
 				C4DCE36223974E77002D7487 /* QRCodeScanner.swift */,
+				E23580AA240F3F3A00CB10C3 /* Dummm.swift */,
 				C4E3503023C66F37009F347E /* DatabaseConnect.swift */,
 				D2E93B3B23E34735004899F1 /* Signup.swift */,
 				D2E93B4223E35510004899F1 /* Login.swift */,
@@ -337,6 +340,7 @@
 				D2E93B3C23E34735004899F1 /* Signup.swift in Sources */,
 				D5594DE323EC66260037A335 /* Service.swift in Sources */,
 				C4BE694323973C1000C70BA2 /* TabBarColor.swift in Sources */,
+				E23580AB240F3F3A00CB10C3 /* Dummm.swift in Sources */,
 				C4DCE36123974447002D7487 /* TabBarColorController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
