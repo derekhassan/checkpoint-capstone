@@ -1,6 +1,7 @@
 import UIKit
 import AVFoundation
 
+var QRSc = QRCodeScanner()
 class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
     @IBOutlet weak var cameraFrameSize: UIView!
@@ -158,32 +159,65 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     }
     
     
+    
+    
    
     
-    
+
     func downloadJSON(code: String)  {
         
-        
-       
-        //removed if5
+    
       if let url = URL(string: code){
             if !code.isEmpty && url.absoluteString.range(of: "http://derhas.dreamhosters.com/api/auth/getqrcode?id=") != nil  {return  URLSession.shared.dataTask(with: url) { (data, response, error) in
-                    if let data = data
-                        
+                if let data = data
+                    
+                    
                         
                     
                     {
                         
                         do {
+                            
                             let res = try JSONDecoder().decode(Reponse.self, from: data)
                             print(res.qrid)
                             print(res.busID)
                             print(res.cap)
                             print(res.percentage)
+                            let JSON1 : Int = res.qrid
+                            let JSON2 : Int = res.busID
+                            let JSON3 : Int = res.cap
+                            let JSON4 : Int = res.percentage
+                            let myString1 = String(JSON1)
+                            let myString2 = String(JSON2)
+                            let myString3 = String(JSON3)
+                            let myString4 = String(JSON4)
+                            print(myString1 + "qrid")
+                            print(myString2 + "busID")
+                            print(myString3 + "cap")
+                            print(myString4 + "percentage")
+                            DispatchQueue.main.async {
+                            setupNewCard(view: newCard, color1: newCardColor1, color2: newCardColor2)
+                            newlabel.text = "Qrid:" + myString1
+                            newlabel2.text = "BusID:" + myString2
+                            newlabel3.text = "Cap:" + myString3
+                            newlabel4.text = "Percentage:" + myString4
+                            
+                            newView.append(newCard)
+                            }
+                        
+                            
+                          
+                           
+//                            VC.QRValue?.text = "$\(res.busID)"
+                            
+//                            DispatchQueue.main.async {
+//                            VC.QRValue.text = "$\(Reponse.self)"
+//                            }
+                        
+                        }
                             
                             
-                            
-                        } catch {let err2 = UIAlertController(title: "Sorry", message: "Not a compatible QR code", preferredStyle: .alert)
+                         catch {let err2 = UIAlertController(title: "Sorry", message: "Not a compatible QR code", preferredStyle: .alert)
                               err2.addAction(UIAlertAction(title: "Retake", style: .default, handler: { (action) in
 
                                   self.captureSession.startRunning()
@@ -192,14 +226,6 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                             
                               self.present(err2, animated: true, completion: nil)
                             
-                            
-                                //let err3 = UIAlertController(title: "Whoops", message: "No JSON", preferredStyle: .alert)
-                                      //err3.addAction(UIAlertAction(title: "Retake", style: //.default, handler: { (action) in
-                                       //   self.captureSession.startRunning()
-                                     //     self.dismiss(animated: true, completion: nil)
-                                   //   }))
-                                    
-                                      //self.present(err3, animated: true, completion: nil)
                                 }
                         
                         
@@ -214,16 +240,14 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                             
                         }
                 
-
-                        
-                        
-                    
-                    
-                    
-                    
-                    
-                   
-                }.resume()}
+                }.resume()
+                
+        }
+        
+        
+        
+        
+    
             
             //if JSON is empty
             if code.isEmpty {
@@ -284,22 +308,32 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         let alert = UIAlertController(title: "QR Code", message: code, preferredStyle: .alert)
         
         downloadJSON(code: code)
+        
+        
             
         //alert.addAction(UIAlertAction(title: "Retake", style: .default, handler: nil))
         
         alert.addAction(UIAlertAction(title: "Retake", style: .default, handler: { (action) in
             self.captureSession.startRunning()
-            self.dismiss(animated: true, completion: nil)
+            //self.dismiss(animated: true, completion: nil)
         }))
 
-        alert.addAction(UIAlertAction(title: "Copy", style: .default, handler: { (action) in
-            UIPasteboard.general.string = code
-            self.captureSession.startRunning()
-            self.dismiss(animated: true, completion: nil)
+        DispatchQueue.main.async {
+            alert.addAction(UIAlertAction(title: "Copy", style: .default, handler: { (action) in
+                        
+                        UIPasteboard.general.string = code
+                        self.captureSession.startRunning()
+            
+                        
+                    }))
+        }
+        
+          
             
             
             
-        }))
+            
+        
 
         present(alert, animated: true, completion: nil)
         
@@ -313,6 +347,8 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
+    
+    
 
 }
-
+    

@@ -3,6 +3,7 @@ import UIKit
 /**
  The WalletView class manages an ordered collection of card view and presents them.
  */
+var WV = WalletView()
 open class WalletView: UIView {
     
     // MARK: Public methods
