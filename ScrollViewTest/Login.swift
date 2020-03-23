@@ -39,9 +39,16 @@ class Login: UIViewController {
             print("UserID\(userid )")
           
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let loggedInViewController = storyBoard.instantiateViewController(withIdentifier: "Coupon") as! ViewController
+        let loggedInViewController = storyBoard.instantiateViewController(withIdentifier: "Tab") as! TabBarColorController
         self.present(loggedInViewController, animated: true, completion: nil)
             }
         }
     }
+    
+    @IBAction func LogoutClick(_ sender: Any) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let loggedInViewController = storyBoard.instantiateViewController(withIdentifier: "Login") as! Login
+        self.present(loggedInViewController, animated: true, completion: nil)
+    }
+    
 }

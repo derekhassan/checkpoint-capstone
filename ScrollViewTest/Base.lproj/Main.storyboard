@@ -70,7 +70,7 @@
         <!--Tab Bar Color Controller-->
         <scene sceneID="tAL-lB-1bd">
             <objects>
-                <tabBarController id="hxE-kb-tI4" customClass="TabBarColorController" customModule="ScrollViewTest" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Tab" id="hxE-kb-tI4" customClass="TabBarColorController" customModule="ScrollViewTest" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="7y5-XK-Lk8"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="pkz-HO-KIp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -99,7 +99,7 @@
         <!--Profile-->
         <scene sceneID="0ua-Qw-piS">
             <objects>
-                <viewController id="RPc-Fp-SHD" sceneMemberID="viewController">
+                <viewController id="RPc-Fp-SHD" customClass="Login" customModule="ScrollViewTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aIh-gt-eP0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -140,6 +140,14 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="720-LX-bdd">
+                                <rect key="frame" x="183" y="460" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="LogoutClick:" destination="RPc-Fp-SHD" eventType="touchUpInside" id="6pg-4c-h0A"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="1b9-C0-0AG"/>
