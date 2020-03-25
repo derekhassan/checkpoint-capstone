@@ -2,6 +2,11 @@ import UIKit
 import AVFoundation
 
 var QRSc = QRCodeScanner()
+
+struct defaultsKeys {
+    static let keyOne = "firstStringKey"
+    static let keyTwo = "secondStringKey"
+}
 class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
     @IBOutlet weak var cameraFrameSize: UIView!
@@ -179,30 +184,40 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                         do {
                             
                             let res = try JSONDecoder().decode(Reponse.self, from: data)
-                            print(res.qrid)
-                            print(res.busID)
-                            print(res.cap)
+                            print(res.id)
                             print(res.percentage)
-                            let JSON1 : Int = res.qrid
-                            let JSON2 : Int = res.busID
-                            let JSON3 : Int = res.cap
-                            let JSON4 : Int = res.percentage
+                            print(res.percentage_cap)
+                            print(res.bus_id)
+                            let JSON1 : Int = res.id
+                            let JSON2 : Int = res.percentage
+                            let JSON3 : Int = res.percentage_cap
+                            let JSON4 : Int = res.bus_id
                             let myString1 = String(JSON1)
                             let myString2 = String(JSON2)
                             let myString3 = String(JSON3)
                             let myString4 = String(JSON4)
-                            print(myString1 + "qrid")
-                            print(myString2 + "busID")
-                            print(myString3 + "cap")
-                            print(myString4 + "percentage")
+//                            print(myString1 + "ID")
+//                            print(myString2 + "Percentage")
+//                            print(myString3 + "Percentage cap")
+//                            print(myString4 + "Bus ID")
                             DispatchQueue.main.async {
-                            setupNewCard(view: newCard, color1: newCardColor1, color2: newCardColor2)
-                            newlabel.text = "Qrid:" + myString1
-                            newlabel2.text = "BusID:" + myString2
-                            newlabel3.text = "Cap:" + myString3
-                            newlabel4.text = "Percentage:" + myString4
-                            
+                            setupNewCard(view: newCard, color1: newCardColor1, color2: newCardColor2 )
+                            newlabel.text = "ID:" + myString1
+                            newlabel2.text = "Percentage:" + myString2
+                            newlabel3.text = "Percentage Cap:" + myString3
+                            newlabel4.text = "Bus ID:" + myString4
                             newView.append(newCard)
+                                
+                                // Setting
+
+                                let defaults = UserDefaults.standard
+                                defaults.set(myString1, forKey: defaultsKeys.keyOne)
+
+                                // Getting
+                                if let stringOne = defaults.string(forKey: defaultsKeys.keyOne) {
+                                    print(stringOne)
+                                }
+                                
                             }
                         
                             

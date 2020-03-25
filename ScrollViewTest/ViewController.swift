@@ -161,10 +161,11 @@ class ViewController: UIViewController {
                            //setupCard(view: newCard, color1: newCardColor1, color2: newCardColor2)
                     
         //var cardViews = [firstCard, secondCard, thirdCard]
+        func setupNewCard(){
+            setupCard(view: newCard, color1: newCardColor1, color2: newCardColor2)
+        }
         
-        //setupNewCard(view: newCard, color1: newCardColor1, color2: newCardColor2)
-        
-        //cardViews.append(newCard)
+        newView.append(newCard)
 
         wallet.reload(cardViews: newView)
             
