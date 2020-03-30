@@ -15,4 +15,4 @@ struct Reponse: Decodable {
     var percentage_cap: Int
     var bus_id: Int
 }
-
+//end

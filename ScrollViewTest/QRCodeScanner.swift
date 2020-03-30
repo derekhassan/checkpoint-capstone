@@ -342,7 +342,7 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                         
                     }))
         }
-        
+        //end
           
             
             
