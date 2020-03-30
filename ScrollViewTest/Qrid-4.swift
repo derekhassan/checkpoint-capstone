@@ -10,9 +10,9 @@ import Foundation
 
 struct Reponse: Decodable {
    
-    var id: Int
+    var qrid: Int
     var percentage: Int
-    var percentage_cap: Int
-    var bus_id: Int
+    var cap: Int
+    var busID: Int
 }
-//end
+

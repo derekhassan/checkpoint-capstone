@@ -1,12 +1,9 @@
 import UIKit
 import AVFoundation
 
-var QRSc = QRCodeScanner()
+let qrCodeScannerKey = "qr"
 
-struct defaultsKeys {
-    static let keyOne = "id"
-   
-}
+var QRSc = QRCodeScanner()
 class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
     @IBOutlet weak var cameraFrameSize: UIView!
@@ -14,11 +11,12 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     var qrCodeFrameView:UIView?
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black
         captureSession = AVCaptureSession()
-        captureSession.sessionPreset = .medium
+        captureSession.sessionPreset = .low
         guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
         let videoInput: AVCaptureDeviceInput
 
@@ -184,50 +182,27 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                         do {
                             
                             let res = try JSONDecoder().decode(Reponse.self, from: data)
-                            print(res.id)
+                            print(res.qrid)
+                            print(res.busID)
+                            print(res.cap)
                             print(res.percentage)
-                            print(res.percentage_cap)
-                            print(res.bus_id)
-                            let JSON1 : Int = res.id
-                            let JSON2 : Int = res.percentage
-                            let JSON3 : Int = res.percentage_cap
-                            let JSON4 : Int = res.bus_id
+                            let JSON1 : Int = res.qrid
+                            let JSON2 : Int = res.busID
+                            let JSON3 : Int = res.cap
+                            let JSON4 : Int = res.percentage
                             let myString1 = String(JSON1)
                             let myString2 = String(JSON2)
                             let myString3 = String(JSON3)
                             let myString4 = String(JSON4)
-//                            print(myString1 + "ID")
-//                            print(myString2 + "Percentage")
-//                            print(myString3 + "Percentage cap")
-//                            print(myString4 + "Bus ID")
-                            DispatchQueue.main.async {
-                            setupNewCard(view: newCard, color1: newCardColor1, color2: newCardColor2 )
-                            newlabel.text = "ID:" + myString1
-                            newlabel2.text = "Percentage:" + myString2
-                            newlabel3.text = "Percentage Cap:" + myString3
-                            newlabel4.text = "Bus ID:" + myString4
-                            newView.append(newCard)
-                                
-                                // Setting 
-
-                                let defaults = UserDefaults.standard
-                                defaults.set(myString1, forKey: defaultsKeys.keyOne)
-
-                                // Getting
-                                if let stringOne = defaults.string(forKey: defaultsKeys.keyOne) {
-                                    print(stringOne)
-                                }
-                                
-                            }
-                        
+                            print(myString1 + "qrid")
+                            print(myString2 + "busID")
+                            print(myString3 + "cap")
+                            print(myString4 + "percentage")
                             
-                          
-                           
-//                            VC.QRValue?.text = "$\(res.busID)"
-                            
-//                            DispatchQueue.main.async {
-//                            VC.QRValue.text = "$\(Reponse.self)"
-//                            }
+                            //NotificationCenter added for passing coupon data into function that creates new card
+                            let name = Notification.Name(rawValue: qrCodeScannerKey)
+                            NotificationCenter.default.post(name: name, object: ["Qrid:" + myString1, "BusID:" + myString2, "Cap:" + myString3, "Percentage:" + myString4])
+
                         
                         }
                             
@@ -243,14 +218,10 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                             
                                 }
                         
-                        
-                          
-                        
-                                
-                                let err = UIAlertController(title: "QR Code", message: code, preferredStyle: .alert)
+                                //let err = UIAlertController(title: "QR Code", message: code, preferredStyle: .alert)
                                
                                   
-                                self.present(err, animated: true, completion: nil)
+                                //self.present(err, animated: true, completion: nil)
                             
                             
                         }
@@ -278,7 +249,7 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             
             
           
-            //checks to see if QR code is scannable11
+            //checks to see if QR code is scannable
             if url != URL(string: "http://derhas.dreamhosters.com/api/auth/getqrcode?id="){
                 print(warning(statement: "Not a valid code"))
          
@@ -319,10 +290,8 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
     func found(code: String) {
         
-        
+        DispatchQueue.main.async {
         let alert = UIAlertController(title: "QR Code", message: code, preferredStyle: .alert)
-        
-        downloadJSON(code: code)
         
         
             
@@ -333,16 +302,16 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             //self.dismiss(animated: true, completion: nil)
         }))
 
-        DispatchQueue.main.async {
-            alert.addAction(UIAlertAction(title: "Copy", style: .default, handler: { (action) in
+        
+            alert.addAction(UIAlertAction(title: "Add to Wallet", style: .default, handler: { (action) in
                         
                         UIPasteboard.general.string = code
                         self.captureSession.startRunning()
+                        self.downloadJSON(code: code)
             
                         
                     }))
-        }
-        //end
+        
           
             
             
@@ -350,9 +319,10 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             
         
 
-        present(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         
         print(code)
+        }
     }
 
     override var prefersStatusBarHidden: Bool {
