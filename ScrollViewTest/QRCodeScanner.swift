@@ -4,8 +4,8 @@ import AVFoundation
 var QRSc = QRCodeScanner()
 
 struct defaultsKeys {
-    static let keyOne = "firstStringKey"
-    static let keyTwo = "secondStringKey"
+    static let keyOne = "id"
+   
 }
 class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
@@ -18,7 +18,7 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black
         captureSession = AVCaptureSession()
-        captureSession.sessionPreset = .low
+        captureSession.sessionPreset = .medium
         guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
         let videoInput: AVCaptureDeviceInput
 

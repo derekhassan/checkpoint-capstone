@@ -108,6 +108,13 @@ class ViewController: UIViewController {
                                view.layer.shadowOpacity = 0.23
                                view.layer.shadowOffset = .zero
                                view.layer.shadowRadius = 5
+                    
+                    let actionButton = UIButton(frame: CGRect(x: 21, y: 334, width: 18, height: 25))
+                                             
+                    let btnImage = UIImage(named: "ActionIcon")
+                    actionButton.setImage(btnImage, for: UIControl.State.normal)
+                                                                 
+                    actionButton.addTarget(self, action: #selector(VC.pressed(sender:)), for: .touchUpInside)
                             
                                
             //                   let companyName = UILabel(frame: CGRect(x: 104, y: 37, width: 158, height: 39))
@@ -132,7 +139,11 @@ class ViewController: UIViewController {
                                  newCard.addSubview(newlabel2)
                                  newCard.addSubview(newlabel3)
                                  newCard.addSubview(newlabel4)
+                                 newCard.addSubview(actionButton)
             //                     wallet.insert(cardView: newCard)
+                    
+                    
+                         
                             
                             
                            
@@ -159,6 +170,9 @@ class ViewController: UIViewController {
                            setupCard(view: secondCard, color1: secondCardColor1, color2: secondCardColor2)
                            setupCard(view: thirdCard, color1: thirdCardColor1, color2: thirdCardColor2)
                            //setupCard(view: newCard, color1: newCardColor1, color2: newCardColor2)
+       
+                
+                
                     
         //var cardViews = [firstCard, secondCard, thirdCard]
         func setupNewCard(){
@@ -173,6 +187,70 @@ class ViewController: UIViewController {
         
            }
    
+    @objc func pressed(sender: UIButton!){
+        let buttonalert = UIAlertController(title: "Hello!", message: "What would you like to do with this coupon?", preferredStyle: .alert)
+        self.present(buttonalert, animated: true, completion: nil)
+        let firstPrompt = UIAlertAction(title: "Close", style: .default , handler: {ACTION in buttonalert.removeFromParent()} )
+        
+        //QR Code Generator
+        let secondPrompt = UIAlertAction(title: "Share", style: .default, handler: {ACTION in let myString = "http://derhas.dreamhosters.com/api/auth/getqrcode?id="
+        // Get data from the string
+        let data = myString.data(using: String.Encoding.ascii)
+        // Get a QR CIFilter
+        guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else { return }
+        // Input the data
+        qrFilter.setValue(data, forKey: "inputMessage")
+        // Get the output image
+        guard let qrImage = qrFilter.outputImage else { return }
+        // Scale the image
+        let transform = CGAffineTransform(scaleX: 10, y: 10)
+        let scaledQrImage = qrImage.transformed(by: transform)
+        // Invert the colors
+        guard let colorInvertFilter = CIFilter(name: "CIColorInvert") else { return }
+        colorInvertFilter.setValue(scaledQrImage, forKey: "inputImage")
+        guard let outputInvertedImage = colorInvertFilter.outputImage else { return }
+        // Replace the black with transparency
+        guard let maskToAlphaFilter = CIFilter(name: "CIMaskToAlpha") else { return }
+        maskToAlphaFilter.setValue(outputInvertedImage, forKey: "inputImage")
+        guard let outputCIImage = maskToAlphaFilter.outputImage else { return }
+        // Do some processing to get the UIImage
+        let context = CIContext()
+        guard let cgImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) else { return }
+        let processedImage = UIImage(cgImage: cgImage)
+        let actionButton = UIButton(frame: CGRect(x: 141, y: 274, width: 118, height: 118))
+        actionButton.setImage(processedImage, for: UIControl.State.normal)
+         let cheese = UIAlertController(title: "Close?", message: "This will close", preferredStyle: .actionSheet)
+         let cheeseprompt = UIAlertAction(title: "Close", style: .default, handler: {ACTION in actionButton.removeFromSuperview()})
+         cheese.addAction(cheeseprompt)
+         self.present(cheese, animated: true, completion: nil)
+         //End of QR Code Generator
+         
+       
+        self.view.addSubview(actionButton)})
+        
+        
+        let thirdPrompt = UIAlertAction(title: "Delete", style: .destructive, handler: {ACTION in newCard.removeFromSuperview()
+            
+            func resetDefaults() {
+                       let defaults = UserDefaults.standard
+                       let dictionary = defaults.dictionaryRepresentation()
+                       dictionary.keys.forEach { key in
+                       defaults.removeObject(forKey: "id")
+                               }
+                           }
+            resetDefaults()
+            
+        }
+        
+        
+        )
+        
+        
+        buttonalert.addAction(firstPrompt)
+        buttonalert.addAction(secondPrompt)
+        buttonalert.addAction(thirdPrompt)
+    }
+    
     
     @IBOutlet weak var wallet: WalletView!
     
@@ -183,9 +261,11 @@ class ViewController: UIViewController {
         
     @IBAction func shareCard(_ sender: Any) {
 
+
+
         // Popup for code at register
         let alert = UIAlertController(title: "Use?", message: "This action cannot be done", preferredStyle: .alert)
-        
+
         let prompt1 = UIAlertAction(title: "Use", style: .default, handler: {ACTION in
 
             self.Popup.isHidden = false
@@ -193,7 +273,7 @@ class ViewController: UIViewController {
             let top = UILabel(frame: CGRect(x: 100, y: 20, width: 200, height: 50))
             let code = UILabel(frame: CGRect(x: 70, y: 110, width: 300, height: 100))
             let lb = UILabel(frame: CGRect(x: 70, y: 250, width: 300, height: 30))
-            
+
             let alert2 = UIAlertController(title: "Close?", message: "This will close the coupon", preferredStyle: .actionSheet)
             let close2 = UIAlertAction(title: "Close", style: .default, handler: {ACTION in self.Popup.isHidden = true; code.removeFromSuperview()} )
                 top.text = "Company name"
@@ -210,21 +290,21 @@ class ViewController: UIViewController {
                 code.center.x = code.center.x
                 lb.center.x = lb.center.x
                 top.center.x = top.center.x
-    
+
                 self.Popup.backgroundColor = UIColor.white
                 self.Popup.self.addSubview(top)
                 self.Popup.addSubview(code)
                 self.Popup.addSubview(lb)
                 alert2.addAction(close2)
                 self.present(alert2, animated: true, completion: nil)
-        
-            
-    
-            
+
+
+
+
         })
-        
+
                 //End of popup
-        
+
                let prompt2 = UIAlertAction(title: "Share", style: .default, handler: {action in
                //QR Code Generator
                // Get define string to encode
@@ -260,15 +340,15 @@ class ViewController: UIViewController {
                 self.present(cheese, animated: true, completion: nil)
                 self.view.addSubview(actionButton)})
                 //End of QR Code Generator g
-        
-        
+
+
         let promptClose = UIAlertAction(title: "Close", style: .cancel, handler: {action in print("User wants to close")})
-        
+
         alert.addAction(prompt1)
         alert.addAction(prompt2)
         alert.addAction(promptClose)
         self.present(alert, animated: true, completion: nil)
-        
+
     }
     
     
@@ -279,6 +359,14 @@ class ViewController: UIViewController {
         let choice1 = UIAlertAction(title: "Cancel", style: .cancel, handler: {action in print("User wants to cancel")})
         
         let choice2 = UIAlertAction(title: "Delete", style: .destructive, handler: {action in print("User will delete coupon")})
+        
+//        func resetDefaults() {
+//                       let defaults = UserDefaults.standard
+//                       let dictionary = defaults.dictionaryRepresentation()
+//                       dictionary.keys.forEach { key in
+//                           defaults.removeObject(forKey: "id")
+//                       }
+//                   }
         
         deleteAlert.addAction(choice1)
         deleteAlert.addAction(choice2)
