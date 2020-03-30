@@ -278,7 +278,7 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             
             
           
-            //checks to see if QR code is scannable
+            //checks to see if QR code is scannable11
             if url != URL(string: "http://derhas.dreamhosters.com/api/auth/getqrcode?id="){
                 print(warning(statement: "Not a valid code"))
          

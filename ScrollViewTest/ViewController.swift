@@ -192,7 +192,7 @@ class ViewController: UIViewController {
         self.present(buttonalert, animated: true, completion: nil)
         let firstPrompt = UIAlertAction(title: "Close", style: .default , handler: {ACTION in buttonalert.removeFromParent()} )
         
-        //QR Code Generator
+        //QR Code Generator11
         let secondPrompt = UIAlertAction(title: "Share", style: .default, handler: {ACTION in let myString = "http://derhas.dreamhosters.com/api/auth/getqrcode?id="
         // Get data from the string
         let data = myString.data(using: String.Encoding.ascii)
