@@ -15,14 +15,9 @@ class TabBarColorController: UITabBarController {
 
         self.tabBar.barTintColor = UIColor.white
         
-        let topColor1 = UIColor(red: CGFloat(36.0/255.0), green: CGFloat(47.0/255.0), blue: CGFloat(62.0/255.0), alpha: 1.0)
-        
-        let topColor2 = UIColor(red: CGFloat(6.0/255.0), green: CGFloat(29.0/255.0), blue: CGFloat(57.0/255.0), alpha: 1.0)
-        
         let gradient = CAGradientLayer()
-        //gradient.frame = CGRect(x: 0, y: 0, width: tabBar.bounds.width, height: tabBar.bounds.height)
         gradient.frame = tabBar.bounds
-        gradient.colors = [topColor1.cgColor, topColor2.cgColor]
+        gradient.colors = [Colors.DarkBlueGradient.color1, Colors.DarkBlueGradient.color2]
         self.tabBar.layer.insertSublayer(gradient, at: 0)
 
     }

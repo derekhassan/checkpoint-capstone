@@ -199,40 +199,10 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                             print(myString3 + "cap")
                             print(myString4 + "percentage")
                             
+                            //NotificationCenter added for passing coupon data into function that creates new card
                             let name = Notification.Name(rawValue: qrCodeScannerKey)
                             NotificationCenter.default.post(name: name, object: ["Qrid:" + myString1, "BusID:" + myString2, "Cap:" + myString3, "Percentage:" + myString4])
-                            
-                            
-//                            DispatchQueue.main.async {
-//                                let brandNewCard: CardView = CardView()
-//
-//                                let qrIdLabel  = UILabel(frame: CGRect(x: 104, y: 50, width: 158, height: 39))
-//                                let busIdLabel = UILabel(frame: CGRect(x: 104, y: 100, width: 158, height: 39))
-//                                let CapLabel = UILabel(frame: CGRect(x: 104, y: 150, width: 158, height: 39))
-//                                let PercentageLabel = UILabel(frame: CGRect(x: 104, y: 200, width: 158, height: 39))
-//
-//
-//                                setupNewCard(view: brandNewCard, color1: newCardColor1, color2: newCardColor2)
-//                                qrIdLabel.text = "Qrid:" + myString1
-//                                busIdLabel.text = "BusID:" + myString2
-//                                CapLabel.text = "Cap:" + myString3
-//                                PercentageLabel.text = "Percentage:" + myString4
-//
-//                                brandNewCard.addSubview(qrIdLabel)
-//                                brandNewCard.addSubview(busIdLabel)
-//                                brandNewCard.addSubview(CapLabel)
-//                                brandNewCard.addSubview(PercentageLabel)
-//
-//                                newView.append(brandNewCard)
-//                            }
-//
-//                            print("Size of newView container: \(newView.count)")
-                           
-//                            VC.QRValue?.text = "$\(res.busID)"
-                            
-//                            DispatchQueue.main.async {
-//                            VC.QRValue.text = "$\(Reponse.self)"
-//                            }
+
                         
                         }
                             
@@ -248,10 +218,6 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                             
                                 }
                         
-                        
-                          
-                        
-                                
                                 //let err = UIAlertController(title: "QR Code", message: code, preferredStyle: .alert)
                                
                                   
