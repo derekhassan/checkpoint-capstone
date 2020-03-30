@@ -231,7 +231,7 @@ class ViewController: UIViewController {
         
         let thirdPrompt = UIAlertAction(title: "Delete", style: .destructive, handler: {ACTION in newCard.removeFromSuperview()
             
-            //function
+            
             func resetDefaults() {
                        let defaults = UserDefaults.standard
                        let dictionary = defaults.dictionaryRepresentation()

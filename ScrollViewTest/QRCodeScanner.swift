@@ -208,7 +208,7 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                             newlabel4.text = "Bus ID:" + myString4
                             newView.append(newCard)
                                 
-                                // Setting data
+                                // Setting 
 
                                 let defaults = UserDefaults.standard
                                 defaults.set(myString1, forKey: defaultsKeys.keyOne)
