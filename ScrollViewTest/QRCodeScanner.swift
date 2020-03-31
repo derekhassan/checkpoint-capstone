@@ -3,6 +3,11 @@ import AVFoundation
 
 let qrCodeScannerKey = "qr"
 
+struct defaultsKeys {
+    static let keyOne = "id"
+   
+}
+
 var QRSc = QRCodeScanner()
 class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
@@ -182,13 +187,13 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                         do {
                             
                             let res = try JSONDecoder().decode(Reponse.self, from: data)
-                            print(res.qrid)
-                            print(res.busID)
-                            print(res.cap)
+                            print(res.id)
+                            print(res.bus_id)
+                            print(res.percentage_cap)
                             print(res.percentage)
-                            let JSON1 : Int = res.qrid
-                            let JSON2 : Int = res.busID
-                            let JSON3 : Int = res.cap
+                            let JSON1 : Int = res.id
+                            let JSON2 : Int = res.bus_id
+                            let JSON3 : Int = res.percentage_cap
                             let JSON4 : Int = res.percentage
                             let myString1 = String(JSON1)
                             let myString2 = String(JSON2)
@@ -202,6 +207,18 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                             //NotificationCenter added for passing coupon data into function that creates new card
                             let name = Notification.Name(rawValue: qrCodeScannerKey)
                             NotificationCenter.default.post(name: name, object: ["Qrid:" + myString1, "BusID:" + myString2, "Cap:" + myString3, "Percentage:" + myString4])
+                            
+                            // Setting
+
+                            let defaults = UserDefaults.standard
+                            defaults.set(myString1, forKey: defaultsKeys.keyOne)
+
+                            // Getting
+                            
+                            if let stringOne = defaults.string(forKey: defaultsKeys.keyOne) {
+                            print(stringOne)
+                            }
+                            
 
                         
                         }

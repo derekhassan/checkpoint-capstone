@@ -90,10 +90,10 @@ class ViewController: UIViewController {
         
         wallet.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         
-        let testCard = CardView()
+        //let testCard = CardView()
         
-        setupNewCard(view: testCard, color: UIColor.white)
-        newView.append(testCard)
+        //setupNewCard(view: testCard, color: UIColor.white)
+        //newView.append(testCard)
         
         wallet.reload(cardViews: newView)
         
@@ -186,7 +186,18 @@ class ViewController: UIViewController {
                 //End of QR Code Generator g
         
         
-        let promptClose = UIAlertAction(title: "Close", style: .cancel, handler: {action in print("User wants to close")})
+        let promptClose = UIAlertAction(title: "Close", style: .cancel, handler: {action in print("User wants to close")
+            
+            func resetDefaults() {
+                let defaults = UserDefaults.standard
+                let dictionary = defaults.dictionaryRepresentation()
+                dictionary.keys.forEach { key in
+                defaults.removeObject(forKey: "id")
+            }
+                }
+                resetDefaults()
+            
+        })
         
         alert.addAction(prompt1)
         alert.addAction(prompt2)
