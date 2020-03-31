@@ -19,3 +19,18 @@ struct Colors {
         static let color2 = UIColor(red: CGFloat(6.0/255.0), green: CGFloat(29.0/255.0), blue: CGFloat(57.0/255.0), alpha: 1.0).cgColor
     }
 }
+
+private let baseUrl = "http://derhas.dreamhosters.com"
+
+struct Routes {
+    
+    // login/signup routes
+    static let loginRoute = baseUrl + "/api/auth/login"
+    static let signupRoute = baseUrl + "/api/auth/signup"
+    
+    // transaction routes
+    static let transactionRoute = baseUrl + ""
+    
+    // coupon routes
+    static let couponRoute = baseUrl + "/api/auth/getqrcode?id="
+}

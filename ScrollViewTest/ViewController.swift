@@ -9,26 +9,8 @@
 import UIKit
 import Foundation
 var newCard = CardView()
-var firstCard = CardView()
-var secondCard = CardView()
-var thirdCard = CardView()
-var newCardColor1 = UIColor(red: CGFloat(81.0/255.0), green: CGFloat(81.0/255.0), blue: CGFloat(81.0/255.0), alpha: 1.0)
-var newCardColor2 = UIColor(red: CGFloat(49.0/255.0), green: CGFloat(49.0/255.0), blue: CGFloat(49.0/255.0), alpha: 1.0)
-var firstCardColor1 = UIColor(red: CGFloat(81.0/255.0), green: CGFloat(81.0/255.0), blue: CGFloat(81.0/255.0), alpha: 1.0)
-var firstCardColor2 = UIColor(red: CGFloat(49.0/255.0), green: CGFloat(49.0/255.0), blue: CGFloat(49.0/255.0), alpha: 1.0)
-var secondCardColor1 = UIColor(red: CGFloat(81.0/255.0), green: CGFloat(81.0/255.0), blue: CGFloat(81.0/255.0), alpha: 1.0)
-var secondCardColor2 = UIColor(red: CGFloat(49.0/255.0), green: CGFloat(49.0/255.0), blue: CGFloat(49.0/255.0), alpha: 1.0)
-var thirdCardColor1 = UIColor(red: CGFloat(81.0/255.0), green: CGFloat(81.0/255.0), blue: CGFloat(81.0/255.0), alpha: 1.0)
-var thirdCardColor2 = UIColor(red: CGFloat(49.0/255.0), green: CGFloat(49.0/255.0), blue: CGFloat(49.0/255.0), alpha: 1.0)
 
-
-var originalview = [firstCard,secondCard,thirdCard]
 var newView: [CardView] = []
-
-var newlabel  = UILabel(frame: CGRect(x: 104, y: 50, width: 158, height: 39))
-var newlabel2 = UILabel(frame: CGRect(x: 104, y: 100, width: 158, height: 39))
-var newlabel3 = UILabel(frame: CGRect(x: 104, y: 150, width: 158, height: 39))
-var newlabel4 = UILabel(frame: CGRect(x: 104, y: 200, width: 158, height: 39))
 
 //Creates new crad to insert into wallet based on information given by the QR Code
 func setupNewCard(view: UIView!, color: UIColor!){
@@ -97,6 +79,19 @@ class ViewController: UIViewController {
         
         wallet.reload(cardViews: newView)
         
+        //TODO: Add listener for when wallet is reloaded to remove textlabel
+        if wallet.insertedCardViews.count == 0 {
+            let noCouponsLabel = UILabel(frame: CGRect(x: 114, y: 237, width: 130, height: 29))
+            noCouponsLabel.font = noCouponsLabel.font.withSize(24)
+            if #available(iOS 13.0, *) {
+                noCouponsLabel.textColor = UIColor.placeholderText
+            } else {
+                noCouponsLabel.textColor = UIColor.gray
+            }
+            noCouponsLabel.text = "No Coupons"
+            self.view.addSubview(noCouponsLabel)
+        }
+        
     }
    
     @IBOutlet weak var wallet: WalletView!
@@ -141,10 +136,7 @@ class ViewController: UIViewController {
                 self.Popup.addSubview(lb)
                 alert2.addAction(close2)
                 self.present(alert2, animated: true, completion: nil)
-        
-            
-    
-            
+
         })
         
                 //End of popup

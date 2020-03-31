@@ -49,25 +49,18 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                   //    view.bringSubviewToFront(qrCodeFrameView)
                 
                     //   }
-         
-             
            
         } catch  {
             return
         }
 
         if (captureSession.canAddInput(videoInput)) {
-            
-            
-            
+
             captureSession.addInput(videoInput)
         } else {
             failed()
             return
         }
-        
-
-       //ADDED THIS
         
         let size = 300
         let screenWidth = self.view.frame.size.width
@@ -89,8 +82,6 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         let metadataOutput = AVCaptureMetadataOutput()
         metadataOutput.rectOfInterest = convertRectOfInterest(rect: scanRect)
 
-        
-
         if (captureSession.canAddOutput(metadataOutput)) {
             captureSession.addOutput(metadataOutput)
 
@@ -109,11 +100,7 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         //
         previewLayer?.frame = view.layer.bounds
         view.layer.addSublayer(previewLayer)
-        
-       
-        
-        
-       
+
         captureSession.startRunning()
     }
 
@@ -129,9 +116,6 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
         if (captureSession?.isRunning == false) {
             captureSession.startRunning()
-            
-
-           
         }
     }
 
@@ -153,37 +137,19 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             { return }
            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             found(code: stringValue)
-            
-                
-             
-            //
+
             let barCodeObject = previewLayer!.transformedMetadataObject(for: metadataObject as! AVMetadataMachineReadableCodeObject) as! AVMetadataMachineReadableCodeObject
              
             qrCodeFrameView?.frame = barCodeObject.bounds
         }
-        
-        
-
     }
-    
-    
-    
-    
-   
-    
 
     func downloadJSON(code: String)  {
         
-    
       if let url = URL(string: code){
-            if !code.isEmpty && url.absoluteString.range(of: "http://derhas.dreamhosters.com/api/auth/getqrcode?id=") != nil  {return  URLSession.shared.dataTask(with: url) { (data, response, error) in
+        if !code.isEmpty && url.absoluteString.range(of: Routes.couponRoute) != nil  {return  URLSession.shared.dataTask(with: url) { (data, response, error) in
                 if let data = data
-                    
-                    
-                        
-                    
                     {
-                        
                         do {
                             
                             let res = try JSONDecoder().decode(Reponse.self, from: data)
@@ -191,38 +157,38 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                             print(res.bus_id)
                             print(res.percentage_cap)
                             print(res.percentage)
-                            let JSON1 : Int = res.id
-                            let JSON2 : Int = res.bus_id
-                            let JSON3 : Int = res.percentage_cap
-                            let JSON4 : Int = res.percentage
-                            let myString1 = String(JSON1)
-                            let myString2 = String(JSON2)
-                            let myString3 = String(JSON3)
-                            let myString4 = String(JSON4)
-                            print(myString1 + "qrid")
-                            print(myString2 + "busID")
-                            print(myString3 + "cap")
-                            print(myString4 + "percentage")
+                            let couponID = String(res.id)
+                            let busID = String(res.bus_id)
+                            let percentageCap = String(res.percentage_cap)
+                            let percentage = String(res.percentage)
+//                            let JSON1 : Int = res.id
+//                            let JSON2 : Int = res.bus_id
+//                            let JSON3 : Int = res.percentage_cap
+//                            let JSON4 : Int = res.percentage
+//                            let myString1 = String(JSON1)
+//                            let myString2 = String(JSON2)
+//                            let myString3 = String(JSON3)
+//                            let myString4 = String(JSON4)
+//                            print(myString1 + "qrid")
+//                            print(myString2 + "busID")
+//                            print(myString3 + "cap")
+//                            print(myString4 + "percentage")
                             
                             //NotificationCenter added for passing coupon data into function that creates new card
                             let name = Notification.Name(rawValue: qrCodeScannerKey)
-                            NotificationCenter.default.post(name: name, object: ["Qrid:" + myString1, "BusID:" + myString2, "Cap:" + myString3, "Percentage:" + myString4])
+                            NotificationCenter.default.post(name: name, object: ["Qrid:" + couponID, "BusID:" + busID, "Cap:" + percentageCap, "Percentage:" + percentage])
                             
                             // Setting
 
-                            let defaults = UserDefaults.standard
-                            defaults.set(myString1, forKey: defaultsKeys.keyOne)
+                            let defaults = UserDefaults.standard //Creates local storage instance of coupon ID
+                            defaults.set(couponID, forKey: defaultsKeys.keyOne)
 
                             // Getting
                             
-                            if let stringOne = defaults.string(forKey: defaultsKeys.keyOne) {
-                            print(stringOne)
+                            if let stringOne = defaults.string(forKey: defaultsKeys.keyOne) {//Retrieves coupon ID from local storage
+                                print(stringOne)
                             }
-                            
-
-                        
                         }
-                            
                             
                          catch {let err2 = UIAlertController(title: "Sorry", message: "Not a compatible QR code", preferredStyle: .alert)
                               err2.addAction(UIAlertAction(title: "Retake", style: .default, handler: { (action) in
@@ -234,24 +200,12 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                               self.present(err2, animated: true, completion: nil)
                             
                                 }
-                        
-                                //let err = UIAlertController(title: "QR Code", message: code, preferredStyle: .alert)
-                               
-                                  
-                                //self.present(err, animated: true, completion: nil)
-                            
-                            
                         }
                 
                 }.resume()
                 
         }
         
-        
-        
-        
-    
-            
             //if JSON is empty
             if code.isEmpty {
                 let err3 = UIAlertController(title: "Whoops", message: "No JSON", preferredStyle: .alert)
@@ -262,12 +216,8 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 
                   self.present(err3, animated: true, completion: nil)
             }
-      
-            
-            
-          
             //checks to see if QR code is scannable
-            if url != URL(string: "http://derhas.dreamhosters.com/api/auth/getqrcode?id="){
+            if url != URL(string: Routes.couponRoute) {
                 print(warning(statement: "Not a valid code"))
          
                   let err2 = UIAlertController(title: "Sorry", message: "Not a compatible QR code", preferredStyle: .alert)
@@ -278,18 +228,13 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 
                   self.present(err2, animated: true, completion: nil)
                 
-                
-                
               }
-               
-            
-            
         }
-        
-        
+      else if !code.isEmpty { //need to add more logic here to error check. The response should be formatted as such: user_id: 1, coupon_id: 2
+            print(code) //for test
+        }
     }
 
-   
     //function for incompatible QR code
     func BadQR(code: String){
     
@@ -300,45 +245,29 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                          }))
                        
                          self.present(err2, animated: true, completion: nil)
-
-        
     }
-    
 
+    //brings up UI prompt after successful scan
     func found(code: String) {
         
         DispatchQueue.main.async {
-        let alert = UIAlertController(title: "QR Code", message: code, preferredStyle: .alert)
-        
-        
+            let alert = UIAlertController(title: "Coupon Scanned", message: code, preferredStyle: .alert)
             
-        //alert.addAction(UIAlertAction(title: "Retake", style: .default, handler: nil))
-        
-        alert.addAction(UIAlertAction(title: "Retake", style: .default, handler: { (action) in
-            self.captureSession.startRunning()
-            //self.dismiss(animated: true, completion: nil)
-        }))
+            //Action to retake QR code
+            alert.addAction(UIAlertAction(title: "Retake", style: .default, handler: { (action) in
+                self.captureSession.startRunning()
+                //self.dismiss(animated: true, completion: nil)
+            }))
 
-        
+            //Action to add scanned coupon to wallet
             alert.addAction(UIAlertAction(title: "Add to Wallet", style: .default, handler: { (action) in
-                        
-                        UIPasteboard.general.string = code
-                        self.captureSession.startRunning()
-                        self.downloadJSON(code: code)
-            
-                        
-                    }))
-        
-          
-            
-            
-            
-            
-        
+                            UIPasteboard.general.string = code
+                            self.captureSession.startRunning()
+                            self.downloadJSON(code: code)
+            }))
 
             self.present(alert, animated: true, completion: nil)
-        
-        print(code)
+            print(code)
         }
     }
 
@@ -349,8 +278,5 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
-    
-    
-
 }
     
