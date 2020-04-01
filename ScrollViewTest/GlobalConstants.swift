@@ -20,4 +20,17 @@ struct Colors {
     }
 }
 
+private let baseUrl = "http://derhas.dreamhosters.com"
 
+struct Routes {
+    
+    // login/signup routes
+    static let loginRoute = baseUrl + "/api/auth/login"
+    static let signupRoute = baseUrl + "/api/auth/signup"
+    
+    // transaction routes
+    static let transactionRoute = baseUrl + ""
+    
+    // coupon routes
+    static let couponRoute = baseUrl + "/api/auth/getqrcode?id="
+}

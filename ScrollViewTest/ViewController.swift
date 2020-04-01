@@ -11,26 +11,8 @@ import Foundation
 
 
 var newCard = CardView()
-var firstCard = CardView()
-var secondCard = CardView()
-var thirdCard = CardView()
-var newCardColor1 = UIColor(red: CGFloat(81.0/255.0), green: CGFloat(81.0/255.0), blue: CGFloat(81.0/255.0), alpha: 1.0)
-var newCardColor2 = UIColor(red: CGFloat(49.0/255.0), green: CGFloat(49.0/255.0), blue: CGFloat(49.0/255.0), alpha: 1.0)
-var firstCardColor1 = UIColor(red: CGFloat(81.0/255.0), green: CGFloat(81.0/255.0), blue: CGFloat(81.0/255.0), alpha: 1.0)
-var firstCardColor2 = UIColor(red: CGFloat(49.0/255.0), green: CGFloat(49.0/255.0), blue: CGFloat(49.0/255.0), alpha: 1.0)
-var secondCardColor1 = UIColor(red: CGFloat(81.0/255.0), green: CGFloat(81.0/255.0), blue: CGFloat(81.0/255.0), alpha: 1.0)
-var secondCardColor2 = UIColor(red: CGFloat(49.0/255.0), green: CGFloat(49.0/255.0), blue: CGFloat(49.0/255.0), alpha: 1.0)
-var thirdCardColor1 = UIColor(red: CGFloat(81.0/255.0), green: CGFloat(81.0/255.0), blue: CGFloat(81.0/255.0), alpha: 1.0)
-var thirdCardColor2 = UIColor(red: CGFloat(49.0/255.0), green: CGFloat(49.0/255.0), blue: CGFloat(49.0/255.0), alpha: 1.0)
 
-
-var originalview = [firstCard,secondCard,thirdCard]
 var newView: [CardView] = []
-
-var newlabel  = UILabel(frame: CGRect(x: 104, y: 50, width: 158, height: 39))
-var newlabel2 = UILabel(frame: CGRect(x: 104, y: 100, width: 158, height: 39))
-var newlabel3 = UILabel(frame: CGRect(x: 104, y: 150, width: 158, height: 39))
-var newlabel4 = UILabel(frame: CGRect(x: 104, y: 200, width: 158, height: 39))
 
 //Creates new crad to insert into wallet based on information given by the QR Code
 func setupNewCard(view: UIView!, color: UIColor!){
@@ -117,6 +99,19 @@ class ViewController: UIViewController {
         
         wallet.reload(cardViews: newView)
         
+        //TODO: Add listener for when wallet is reloaded to remove textlabel
+        if wallet.insertedCardViews.count == 0 {
+            let noCouponsLabel = UILabel(frame: CGRect(x: 114, y: 237, width: 130, height: 29))
+            noCouponsLabel.font = noCouponsLabel.font.withSize(24)
+            if #available(iOS 13.0, *) {
+                noCouponsLabel.textColor = UIColor.placeholderText
+            } else {
+                noCouponsLabel.textColor = UIColor.gray
+            }
+            noCouponsLabel.text = "No Coupons"
+            self.view.addSubview(noCouponsLabel)
+        }
+        
     }
    
     @IBOutlet weak var wallet: WalletView!
@@ -161,34 +156,38 @@ class ViewController: UIViewController {
                 self.Popup.addSubview(lb)
                 alert2.addAction(close2)
                 self.present(alert2, animated: true, completion: nil)
-        
-            
-    
-            
+
         })
         
-                //End of popup
-        
+                //NOTE: The Qr Code Generator is implemented in a seperate file to clean up code,
+                //make sure to test functionality
                let prompt2 = UIAlertAction(title: "Share", style: .default, handler: {action in
                //QR Code Generator
                // Get define string to encode
-               // Get data from the string
-                let data = QRSc.shareString.data(using: String.Encoding.ascii)
-               // Get a QR CIFilter
-              // Get a QR CIFilter
-               guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else { return }
-               // Input the data
-               qrFilter.setValue(data, forKey: "inputMessage")
-               // Get the output image
-               guard let qrImage = qrFilter.outputImage else { return }
-               // Scale the image
-               let transform = CGAffineTransform(scaleX: 10, y: 10)
-               let scaledQrImage = qrImage.transformed(by: transform)
-               // Do some processing to get the UIImage
-               let context = CIContext()
-               guard let cgImage = context.createCGImage(scaledQrImage, from: scaledQrImage.extent) else { return }
-               let processedImage = UIImage(cgImage: cgImage)
-                
+//               let myString = "http://derhas.dreamhosters.com/api/auth/getqrcode?id="
+//               // Get data from the string
+//               let data = myString.data(using: String.Encoding.ascii)
+//               // Get a QR CIFilter
+//               guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else { return }
+//               // Input the data
+//               qrFilter.setValue(data, forKey: "inputMessage")
+//               // Get the output image
+//               guard let qrImage = qrFilter.outputImage else { return }
+//               // Scale the image
+//               let transform = CGAffineTransform(scaleX: 10, y: 10)
+//               let scaledQrImage = qrImage.transformed(by: transform)
+//               // Invert the colors
+//               guard let colorInvertFilter = CIFilter(name: "CIColorInvert") else { return }
+//               colorInvertFilter.setValue(scaledQrImage, forKey: "inputImage")
+//               guard let outputInvertedImage = colorInvertFilter.outputImage else { return }
+//               // Replace the black with transparency
+//               guard let maskToAlphaFilter = CIFilter(name: "CIMaskToAlpha") else { return }
+//               maskToAlphaFilter.setValue(outputInvertedImage, forKey: "inputImage")
+//               guard let outputCIImage = maskToAlphaFilter.outputImage else { return }
+//               // Do some processing to get the UIImage
+//               let context = CIContext()
+//               guard let cgImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) else { return }
+               let processedImage = createShareQRCode(data: [1,2]) //data will need to be grabbed from local storage most likely
                let actionButton = UIButton(frame: CGRect(x: 141, y: 274, width: 118, height: 118))
                actionButton.setImage(processedImage, for: UIControl.State.normal)
                 let cheese = UIAlertController(title: "Close?", message: "This will close", preferredStyle: .actionSheet)
