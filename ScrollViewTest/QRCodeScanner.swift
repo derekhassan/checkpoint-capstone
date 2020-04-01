@@ -232,7 +232,7 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             }
             //checks to see if QR code is scannable
             if url != URL(string: Routes.couponRoute) {
-                print(warning(statement: "Not a valid code"))
+                print("Not a valid code")
          
                   let err2 = UIAlertController(title: "Sorry", message: "Not a compatible QR code", preferredStyle: .alert)
                   err2.addAction(UIAlertAction(title: "Retake", style: .default, handler: { (action) in
