@@ -8,20 +8,30 @@ struct defaultsKeys {
    
 }
 
+
+
 var QRSc = QRCodeScanner()
 class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+    
+    var shareString:String = ""
+
 
     @IBOutlet weak var cameraFrameSize: UIView!
     
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     var qrCodeFrameView:UIView?
-        
+    
+
+
+    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black
         captureSession = AVCaptureSession()
-        captureSession.sessionPreset = .low
+        captureSession.sessionPreset = .medium
         guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
         let videoInput: AVCaptureDeviceInput
 
@@ -154,7 +164,7 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             found(code: stringValue)
             
-                
+            
              
             //
             let barCodeObject = previewLayer!.transformedMetadataObject(for: metadataObject as! AVMetadataMachineReadableCodeObject) as! AVMetadataMachineReadableCodeObject
@@ -168,13 +178,11 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     
     
-    
    
     
 
     func downloadJSON(code: String)  {
-        
-    
+      
       if let url = URL(string: code){
             if !code.isEmpty && url.absoluteString.range(of: "http://derhas.dreamhosters.com/api/auth/getqrcode?id=") != nil  {return  URLSession.shared.dataTask(with: url) { (data, response, error) in
                 if let data = data
@@ -207,6 +215,8 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                             //NotificationCenter added for passing coupon data into function that creates new card
                             let name = Notification.Name(rawValue: qrCodeScannerKey)
                             NotificationCenter.default.post(name: name, object: ["Qrid:" + myString1, "BusID:" + myString2, "Cap:" + myString3, "Percentage:" + myString4])
+                            
+                            
                             
                             // Setting
 
@@ -247,7 +257,7 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 
         }
         
-        
+        self.shareString = (code)
         
         
     
@@ -289,7 +299,6 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
     }
 
-   
     //function for incompatible QR code
     func BadQR(code: String){
     

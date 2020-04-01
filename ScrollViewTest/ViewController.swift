@@ -8,6 +8,8 @@
 
 import UIKit
 import Foundation
+
+
 var newCard = CardView()
 var firstCard = CardView()
 var secondCard = CardView()
@@ -44,6 +46,8 @@ var VC = ViewController()
 
 class ViewController: UIViewController {
     
+    
+    
     let qrNotification = Notification.Name(rawValue: qrCodeScannerKey)
     
     deinit {
@@ -53,6 +57,8 @@ class ViewController: UIViewController {
     func createObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.getCardInfo(notification:)), name: qrNotification, object: nil)
     }
+    
+    
     
     @objc func getCardInfo(notification: NSNotification) {
         if let array = notification.object as? [String] {
@@ -64,6 +70,13 @@ class ViewController: UIViewController {
                let busIdLabel = UILabel(frame: CGRect(x: 104, y: 100, width: 158, height: 39))
                let CapLabel = UILabel(frame: CGRect(x: 104, y: 150, width: 158, height: 39))
                let PercentageLabel = UILabel(frame: CGRect(x: 104, y: 200, width: 158, height: 39))
+               let actionButton = UIButton(frame: CGRect(x: 104, y: 250, width: 18, height: 25))
+                                        
+               let btnImage = UIImage(named: "ShareIcon")
+               actionButton.setImage(btnImage, for: UIControl.State.normal)
+                                                            
+               actionButton.addTarget(self, action: #selector(VC.pressed(sender:)), for: .touchUpInside)
+                
 
 
                setupNewCard(view: brandNewCard, color: UIColor.white)
@@ -71,11 +84,15 @@ class ViewController: UIViewController {
                busIdLabel.text = array[1]
                CapLabel.text = array[2]
                PercentageLabel.text = array[3]
+                
+                
 
                brandNewCard.addSubview(qrIdLabel)
                brandNewCard.addSubview(busIdLabel)
                brandNewCard.addSubview(CapLabel)
                brandNewCard.addSubview(PercentageLabel)
+               brandNewCard.addSubview(actionButton)
+                
 
                newView.append(brandNewCard)
                self.wallet.reload(cardViews: newView)
@@ -89,6 +106,9 @@ class ViewController: UIViewController {
         createObservers() //creates observers for Notification
         
         wallet.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        
+        
+        
         
         //let testCard = CardView()
         
@@ -105,7 +125,7 @@ class ViewController: UIViewController {
     
     @IBOutlet var Popup: UIView!
         
-    @IBAction func shareCard(_ sender: Any) {
+    @objc func pressed(sender: UIButton!) {
 
         // Popup for code at register
         let alert = UIAlertController(title: "Use?", message: "This action cannot be done", preferredStyle: .alert)
@@ -152,10 +172,10 @@ class ViewController: UIViewController {
                let prompt2 = UIAlertAction(title: "Share", style: .default, handler: {action in
                //QR Code Generator
                // Get define string to encode
-               let myString = "http://derhas.dreamhosters.com/api/auth/getqrcode?id="
                // Get data from the string
-               let data = myString.data(using: String.Encoding.ascii)
+                let data = QRSc.shareString.data(using: String.Encoding.ascii)
                // Get a QR CIFilter
+              // Get a QR CIFilter
                guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else { return }
                // Input the data
                qrFilter.setValue(data, forKey: "inputMessage")
@@ -164,18 +184,11 @@ class ViewController: UIViewController {
                // Scale the image
                let transform = CGAffineTransform(scaleX: 10, y: 10)
                let scaledQrImage = qrImage.transformed(by: transform)
-               // Invert the colors
-               guard let colorInvertFilter = CIFilter(name: "CIColorInvert") else { return }
-               colorInvertFilter.setValue(scaledQrImage, forKey: "inputImage")
-               guard let outputInvertedImage = colorInvertFilter.outputImage else { return }
-               // Replace the black with transparency
-               guard let maskToAlphaFilter = CIFilter(name: "CIMaskToAlpha") else { return }
-               maskToAlphaFilter.setValue(outputInvertedImage, forKey: "inputImage")
-               guard let outputCIImage = maskToAlphaFilter.outputImage else { return }
                // Do some processing to get the UIImage
                let context = CIContext()
-               guard let cgImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) else { return }
+               guard let cgImage = context.createCGImage(scaledQrImage, from: scaledQrImage.extent) else { return }
                let processedImage = UIImage(cgImage: cgImage)
+                
                let actionButton = UIButton(frame: CGRect(x: 141, y: 274, width: 118, height: 118))
                actionButton.setImage(processedImage, for: UIControl.State.normal)
                 let cheese = UIAlertController(title: "Close?", message: "This will close", preferredStyle: .actionSheet)
@@ -185,23 +198,26 @@ class ViewController: UIViewController {
                 self.view.addSubview(actionButton)})
                 //End of QR Code Generator g
         
+        let prompt4 = UIAlertAction(title: "Delete", style: .destructive, handler: {ACTION in print("Delete")
+                   func resetDefaults() {
+                              let defaults = UserDefaults.standard
+                              let dictionary = defaults.dictionaryRepresentation()
+                              dictionary.keys.forEach { key in
+                              defaults.removeObject(forKey: "id")
+                                      }
+                                  }
+                   resetDefaults()
+            self.wallet.reload(cardViews: newView)
+                   
+               })
         
-        let promptClose = UIAlertAction(title: "Close", style: .cancel, handler: {action in print("User wants to close")
-            
-            func resetDefaults() {
-                let defaults = UserDefaults.standard
-                let dictionary = defaults.dictionaryRepresentation()
-                dictionary.keys.forEach { key in
-                defaults.removeObject(forKey: "id")
-            }
-                }
-                resetDefaults()
-            
-        })
+        
+        let promptClose = UIAlertAction(title: "Close", style: .cancel, handler: {action in print("User wants to close"); alert.removeFromParent()})
         
         alert.addAction(prompt1)
         alert.addAction(prompt2)
         alert.addAction(promptClose)
+        alert.addAction(prompt4)
         self.present(alert, animated: true, completion: nil)
         
     }

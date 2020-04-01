@@ -19,3 +19,5 @@ struct Colors {
         static let color2 = UIColor(red: CGFloat(6.0/255.0), green: CGFloat(29.0/255.0), blue: CGFloat(57.0/255.0), alpha: 1.0).cgColor
     }
 }
+
+
