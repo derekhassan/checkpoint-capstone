@@ -8,20 +8,30 @@ struct defaultsKeys {
    
 }
 
+
+
 var QRSc = QRCodeScanner()
 class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+    
+    var shareString:String = ""
+
 
     @IBOutlet weak var cameraFrameSize: UIView!
     
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     var qrCodeFrameView:UIView?
-        
+    
+
+
+    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black
         captureSession = AVCaptureSession()
-        captureSession.sessionPreset = .low
+        captureSession.sessionPreset = .medium
         guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
         let videoInput: AVCaptureDeviceInput
 
@@ -145,7 +155,7 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     }
 
     func downloadJSON(code: String)  {
-        
+
       if let url = URL(string: code){
         if !code.isEmpty && url.absoluteString.range(of: Routes.couponRoute) != nil  {return  URLSession.shared.dataTask(with: url) { (data, response, error) in
                 if let data = data
@@ -178,6 +188,8 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                             let name = Notification.Name(rawValue: qrCodeScannerKey)
                             NotificationCenter.default.post(name: name, object: ["Qrid:" + couponID, "BusID:" + busID, "Cap:" + percentageCap, "Percentage:" + percentage])
                             
+                            
+                            
                             // Setting
 
                             let defaults = UserDefaults.standard //Creates local storage instance of coupon ID
@@ -205,6 +217,8 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 }.resume()
                 
         }
+        
+        self.shareString = (code)
         
             //if JSON is empty
             if code.isEmpty {

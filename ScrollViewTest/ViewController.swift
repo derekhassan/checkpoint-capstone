@@ -8,6 +8,8 @@
 
 import UIKit
 import Foundation
+
+
 var newCard = CardView()
 
 var newView: [CardView] = []
@@ -26,6 +28,8 @@ var VC = ViewController()
 
 class ViewController: UIViewController {
     
+    
+    
     let qrNotification = Notification.Name(rawValue: qrCodeScannerKey)
     
     deinit {
@@ -35,6 +39,8 @@ class ViewController: UIViewController {
     func createObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.getCardInfo(notification:)), name: qrNotification, object: nil)
     }
+    
+    
     
     @objc func getCardInfo(notification: NSNotification) {
         if let array = notification.object as? [String] {
@@ -46,6 +52,13 @@ class ViewController: UIViewController {
                let busIdLabel = UILabel(frame: CGRect(x: 104, y: 100, width: 158, height: 39))
                let CapLabel = UILabel(frame: CGRect(x: 104, y: 150, width: 158, height: 39))
                let PercentageLabel = UILabel(frame: CGRect(x: 104, y: 200, width: 158, height: 39))
+               let actionButton = UIButton(frame: CGRect(x: 104, y: 250, width: 18, height: 25))
+                                        
+               let btnImage = UIImage(named: "ShareIcon")
+               actionButton.setImage(btnImage, for: UIControl.State.normal)
+                                                            
+               actionButton.addTarget(self, action: #selector(VC.pressed(sender:)), for: .touchUpInside)
+                
 
 
                setupNewCard(view: brandNewCard, color: UIColor.white)
@@ -53,11 +66,15 @@ class ViewController: UIViewController {
                busIdLabel.text = array[1]
                CapLabel.text = array[2]
                PercentageLabel.text = array[3]
+                
+                
 
                brandNewCard.addSubview(qrIdLabel)
                brandNewCard.addSubview(busIdLabel)
                brandNewCard.addSubview(CapLabel)
                brandNewCard.addSubview(PercentageLabel)
+               brandNewCard.addSubview(actionButton)
+                
 
                newView.append(brandNewCard)
                self.wallet.reload(cardViews: newView)
@@ -71,6 +88,9 @@ class ViewController: UIViewController {
         createObservers() //creates observers for Notification
         
         wallet.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        
+        
+        
         
         //let testCard = CardView()
         
@@ -100,7 +120,7 @@ class ViewController: UIViewController {
     
     @IBOutlet var Popup: UIView!
         
-    @IBAction func shareCard(_ sender: Any) {
+    @objc func pressed(sender: UIButton!) {
 
         // Popup for code at register
         let alert = UIAlertController(title: "Use?", message: "This action cannot be done", preferredStyle: .alert)
@@ -177,23 +197,26 @@ class ViewController: UIViewController {
                 self.view.addSubview(actionButton)})
                 //End of QR Code Generator g
         
+        let prompt4 = UIAlertAction(title: "Delete", style: .destructive, handler: {ACTION in print("Delete")
+                   func resetDefaults() {
+                              let defaults = UserDefaults.standard
+                              let dictionary = defaults.dictionaryRepresentation()
+                              dictionary.keys.forEach { key in
+                              defaults.removeObject(forKey: "id")
+                                      }
+                                  }
+                   resetDefaults()
+            self.wallet.reload(cardViews: newView)
+                   
+               })
         
-        let promptClose = UIAlertAction(title: "Close", style: .cancel, handler: {action in print("User wants to close")
-            
-            func resetDefaults() {
-                let defaults = UserDefaults.standard
-                let dictionary = defaults.dictionaryRepresentation()
-                dictionary.keys.forEach { key in
-                defaults.removeObject(forKey: "id")
-            }
-                }
-                resetDefaults()
-            
-        })
+        
+        let promptClose = UIAlertAction(title: "Close", style: .cancel, handler: {action in print("User wants to close"); alert.removeFromParent()})
         
         alert.addAction(prompt1)
         alert.addAction(prompt2)
         alert.addAction(promptClose)
+        alert.addAction(prompt4)
         self.present(alert, animated: true, completion: nil)
         
     }
