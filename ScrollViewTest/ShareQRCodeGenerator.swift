@@ -11,8 +11,7 @@ import UIKit
 
 func createShareQRCode(data: [Int]) -> (UIImage)? {
     
-//    let qrCodeParams = "user_id:" + String(data[0]) + ", " + "coupon_id:" + String(data[1])
-    let qrCodeParams = Routes.couponRoute
+    let qrCodeParams = "user_id:" + String(data[0]) + ", " + "coupon_id:" + String(data[1])
     let qrCodeData = qrCodeParams.data(using: String.Encoding.ascii)
     
     // Get a QR CIFilter

@@ -9,10 +9,12 @@
 import UIKit
 import Foundation
 
-
-var newCard = CardView()
-
 var newView: [CardView] = []
+
+
+
+
+
 
 //Creates new crad to insert into wallet based on information given by the QR Code
 func setupNewCard(view: UIView!, color: UIColor!){
@@ -27,7 +29,6 @@ func setupNewCard(view: UIView!, color: UIColor!){
 var VC = ViewController()
 
 class ViewController: UIViewController {
-    
     
     
     let qrNotification = Notification.Name(rawValue: qrCodeScannerKey)
@@ -45,9 +46,9 @@ class ViewController: UIViewController {
     @objc func getCardInfo(notification: NSNotification) {
         if let array = notification.object as? [String] {
             
+            
             DispatchQueue.main.async {
                let brandNewCard: CardView = CardView()
-
                let qrIdLabel  = UILabel(frame: CGRect(x: 104, y: 50, width: 158, height: 39))
                let busIdLabel = UILabel(frame: CGRect(x: 104, y: 100, width: 158, height: 39))
                let CapLabel = UILabel(frame: CGRect(x: 104, y: 150, width: 158, height: 39))
@@ -69,15 +70,15 @@ class ViewController: UIViewController {
                 
                 
 
-               brandNewCard.addSubview(qrIdLabel)
-               brandNewCard.addSubview(busIdLabel)
-               brandNewCard.addSubview(CapLabel)
-               brandNewCard.addSubview(PercentageLabel)
-               brandNewCard.addSubview(actionButton)
+                brandNewCard.addSubview(qrIdLabel)
+                brandNewCard.addSubview(busIdLabel)
+                brandNewCard.addSubview(CapLabel)
+                brandNewCard.addSubview(PercentageLabel)
+                brandNewCard.addSubview(actionButton)
                 
 
-               newView.append(brandNewCard)
-               self.wallet.reload(cardViews: newView)
+                newView.append(brandNewCard)
+                self.wallet.reload(cardViews: newView)
            }
         }
     }
@@ -116,10 +117,10 @@ class ViewController: UIViewController {
    
     @IBOutlet weak var wallet: WalletView!
     
-    @IBOutlet var QRValue: UILabel?
-    
+    @IBOutlet weak var QRValue: UILabel?
+
     @IBOutlet var Popup: UIView!
-        
+    
     @objc func pressed(sender: UIButton!) {
 
         // Popup for code at register
@@ -206,7 +207,6 @@ class ViewController: UIViewController {
                                       }
                                   }
                    resetDefaults()
-            self.wallet.reload(cardViews: newView)
                    
                })
         

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sMY-9C-jqf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sMY-9C-jqf">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -49,10 +49,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicCell" id="1SB-k3-9nr">
-                                        <rect key="frame" x="0.0" y="28" width="240" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="240" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1SB-k3-9nr" id="1hN-ux-kGK">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -235,19 +235,41 @@
                                     <constraint firstAttribute="width" secondItem="ZFI-xL-vQd" secondAttribute="height" multiplier="359:422" constant="-69.04028436018956" id="fSK-LY-y9U"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Opy-Rp-wfU" userLabel="Top Bar">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Opy-Rp-wfU" userLabel="Top Bar">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Coupons" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Am4-tt-a4q">
-                                        <rect key="frame" x="151.66666666666674" y="52" width="72" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coupons" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Am4-tt-a4q">
+                                        <rect key="frame" x="151.66666666666666" y="52" width="71.666666666666657" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Am4-tt-a4q" firstAttribute="top" secondItem="Opy-Rp-wfU" secondAttribute="topMargin" id="Yph-DR-l6c"/>
+                                    <constraint firstItem="Am4-tt-a4q" firstAttribute="centerX" secondItem="Opy-Rp-wfU" secondAttribute="centerX" id="kkY-Wv-0sZ"/>
+                                    <constraint firstItem="Am4-tt-a4q" firstAttribute="leading" secondItem="Opy-Rp-wfU" secondAttribute="leading" constant="151.66666666666674" id="yfU-ep-8yw"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Yph-DR-l6c"/>
+                                        <exclude reference="kkY-Wv-0sZ"/>
+                                        <exclude reference="yfU-ep-8yw"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Yph-DR-l6c"/>
+                                        <include reference="kkY-Wv-0sZ"/>
+                                        <include reference="yfU-ep-8yw"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <view hidden="YES" alpha="0.94999999999999996" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rnm-ZC-nLb">
+                                <rect key="frame" x="0.0" y="141" width="375" height="446"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -255,11 +277,29 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZFI-xL-vQd" secondAttribute="trailing" constant="8" id="508-O9-Qd7"/>
                             <constraint firstItem="ZFI-xL-vQd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="AF2-Ib-pLd"/>
                             <constraint firstItem="ZFI-xL-vQd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="126" id="aA4-7g-s0b"/>
+                            <constraint firstItem="ZFI-xL-vQd" firstAttribute="top" secondItem="Opy-Rp-wfU" secondAttribute="bottom" constant="38" id="cvt-gM-uMY"/>
+                            <constraint firstItem="Opy-Rp-wfU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ebd-wV-Prb"/>
+                            <constraint firstItem="Opy-Rp-wfU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-44" id="zWS-GI-jxm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ebd-wV-Prb"/>
+                                <exclude reference="zWS-GI-jxm"/>
+                                <exclude reference="cvt-gM-uMY"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="ebd-wV-Prb"/>
+                                <include reference="zWS-GI-jxm"/>
+                                <include reference="cvt-gM-uMY"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Coupons" image="CouponIcon-White" selectedImage="CouponIcon-Orange" id="2uh-ub-HaA"/>
                     <connections>
+                        <outlet property="Popup" destination="rnm-ZC-nLb" id="5XM-MR-z80"/>
                         <outlet property="wallet" destination="ZFI-xL-vQd" id="GgV-u5-HIq"/>
                         <segue destination="zR6-N1-O8a" kind="presentation" identifier="coupontoProfile" modalPresentationStyle="fullScreen" id="7oU-dW-Gtf"/>
                     </connections>
