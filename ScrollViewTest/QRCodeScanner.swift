@@ -112,7 +112,11 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         view.layer.addSublayer(previewLayer)
 
         captureSession.startRunning()
+        
     }
+    
+    
+                  
 
     func failed() {
         let ac = UIAlertController(title: "Scanning not supported", message: "Your device does not support scanning a code from an item. Please use a device with a camera.", preferredStyle: .alert)
@@ -153,14 +157,21 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             qrCodeFrameView?.frame = barCodeObject.bounds
         }
     }
+    
+    
+    
+  
 
     func downloadJSON(code: String)  {
 
-      if let url = URL(string: code){
+        if let url = URL(string: code) {
         if !code.isEmpty && url.absoluteString.range(of: Routes.couponRoute) != nil  {return  URLSession.shared.dataTask(with: url) { (data, response, error) in
                 if let data = data
                     {
                         do {
+                            
+                          
+                           
                             
                             let res = try JSONDecoder().decode(Reponse.self, from: data)
                             print(res.id)
@@ -199,8 +210,10 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                             
                             if let stringOne = defaults.string(forKey: defaultsKeys.keyOne) {//Retrieves coupon ID from local storage
                                 print(stringOne)
+                                
                             }
                         }
+                            
                             
                          catch {let err2 = UIAlertController(title: "Sorry", message: "Not a compatible QR code", preferredStyle: .alert)
                               err2.addAction(UIAlertAction(title: "Retake", style: .default, handler: { (action) in
@@ -217,6 +230,9 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 }.resume()
                 
         }
+            
+            
+            
         
         self.shareString = (code)
         

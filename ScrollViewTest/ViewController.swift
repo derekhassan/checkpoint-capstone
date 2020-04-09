@@ -11,11 +11,6 @@ import Foundation
 
 var newView: [CardView] = []
 
-
-
-
-
-
 //Creates new crad to insert into wallet based on information given by the QR Code
 func setupNewCard(view: UIView!, color: UIColor!){
     view.backgroundColor = color
@@ -30,7 +25,9 @@ var VC = ViewController()
 
 class ViewController: UIViewController {
     
-    
+    var brandNewCard2:CardView = CardView()
+
+   
     let qrNotification = Notification.Name(rawValue: qrCodeScannerKey)
     
     deinit {
@@ -42,25 +39,39 @@ class ViewController: UIViewController {
     }
     
     
-    
+
     @objc func getCardInfo(notification: NSNotification) {
         if let array = notification.object as? [String] {
             
             
             DispatchQueue.main.async {
+                
+                
+              
+
+                
                let brandNewCard: CardView = CardView()
+                
+              
                let qrIdLabel  = UILabel(frame: CGRect(x: 104, y: 50, width: 158, height: 39))
                let busIdLabel = UILabel(frame: CGRect(x: 104, y: 100, width: 158, height: 39))
                let CapLabel = UILabel(frame: CGRect(x: 104, y: 150, width: 158, height: 39))
                let PercentageLabel = UILabel(frame: CGRect(x: 104, y: 200, width: 158, height: 39))
                let actionButton = UIButton(frame: CGRect(x: 104, y: 250, width: 18, height: 25))
-                                        
+               let deleteButton = UIButton(frame: CGRect(x: 104, y: 300, width: 18, height: 25))
+                            
                let btnImage = UIImage(named: "ShareIcon")
                actionButton.setImage(btnImage, for: UIControl.State.normal)
                                                             
                actionButton.addTarget(self, action: #selector(VC.pressed(sender:)), for: .touchUpInside)
+               let deleteImg = UIImage(named: "Rectangle 1")
+               deleteButton.setImage(deleteImg, for: UIControl.State.normal)
+               deleteButton.addTarget(self, action: #selector(VC.deleter(sender:)), for: .touchUpInside)
                 
-
+               
+                
+                
+                
 
                setupNewCard(view: brandNewCard, color: UIColor.white)
                qrIdLabel.text = array[0]
@@ -75,13 +86,24 @@ class ViewController: UIViewController {
                 brandNewCard.addSubview(CapLabel)
                 brandNewCard.addSubview(PercentageLabel)
                 brandNewCard.addSubview(actionButton)
+                brandNewCard.addSubview(deleteButton)
                 
-
+                
+                
                 newView.append(brandNewCard)
+                
+                
                 self.wallet.reload(cardViews: newView)
+                
+                self.brandNewCard2 = brandNewCard
+             
            }
         }
     }
+    
+    
+  
+
     
     override func viewDidLoad() {
     super.viewDidLoad()
@@ -89,7 +111,7 @@ class ViewController: UIViewController {
         createObservers() //creates observers for Notification
         
         wallet.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
-        
+    
         
         
         
@@ -114,12 +136,20 @@ class ViewController: UIViewController {
         }
         
     }
+    
+    
    
     @IBOutlet weak var wallet: WalletView!
     
     @IBOutlet weak var QRValue: UILabel?
 
     @IBOutlet var Popup: UIView!
+
+    @objc func deleter(sender: UIButton!){
+        brandNewCard2.removeFromSuperview()
+        newView.removeAll()
+        
+    }
     
     @objc func pressed(sender: UIButton!) {
 
@@ -198,7 +228,7 @@ class ViewController: UIViewController {
                 self.view.addSubview(actionButton)})
                 //End of QR Code Generator g
         
-        let prompt4 = UIAlertAction(title: "Delete", style: .destructive, handler: {ACTION in print("Delete")
+        let prompt4 = UIAlertAction(title: "Delete", style: .destructive, handler: {ACTION in print("Delete");
                    func resetDefaults() {
                               let defaults = UserDefaults.standard
                               let dictionary = defaults.dictionaryRepresentation()
@@ -207,7 +237,7 @@ class ViewController: UIViewController {
                                       }
                                   }
                    resetDefaults()
-                   
+            
                })
         
         
@@ -222,18 +252,5 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func deleteCoupon(_ sender: Any) {
-                
-        let deleteAlert = UIAlertController(title: "Delete Coupon?", message: "This action cannot be done.", preferredStyle: .alert)
-        
-        let choice1 = UIAlertAction(title: "Cancel", style: .cancel, handler: {action in print("User wants to cancel")})
-        
-        let choice2 = UIAlertAction(title: "Delete", style: .destructive, handler: {action in print("User will delete coupon")})
-        
-        deleteAlert.addAction(choice1)
-        deleteAlert.addAction(choice2)
-        self.present(deleteAlert, animated: true, completion: nil)
-        
-    }
     
 }

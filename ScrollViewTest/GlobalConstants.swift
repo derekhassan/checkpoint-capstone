@@ -35,3 +35,5 @@ struct Routes {
     static let couponRoute = baseUrl + "/api/auth/getqrcode?id="
     
 }
+
+
