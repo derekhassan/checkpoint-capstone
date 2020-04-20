@@ -8,6 +8,10 @@
 
 import UIKit
 import Foundation
+import CoreData
+
+
+
 
 var newView: [CardView] = []
 
@@ -21,12 +25,15 @@ func setupNewCard(view: UIView!, color: UIColor!){
     view.layer.shadowRadius = 5
 }
 
+
 var VC = ViewController()
 
 class ViewController: UIViewController {
     
+    
+    
+    
     var brandNewCard2:CardView = CardView()
-
    
     let qrNotification = Notification.Name(rawValue: qrCodeScannerKey)
     
@@ -50,7 +57,7 @@ class ViewController: UIViewController {
               
 
                 
-               let brandNewCard: CardView = CardView()
+                let brandNewCard: CardView = CardView()
                 
               
                let qrIdLabel  = UILabel(frame: CGRect(x: 104, y: 50, width: 158, height: 39))
@@ -95,7 +102,7 @@ class ViewController: UIViewController {
                 
                 self.wallet.reload(cardViews: newView)
                 
-                self.brandNewCard2 = brandNewCard
+//                self.brandNewCard2 = brandNewCard
              
            }
         }
@@ -108,6 +115,74 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
     super.viewDidLoad()
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Coupon")
+        
+        request.returnsObjectsAsFaults = false
+        
+        do
+        
+        {
+            let results = try context.fetch(request)
+            
+            if results.count > 0
+            {
+                for result in results as! [NSManagedObject]
+                {
+                    if let id = result.value(forKey: "id") as? String
+                    {
+                        print(id)
+                    }
+                }
+                
+            }
+        }
+        catch
+        {
+            
+        }
+        
+    
+//    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//
+//        let context = appDelegate.persistentContainer.viewContext
+//
+//    let newCoupon = NSEntityDescription.insertNewObject(forEntityName: "Coupon", into: context)
+//
+//
+//
+//    newCoupon.setValue("couponID", forKey: "id")
+//    newCoupon.setValue("busID", forKey: "bus_id")
+//    newCoupon.setValue("percentage", forKey: "percentage")
+//    newCoupon.setValue("percentageCap", forKey: "percentage_cap")
+//
+//
+//        do
+//        {
+//            try context.save()
+//
+//            print("saved")
+//        }
+//        catch
+//        {
+//
+//        }
+//        
+        
+        
+        
+        wallet.reload(cardViews: newView)
+        
+      
+
+        
+                
+        
+       
+    
         createObservers() //creates observers for Notification
         
         wallet.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
@@ -146,10 +221,60 @@ class ViewController: UIViewController {
     @IBOutlet var Popup: UIView!
 
     @objc func deleter(sender: UIButton!){
-        brandNewCard2.removeFromSuperview()
-        newView.removeAll()
+        
+            wallet.presentedCardView?.removeFromSuperview()
+            wallet.presentedCardView = nil
+            wallet.presentedCardView?.sendSubviewToBack(wallet.presentedCardView!)
+            newView.removeLast(1)
+            wallet.insertedCardViews.removeLast(1)
+        
+        
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                
+                let context = appDelegate.persistentContainer.viewContext
+            
+                let deleteData = NSFetchRequest<NSFetchRequestResult>(entityName: "Coupon")
+                    
+                do
+                {
+                    let results = try context.fetch(deleteData)
+                    
+                    if results.count > 0
+                    {
+                        for result in results as! [NSManagedObject]
+                        {
+                            if let id = result.value(forKey: "id") as? String
+                            {
+                                if id == "1"
+                                {
+                                result.setValue("", forKey: "id")
+                                
+                                do
+                                {
+                                    try context.save()
+                                }
+                                catch
+                                {
+                                    
+                                }
+                            }
+                        }
+                    }
+        }
+                }
+        catch
+        {
+            
+        }
+
+            
+        
+                
         
     }
+        
+        
+    
     
     @objc func pressed(sender: UIButton!) {
 
@@ -195,7 +320,7 @@ class ViewController: UIViewController {
                let prompt2 = UIAlertAction(title: "Share", style: .default, handler: {action in
                //QR Code Generator
                // Get define string to encode
-//               let myString = "http://derhas.dreamhosters.com/api/auth/getqrcode?id="
+//               let myString = "http://derhas.dreamhosters.com/api/coupon?id="
 //               // Get data from the string
 //               let data = myString.data(using: String.Encoding.ascii)
 //               // Get a QR CIFilter
@@ -229,14 +354,7 @@ class ViewController: UIViewController {
                 //End of QR Code Generator g
         
         let prompt4 = UIAlertAction(title: "Delete", style: .destructive, handler: {ACTION in print("Delete");
-                   func resetDefaults() {
-                              let defaults = UserDefaults.standard
-                              let dictionary = defaults.dictionaryRepresentation()
-                              dictionary.keys.forEach { key in
-                              defaults.removeObject(forKey: "id")
-                                      }
-                                  }
-                   resetDefaults()
+                   
             
                })
         
@@ -251,6 +369,14 @@ class ViewController: UIViewController {
         
     }
     
-    
-    
 }
+
+
+
+    
+
+
+
+
+
+
