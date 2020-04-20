@@ -235,39 +235,18 @@ class ViewController: UIViewController {
             
                 let deleteData = NSFetchRequest<NSFetchRequestResult>(entityName: "Coupon")
                     
-                do
-                {
-                    let results = try context.fetch(deleteData)
+        var results = try! context.fetch(deleteData)
                     
-                    if results.count > 0
-                    {
-                        for result in results as! [NSManagedObject]
-                        {
-                            if let id = result.value(forKey: "id") as? String
-                            {
-                                if id == "1"
-                                {
-                                result.setValue("", forKey: "id")
-                                
-                                do
-                                {
-                                    try context.save()
-                                }
-                                catch
-                                {
-                                    
-                                }
-                            }
-                        }
+                    if results.count > 0 {
+                        context.delete(results.removeLast() as! NSManagedObject)
                     }
+        
+        do {
+            try context.save()
         }
-                }
-        catch
-        {
+        catch{
             
         }
-
-            
         
                 
         
