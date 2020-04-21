@@ -6,11 +6,11 @@
 //  Copyright © 2020 Derek Hassan. All rights reserved.
 //
 
-import Foundation
-
-func warning(statement: String) -> String {
-   return statement
-}
+//import Foundation
+//
+//func warning(statement: String) -> String {
+//   return statement
+//}
 //         let jsonUrlString = //"http://derhas.dreamhosters.com/api/auth/getqrcode?id=2"
 //                       guard let url = URL(string: jsonUrlString) else { return }
 //
