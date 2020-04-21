@@ -1,10 +1,9 @@
 import UIKit
 import AVFoundation
+import SwiftyJSON
 import CoreData
 
 let qrCodeScannerKey = "qr"
-
-
 
 
 
@@ -21,17 +20,11 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 //    var percentage_capString :String = ""
     
 
-
     @IBOutlet weak var cameraFrameSize: UIView!
     
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     var qrCodeFrameView:UIView?
-    
-
-
-    
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,8 +40,6 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         do {
             videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice)
 
-            
-           
             DispatchQueue.main.async {
                 var qrCodeFrameView = UIView()
                 qrCodeFrameView = UIView(frame: CGRect(x:60, y:150, width:250, height:250))
@@ -57,8 +48,7 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
                 qrCodeFrameView.layer.borderWidth = 2
                 qrCodeFrameView.bringSubviewToFront(qrCodeFrameView)
-                
-                
+ 
             }
         
             //qrCodeFrameView = UIView()
@@ -106,8 +96,7 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
             metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             metadataOutput.metadataObjectTypes = [.qr]
-            
-            
+
         } else {
             failed()
             return
@@ -225,16 +214,7 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                                     }
                             }
 
-                            
-                                
-                            
-                            
-
-                            
-                          
-
-                            
-                            //NotificationCenter added for passing coupon data into function that creates new card
+                  //NotificationCenter added for passing coupon data into function that creates new card
                             let name = Notification.Name(rawValue: qrCodeScannerKey)
                             NotificationCenter.default.post(name: name, object: ["Qrid:" + couponID, "BusID:" + busID, "Cap:" + percentageCap, "Percentage:" + percentage])
 
@@ -290,7 +270,25 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         }
       else if !code.isEmpty { //need to add more logic here to error check. The response should be formatted as such: user_id: 1, coupon_id: 2
             print(code) //for test
+        if let data = code.data(using: .utf8) {
+            do {
+                let json = try JSON(data: data)
+                
+                if json["user_id"].exists() {
+                    
+                    print("Should be valid")
+                    //checkpoint.test/api/auth/createtransaction?userShared=1&userReceived=2&couponID=1
+                }
+            } catch {
+                print("JSON error, need to look into")
+            }
+            
+
         }
+        else {
+            print("Error in converting code to data type")
+        }
+      }
     }
 
     //function for incompatible QR code

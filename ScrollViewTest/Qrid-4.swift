@@ -16,3 +16,8 @@ struct Reponse: Decodable {
     var bus_id: Int
 }
 
+struct Share: Decodable {
+    var user_id: Int
+    var coupon_id: Int
+}
+

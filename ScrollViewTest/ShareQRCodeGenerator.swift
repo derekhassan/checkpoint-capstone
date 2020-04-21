@@ -8,11 +8,18 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
 
 func createShareQRCode(data: [Int]) -> (UIImage)? {
+
+    let qrCodeParams = JSON([
+        "user_id": String(data[0]),
+        "coupon_id": String(data[1])
+    ])
     
-    let qrCodeParams = "user_id:" + String(data[0]) + ", " + "coupon_id:" + String(data[1])
-    let qrCodeData = qrCodeParams.data(using: String.Encoding.ascii)
+    //let qrCodeParams = "user_id:" + String(data[0]) + ", " + "coupon_id:" + String(data[1])
+
+    let qrCodeData = qrCodeParams
     
     // Get a QR CIFilter
     guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else { return nil }
