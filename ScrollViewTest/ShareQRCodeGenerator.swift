@@ -11,7 +11,7 @@ import UIKit
 import SwiftyJSON
 
 func createShareQRCode(data: [Int]) -> (UIImage)? {
-    
+
     let qrCodeParams = JSON([
         "user_id": String(data[0]),
         "coupon_id": String(data[1])
@@ -31,19 +31,22 @@ func createShareQRCode(data: [Int]) -> (UIImage)? {
     let transform = CGAffineTransform(scaleX: 10, y: 10)
     let scaledQrImage = qrImage.transformed(by: transform)
     // Invert the colors
-    guard let colorInvertFilter = CIFilter(name: "CIColorInvert") else { return nil}
-    colorInvertFilter.setValue(scaledQrImage, forKey: "inputImage")
-    guard let outputInvertedImage = colorInvertFilter.outputImage else { return nil}
     // Replace the black with transparency
-    guard let maskToAlphaFilter = CIFilter(name: "CIMaskToAlpha") else { return nil}
-    maskToAlphaFilter.setValue(outputInvertedImage, forKey: "inputImage")
-    guard let outputCIImage = maskToAlphaFilter.outputImage else { return nil}
     // Do some processing to get the UIImage
     let context = CIContext()
-    guard let cgImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) else { return nil}
+    guard let cgImage = context.createCGImage(scaledQrImage, from: scaledQrImage.extent) else { return nil}
     let processedImage = UIImage(cgImage: cgImage)
     let actionButton = UIButton(frame: CGRect(x: 141, y: 274, width: 118, height: 118))
     actionButton.setImage(processedImage, for: UIControl.State.normal)
     
     return processedImage
+   
+    
+
+    // Do some processing to get the UIImage
+ 
+      
+      
+    
+    
 }

@@ -1,18 +1,24 @@
 import UIKit
 import AVFoundation
 import SwiftyJSON
+import CoreData
 
 let qrCodeScannerKey = "qr"
 
-struct defaultsKeys {
-    static let keyOne = "id"
-   
-}
+
 
 var QRSc = QRCodeScanner()
 class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
-    var shareString:String = ""
+   
+    
+    
+    var shareString :String = ""
+//    var couponIDString :String = ""
+//    var busIDString :String = ""
+//    var percentageString :String = ""
+//    var percentage_capString :String = ""
+    
 
     @IBOutlet weak var cameraFrameSize: UIView!
     
@@ -22,6 +28,9 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+                
+        
         view.backgroundColor = UIColor.black
         captureSession = AVCaptureSession()
         captureSession.sessionPreset = .medium
@@ -101,7 +110,11 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         view.layer.addSublayer(previewLayer)
 
         captureSession.startRunning()
+        
     }
+    
+    
+                  
 
     func failed() {
         let ac = UIAlertController(title: "Scanning not supported", message: "Your device does not support scanning a code from an item. Please use a device with a camera.", preferredStyle: .alert)
@@ -142,15 +155,23 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             qrCodeFrameView?.frame = barCodeObject.bounds
         }
     }
+    
+    
+    
+  
 
     func downloadJSON(code: String)  {
+        
+       
 
-      if let url = URL(string: code){
+        if let url = URL(string: code) {
         if !code.isEmpty && url.absoluteString.range(of: Routes.couponRoute) != nil  {return  URLSession.shared.dataTask(with: url) { (data, response, error) in
                 if let data = data
                     {
                         do {
                             
+                            
+                          
                             let res = try JSONDecoder().decode(Reponse.self, from: data)
                             print(res.id)
                             print(res.bus_id)
@@ -161,21 +182,45 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                             let percentageCap = String(res.percentage_cap)
                             let percentage = String(res.percentage)
                             
-                            //NotificationCenter added for passing coupon data into function that creates new card
+
+//                            self.couponIDString = couponID
+//                            self.busIDString = busID
+//                            self.percentageString = percentage
+//                            self.percentage_capString = percentageCap
+                            DispatchQueue.main.async {
+                                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
+                                let context = appDelegate.persistentContainer.viewContext
+
+                                let newCoupon = NSEntityDescription.insertNewObject(forEntityName: "Coupon", into: context)
+
+
+
+                                newCoupon.setValue(couponID, forKey: "id")
+                                newCoupon.setValue(busID, forKey: "bus_id")
+                                newCoupon.setValue(percentage, forKey: "percentage")
+                                newCoupon.setValue(percentageCap, forKey: "percentage_cap")
+
+
+                                    do
+                                    {
+                                        try context.save()
+
+                                        print("saved")
+                                    }
+                                    catch
+                                    {
+
+                                    }
+                            }
+
+                  //NotificationCenter added for passing coupon data into function that creates new card
                             let name = Notification.Name(rawValue: qrCodeScannerKey)
                             NotificationCenter.default.post(name: name, object: ["Qrid:" + couponID, "BusID:" + busID, "Cap:" + percentageCap, "Percentage:" + percentage])
-                            
-                            // Setting
 
-                            let defaults = UserDefaults.standard //Creates local storage instance of coupon ID
-                            defaults.set(couponID, forKey: defaultsKeys.keyOne)
-
-                            // Getting
-                            
-                            if let stringOne = defaults.string(forKey: defaultsKeys.keyOne) {//Retrieves coupon ID from local storage
-                                print(stringOne)
-                            }
                         }
+                            
+                        
                             
                          catch {let err2 = UIAlertController(title: "Sorry", message: "Not a compatible QR code", preferredStyle: .alert)
                               err2.addAction(UIAlertAction(title: "Retake", style: .default, handler: { (action) in
@@ -188,10 +233,14 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                             
                                 }
                         }
+            
                 
                 }.resume()
                 
+            
         }
+            
+            
         
         self.shareString = (code)
         
@@ -271,6 +320,10 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                             UIPasteboard.general.string = code
                             self.captureSession.startRunning()
                             self.downloadJSON(code: code)
+                
+                
+                
+                
             }))
 
             self.present(alert, animated: true, completion: nil)
@@ -285,5 +338,7 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
+    
+    
 }
     
