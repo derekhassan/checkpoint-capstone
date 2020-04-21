@@ -1,5 +1,6 @@
 import UIKit
 import AVFoundation
+import SwiftyJSON
 
 let qrCodeScannerKey = "qr"
 
@@ -8,24 +9,16 @@ struct defaultsKeys {
    
 }
 
-
-
 var QRSc = QRCodeScanner()
 class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     var shareString:String = ""
-
 
     @IBOutlet weak var cameraFrameSize: UIView!
     
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     var qrCodeFrameView:UIView?
-    
-
-
-    
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +31,6 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         do {
             videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice)
 
-            
-           
             DispatchQueue.main.async {
                 var qrCodeFrameView = UIView()
                 qrCodeFrameView = UIView(frame: CGRect(x:60, y:150, width:250, height:250))
@@ -48,8 +39,7 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
                 qrCodeFrameView.layer.borderWidth = 2
                 qrCodeFrameView.bringSubviewToFront(qrCodeFrameView)
-                
-                
+ 
             }
         
             //qrCodeFrameView = UIView()
@@ -97,8 +87,7 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
             metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             metadataOutput.metadataObjectTypes = [.qr]
-            
-            
+
         } else {
             failed()
             return
@@ -171,24 +160,10 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                             let busID = String(res.bus_id)
                             let percentageCap = String(res.percentage_cap)
                             let percentage = String(res.percentage)
-//                            let JSON1 : Int = res.id
-//                            let JSON2 : Int = res.bus_id
-//                            let JSON3 : Int = res.percentage_cap
-//                            let JSON4 : Int = res.percentage
-//                            let myString1 = String(JSON1)
-//                            let myString2 = String(JSON2)
-//                            let myString3 = String(JSON3)
-//                            let myString4 = String(JSON4)
-//                            print(myString1 + "qrid")
-//                            print(myString2 + "busID")
-//                            print(myString3 + "cap")
-//                            print(myString4 + "percentage")
                             
                             //NotificationCenter added for passing coupon data into function that creates new card
                             let name = Notification.Name(rawValue: qrCodeScannerKey)
                             NotificationCenter.default.post(name: name, object: ["Qrid:" + couponID, "BusID:" + busID, "Cap:" + percentageCap, "Percentage:" + percentage])
-                            
-                            
                             
                             // Setting
 
@@ -246,7 +221,25 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         }
       else if !code.isEmpty { //need to add more logic here to error check. The response should be formatted as such: user_id: 1, coupon_id: 2
             print(code) //for test
+        if let data = code.data(using: .utf8) {
+            do {
+                let json = try JSON(data: data)
+                
+                if json["user_id"].exists() {
+                    
+                    print("Should be valid")
+                    //checkpoint.test/api/auth/createtransaction?userShared=1&userReceived=2&couponID=1
+                }
+            } catch {
+                print("JSON error, need to look into")
+            }
+            
+
         }
+        else {
+            print("Error in converting code to data type")
+        }
+      }
     }
 
     //function for incompatible QR code

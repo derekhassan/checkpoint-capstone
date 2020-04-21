@@ -14,7 +14,7 @@ var newCard = CardView()
 
 var newView: [CardView] = []
 
-//Creates new crad to insert into wallet based on information given by the QR Code
+//Creates new card with color and shadow
 func setupNewCard(view: UIView!, color: UIColor!){
     view.backgroundColor = color
     view.layer.cornerRadius = 20
@@ -29,7 +29,7 @@ var VC = ViewController()
 class ViewController: UIViewController {
     
     
-    
+    // This notification will pass in details about the coupon that was scanned
     let qrNotification = Notification.Name(rawValue: qrCodeScannerKey)
     
     deinit {
@@ -58,23 +58,18 @@ class ViewController: UIViewController {
                actionButton.setImage(btnImage, for: UIControl.State.normal)
                                                             
                actionButton.addTarget(self, action: #selector(VC.pressed(sender:)), for: .touchUpInside)
-                
-
 
                setupNewCard(view: brandNewCard, color: UIColor.white)
                qrIdLabel.text = array[0]
                busIdLabel.text = array[1]
                CapLabel.text = array[2]
                PercentageLabel.text = array[3]
-                
-                
 
                brandNewCard.addSubview(qrIdLabel)
                brandNewCard.addSubview(busIdLabel)
                brandNewCard.addSubview(CapLabel)
                brandNewCard.addSubview(PercentageLabel)
                brandNewCard.addSubview(actionButton)
-                
 
                newView.append(brandNewCard)
                self.wallet.reload(cardViews: newView)
@@ -89,13 +84,10 @@ class ViewController: UIViewController {
         
         wallet.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         
+        let testCard = CardView()
         
-        
-        
-        //let testCard = CardView()
-        
-        //setupNewCard(view: testCard, color: UIColor.white)
-        //newView.append(testCard)
+        setupNewCard(view: testCard, color: UIColor.white)
+        newView.append(testCard)
         
         wallet.reload(cardViews: newView)
         
