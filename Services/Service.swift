@@ -10,17 +10,13 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 
-
 class Service{
     
-    let baseURL = "http://derhas.dreamhosters.com"
-    
-    init(){
-    }
+    init(){}
     
     //Login api
     func login(parameters: [String:AnyObject], completion: @escaping (_ callback: JSON)->()) {
-        let url = baseURL + "/api/auth/login"
+        let url = Routes.loginRoute
         Alamofire.request(url , method: .post, parameters: parameters).responseJSON { response in
             if let json = response.result.value {
                 completion(JSON(json))
@@ -32,7 +28,7 @@ class Service{
     
     //Sign up api
     func signup(parameters: [String:AnyObject], completion: @escaping (_ callback: JSON)->()) {
-         let url = baseURL + "/api/auth/signup"
+         let url = Routes.signupRoute
          Alamofire.request(url , method: .post, parameters: parameters).responseJSON { response in
              if let json = response.result.value {
                  completion(JSON(json))
@@ -42,6 +38,21 @@ class Service{
          }
      }
     
-    //profile api
-    
+
+    //Login api
+    func transaction(parameters: [String:AnyObject], completion: @escaping (_ callback: JSON)->()) {
+        let url = Routes.transactionRoute
+        
+        let headers: HTTPHeaders = [
+          "Accept": "application/json"
+        ]
+        
+        Alamofire.request(url , method: .post, parameters: parameters, headers: headers).responseJSON { response in
+            if let json = response.result.value {
+                completion(JSON(json))
+            } else {
+                print("Not valid json")
+            }
+        }
+    }
 }

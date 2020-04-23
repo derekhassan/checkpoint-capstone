@@ -21,7 +21,7 @@ class Login: UIViewController {
         super.viewDidLoad()
 
     }
-    
+   
     
     @IBAction func LoginClick(_ sender: Any) {
     
@@ -38,9 +38,11 @@ class Login: UIViewController {
             let userid = response["message"].intValue
             print("UserID\(userid )")
           
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let loggedInViewController = storyBoard.instantiateViewController(withIdentifier: "Tab") as! TabBarColorController
-        self.present(loggedInViewController, animated: true, completion: nil)
+//        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let loggedInViewController = storyBoard.instantiateViewController(withIdentifier: "Coupon") as! ViewController
+//        loggedInViewController.modalPresentationStyle = .fullScreen
+//        self.present(loggedInViewController, animated: true, completion: nil)
+                self.performSegue(withIdentifier: "ShowMainScreen", sender: nil)
             }
         }
     }
