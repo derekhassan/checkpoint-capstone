@@ -282,7 +282,7 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                     
                     Service().transaction(parameters: parameters) { (response) in
                         
-                            if response["status"].intValue == 401 {
+                            if response["message"] == "Unauthenticated." {
                                 print("Unauthenticated")
                             } else {
                                 print("Transaction created!")
