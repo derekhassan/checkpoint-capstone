@@ -37,4 +37,21 @@ class Service{
              }
          }
      }
+    
+    //Login api
+    func transaction(parameters: [String:AnyObject], completion: @escaping (_ callback: JSON)->()) {
+        let url = Routes.transactionRoute
+        
+        let headers: HTTPHeaders = [
+          "Accept": "application/json"
+        ]
+        
+        Alamofire.request(url , method: .post, parameters: parameters, headers: headers).responseJSON { response in
+            if let json = response.result.value {
+                completion(JSON(json))
+            } else {
+                print("Not valid json")
+            }
+        }
+    }
 }

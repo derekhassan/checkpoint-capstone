@@ -277,7 +277,17 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 if json["user_id"].exists() {
                     
                     print("Should be valid")
-                    //checkpoint.test/api/auth/createtransaction?userShared=1&userReceived=2&couponID=1
+                    
+                    let parameters: [String: AnyObject] = ["userShared": json["user_id"] as AnyObject , "userReceived": 1 as AnyObject, "couponID": json["coupon_id"] as AnyObject]
+                    
+                    Service().transaction(parameters: parameters) { (response) in
+                        
+                            if response["status"].intValue == 401 {
+                                print("Unauthenticated")
+                            } else {
+                                print("Transaction created!")
+                            }
+                    }
                 }
             } catch {
                 print("JSON error, need to look into")
