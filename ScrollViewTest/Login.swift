@@ -43,8 +43,15 @@ class Login: UIViewController {
 //        loggedInViewController.modalPresentationStyle = .fullScreen
 //        self.present(loggedInViewController, animated: true, completion: nil)
                 self.performSegue(withIdentifier: "ShowMainScreen", sender: nil)
-            
             }
         }
     }
+    
+    @IBAction func LogoutClick(_ sender: Any) {
+        //will have to destroy login tokens and elete the ones stored locally
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let loggedInViewController = storyBoard.instantiateViewController(withIdentifier: "Login") as! Login
+        self.present(loggedInViewController, animated: true, completion: nil)
+    }
+    
 }
