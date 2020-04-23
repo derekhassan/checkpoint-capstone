@@ -31,19 +31,21 @@ class Signup: UIViewController {
         
         Service().signup(parameters: parameters) { (response) in
             
-            if response["status"].intValue == 0 {
-                print(response["message"].stringValue)
-                
-                SweetAlert().showAlert("Error", subTitle: response["message"].stringValue, style: AlertStyle.error)
-            } else {
+            if response["name"].exists() {
+                print("Should be correct signup")
                 
                 //succesful login
-                let userid = response["message"].intValue
+                let userid = response["id"].intValue
                 print("UserID \(userid )")
                 
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let loggedInViewController = storyBoard.instantiateViewController(withIdentifier: "Login") as! Login
                 self.present(loggedInViewController, animated: true, completion: nil)
+                
+            } else {
+                
+                SweetAlert().showAlert("Error", subTitle: response["message"]["errors"].stringValue, style: AlertStyle.error)
+
             }
         }
     }
