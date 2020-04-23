@@ -38,6 +38,7 @@ class Service{
          }
      }
     
+
     //Login api
     func transaction(parameters: [String:AnyObject], completion: @escaping (_ callback: JSON)->()) {
         let url = Routes.transactionRoute
