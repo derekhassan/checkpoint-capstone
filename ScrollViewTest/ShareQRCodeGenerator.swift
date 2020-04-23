@@ -11,7 +11,7 @@ import UIKit
 import SwiftyJSON
 
 func createShareQRCode(data: [Int]) -> (UIImage)? {
-
+    
     let qrCodeParams = JSON([
         "user_id": data[0],
         "coupon_id": data[1]
