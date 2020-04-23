@@ -24,10 +24,6 @@ class Signup: UIViewController {
 
     }
     
-
-    
-    
-    
     
     @IBAction func Signup(_ sender: Any) {
     

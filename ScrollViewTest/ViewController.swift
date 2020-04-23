@@ -160,28 +160,18 @@ class ViewController: UIViewController {
 //        {
 //
 //        }
-//        
-        
-        
+//
         
         wallet.reload(cardViews: newView)
-        
-      
-
-        
-                
-        
-       
     
         createObservers() //creates observers for Notification
         
         wallet.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
 
         //let testCard = CardView()
-
         
-        setupNewCard(view: testCard, color: UIColor.white)
-        newView.append(testCard)
+        //setupNewCard(view: testCard, color: UIColor.white)
+        //newView.append(testCard)
         
         wallet.reload(cardViews: newView)
         
@@ -200,8 +190,6 @@ class ViewController: UIViewController {
         
     }
     
-    
-   
     @IBOutlet weak var wallet: WalletView!
     
     @IBOutlet weak var QRValue: UILabel?
@@ -235,14 +223,9 @@ class ViewController: UIViewController {
         catch{
             
         }
-        
-                
-        
+
     }
-        
-        
-    
-    
+
     @objc func pressed(sender: UIButton!) {
 
         // Popup for code at register
