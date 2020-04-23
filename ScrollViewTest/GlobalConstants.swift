@@ -29,7 +29,7 @@ struct Routes {
     static let signupRoute = baseUrl + "/api/auth/signup"
     
     // transaction routes
-    static let transactionRoute = baseUrl + "/api/auth/transaction"
+    static let transactionRoute = baseUrl + "/api/transaction"
     
     // coupon routes
     static let couponRoute = baseUrl + "/api/coupon?id="
