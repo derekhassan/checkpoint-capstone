@@ -166,12 +166,20 @@ class ViewController: UIViewController {
     
         createObservers() //creates observers for Notification
         
-        wallet.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        wallet.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
 
-        //let testCard = CardView()
+        let testCard1 = CardView()
+        let testCard2 = CardView()
+        let testCard3 = CardView()
         
-        //setupNewCard(view: testCard, color: UIColor.white)
-        //newView.append(testCard)
+        setupNewCard(view: testCard1, color: UIColor.white)
+        newView.append(testCard1)
+        
+        setupNewCard(view: testCard2, color: UIColor.white)
+        newView.append(testCard2)
+        
+        setupNewCard(view: testCard3, color: UIColor.white)
+        newView.append(testCard3)
         
         wallet.reload(cardViews: newView)
         
