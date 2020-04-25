@@ -25,15 +25,18 @@ class Login: UIViewController {
     
     @IBAction func LoginClick(_ sender: Any) {
     
-    let parameters: [String: AnyObject] = ["email": txtEmail.text! as AnyObject , "password": txtPassword.text! as AnyObject]
+    let parameters: [String: AnyObject] = ["username": txtEmail.text! as AnyObject , "password": txtPassword.text! as AnyObject]
     
     Service().login(parameters: parameters) { (response) in
     
-            if response["status"].intValue == 0 {
-                print("Login was incorrect")
+            //"token_type":"Bearer"
+        
+            if response["token_type"] == "Bearer" {
+                print("Login was correct")
+                //Add response["access_token"] to local storge, be sure to destroy on logout.
             } else {
                 
-            print("Login was Good!")
+            print("Fix login error!")
             
             let userid = response["message"].intValue
             print("UserID\(userid )")

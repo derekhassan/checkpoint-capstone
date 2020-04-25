@@ -25,14 +25,20 @@ private let baseUrl = "http://derhas.dreamhosters.com"
 struct Routes {
     
     // login/signup routes
-    static let loginRoute = baseUrl + "/api/auth/login"
-    static let signupRoute = baseUrl + "/api/auth/signup"
+    static let loginRoute = baseUrl + "/api/authlogin"
+    static let signupRoute = baseUrl + "/api/authregister"
+    
+    // destroys all tokens (requires access token)
+    static let logoutRoute = baseUrl + "/api/logout"
     
     // transaction routes
     static let transactionRoute = baseUrl + "/api/transaction"
     
     // coupon routes
     static let couponRoute = baseUrl + "/api/coupon?id="
+    
+    //returns user data (requires access token)
+    static let userRoute = baseUrl + "/api/user"
     
 }
 
