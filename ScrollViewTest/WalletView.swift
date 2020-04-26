@@ -163,7 +163,7 @@ open class WalletView: UIView {
     }
     
     /** The desirable card view height value. Used when the wallet view has enough space. */
-    public var preferableCardViewHeight: CGFloat = .greatestFiniteMagnitude { didSet { calculateLayoutValues() } }
+    public var preferableCardViewHeight: CGFloat = 350 { didSet { calculateLayoutValues() } }
     
     /** Number of card views to show in the bottom of the wallet view when presenting card view. */
     public var maximimNumberOfCollapsedCardViewsToShow: Int = 5 { didSet { calculateLayoutValues() } }

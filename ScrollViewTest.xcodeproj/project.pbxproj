@@ -57,7 +57,7 @@
 		72B13DF82432662400ED0762 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		C486C2D62394B51B0083805E /* TopBarTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarTemplate.swift; sourceTree = "<group>"; };
 		C4BE694223973C1000C70BA2 /* TabBarColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarColor.swift; sourceTree = "<group>"; };
-		C4DA83CD23936F100047D7B4 /* ScrollViewTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScrollViewTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4DA83CD23936F100047D7B4 /* CheckPoint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckPoint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4DA83D023936F100047D7B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4DA83D223936F100047D7B4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C4DA83D523936F100047D7B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 		C4DA83CE23936F100047D7B4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C4DA83CD23936F100047D7B4 /* ScrollViewTest.app */,
+				C4DA83CD23936F100047D7B4 /* CheckPoint.app */,
 				C4DA83E123936F130047D7B4 /* ScrollViewTestTests.xctest */,
 				C4DA83EC23936F140047D7B4 /* ScrollViewTestUITests.xctest */,
 			);
@@ -211,7 +211,7 @@
 				D5594DDF23EC640A0037A335 /* Alamofire */,
 			);
 			productName = ScrollViewTest;
-			productReference = C4DA83CD23936F100047D7B4 /* ScrollViewTest.app */;
+			productReference = C4DA83CD23936F100047D7B4 /* CheckPoint.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C4DA83E023936F130047D7B4 /* ScrollViewTestTests */ = {
@@ -525,16 +525,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PK9D8D5B6K;
+				DEVELOPMENT_TEAM = 9749U47LQ4;
 				INFOPLIST_FILE = ScrollViewTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = checkpoint.RobertLeapTest;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = checkpoint.DerekHassan;
+				PRODUCT_NAME = CheckPoint;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -543,16 +543,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PK9D8D5B6K;
+				DEVELOPMENT_TEAM = 9749U47LQ4;
 				INFOPLIST_FILE = ScrollViewTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = checkpoint.RobertLeapTest;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = checkpoint.DerekHassan;
+				PRODUCT_NAME = CheckPoint;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

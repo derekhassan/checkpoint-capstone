@@ -30,7 +30,7 @@ func createShareQRCode(data: [Int]) -> (UIImage)? {
             // Get the output image
             guard let qrImage = qrFilter.outputImage else { return nil}
             // Scale the image
-            let transform = CGAffineTransform(scaleX: 10, y: 10)
+            let transform = CGAffineTransform(scaleX: 20, y: 20)
             let scaledQrImage = qrImage.transformed(by: transform)
             // Invert the colors
             guard let colorInvertFilter = CIFilter(name: "CIColorInvert") else { return nil}
@@ -43,9 +43,7 @@ func createShareQRCode(data: [Int]) -> (UIImage)? {
             // Do some processing to get the UIImage
             let context = CIContext()
             guard let cgImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) else { return nil}
-            let processedImage = UIImage(cgImage: cgImage)
-            let actionButton = UIButton(frame: CGRect(x: 141, y: 274, width: 118, height: 118))
-            actionButton.setImage(processedImage, for: UIControl.State.normal)
+            let processedImage = UIImage(cgImage: cgImage) 
             
             return processedImage
             
