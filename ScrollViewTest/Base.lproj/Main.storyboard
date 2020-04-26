@@ -3,7 +3,7 @@
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +12,7 @@
         <!--Scan-->
         <scene sceneID="Jqs-61-nwE">
             <objects>
-                <viewController title="Scan" id="0mx-LI-5xK" customClass="QRCodeScanner" customModule="ScrollViewTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Scan" id="0mx-LI-5xK" customClass="QRCodeScanner" customModule="CheckPoint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ATz-fD-JAY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,7 +38,7 @@
         <!--TabBar-->
         <scene sceneID="tAL-lB-1bd">
             <objects>
-                <tabBarController storyboardIdentifier="TabBar" title="TabBar" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hxE-kb-tI4" customClass="TabBarColorController" customModule="ScrollViewTest" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBar" title="TabBar" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hxE-kb-tI4" customClass="TabBarColorController" customModule="CheckPoint" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="7y5-XK-Lk8"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" id="pkz-HO-KIp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -65,7 +65,7 @@
         <!--Profile-->
         <scene sceneID="0ua-Qw-piS">
             <objects>
-                <viewController id="RPc-Fp-SHD" customClass="Login" customModule="ScrollViewTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="RPc-Fp-SHD" customClass="Login" customModule="CheckPoint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aIh-gt-eP0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -210,12 +210,12 @@
         <!--Coupon-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="Coupon" title="Coupon" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="ScrollViewTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Coupon" title="Coupon" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="CheckPoint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFI-xL-vQd" userLabel="Wallet" customClass="WalletView" customModule="ScrollViewTest" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFI-xL-vQd" userLabel="Wallet" customClass="WalletView" customModule="CheckPoint" customModuleProvider="target">
                                 <rect key="frame" x="14" y="105" width="387" height="624"/>
                                 <subviews>
                                     <view hidden="YES" alpha="0.94999999999999996" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rnm-ZC-nLb">
@@ -301,7 +301,7 @@
         <!--Login Scene-->
         <scene sceneID="ytM-8q-DpM">
             <objects>
-                <viewController storyboardIdentifier="Login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sMY-9C-jqf" userLabel="Login Scene" customClass="Login" customModule="ScrollViewTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sMY-9C-jqf" userLabel="Login Scene" customClass="Login" customModule="CheckPoint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Rp-D6-BzH" userLabel="Login">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -425,54 +425,115 @@
         <!--Signup Scene-->
         <scene sceneID="jBW-Pf-Te1">
             <objects>
-                <viewController storyboardIdentifier="Signup" useStoryboardIdentifierAsRestorationIdentifier="YES" id="J0K-Yz-3q1" userLabel="Signup Scene" customClass="Signup" customModule="ScrollViewTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Signup" useStoryboardIdentifierAsRestorationIdentifier="YES" id="J0K-Yz-3q1" userLabel="Signup Scene" customClass="Signup" customModule="CheckPoint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uXY-px-0em" userLabel="Signup">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Checkpoint" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78K-yW-qPZ">
-                                <rect key="frame" x="163" y="120" width="94" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checkpoint" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwj-ku-Fxo">
+                                <rect key="frame" x="99.666666666666686" y="102" width="215" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="hDY-go-YCj"/>
+                                    <constraint firstAttribute="width" constant="215" id="jFt-JY-vHy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vJT-7P-4Tp">
-                                <rect key="frame" x="183" y="418" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Signup"/>
-                                <connections>
-                                    <action selector="Signup:" destination="J0K-Yz-3q1" eventType="touchUpInside" id="QQf-SK-oeB"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fjc-jB-c1M" userLabel="Password">
-                                <rect key="frame" x="127" y="355" width="167" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kiN-8I-YDU" userLabel="Name">
-                                <rect key="frame" x="127" y="239" width="167" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zdb-ct-yNu" userLabel="Email">
-                                <rect key="frame" x="127" y="297" width="167" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="email"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="amw-sy-Ta7" userLabel="Cancel">
-                                <rect key="frame" x="183" y="456" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <segue destination="sMY-9C-jqf" kind="presentation" modalPresentationStyle="fullScreen" id="CuH-RE-vVy"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pb0-gB-Jjg" userLabel="LoginView">
+                                <rect key="frame" x="0.0" y="180" width="414" height="250"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fjc-jB-c1M" userLabel="Password">
+                                        <rect key="frame" x="47" y="103" width="320" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kiN-8I-YDU" userLabel="Name">
+                                        <rect key="frame" x="47" y="19" width="320" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zdb-ct-yNu" userLabel="Email">
+                                        <rect key="frame" x="47" y="61" width="320" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" textContentType="email"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vJT-7P-4Tp">
+                                        <rect key="frame" x="47" y="154" width="320" height="38"/>
+                                        <color key="backgroundColor" name="CheckpointGreen"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="38" id="Tqb-h7-cyz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Signup">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowUIColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                <real key="value" value="0.23000000000000001"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                <real key="value" value="0.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                <size key="value" width="0.0" height="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="Signup:" destination="J0K-Yz-3q1" eventType="touchUpInside" id="QQf-SK-oeB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="amw-sy-Ta7" userLabel="Cancel">
+                                        <rect key="frame" x="181" y="200" width="52" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="0jS-ig-Ioy"/>
+                                            <constraint firstAttribute="width" constant="52" id="f7J-s8-U21"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="sMY-9C-jqf" kind="presentation" modalPresentationStyle="fullScreen" id="CuH-RE-vVy"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Zdb-ct-yNu" secondAttribute="trailing" constant="47" id="1r8-hU-5Uh"/>
+                                    <constraint firstItem="vJT-7P-4Tp" firstAttribute="top" secondItem="Fjc-jB-c1M" secondAttribute="bottom" constant="17" id="2z1-WZ-Bhc"/>
+                                    <constraint firstAttribute="trailing" secondItem="Fjc-jB-c1M" secondAttribute="trailing" constant="47" id="4ix-Pi-2c5"/>
+                                    <constraint firstItem="kiN-8I-YDU" firstAttribute="leading" secondItem="pb0-gB-Jjg" secondAttribute="leading" constant="47" id="Apn-hK-0xI"/>
+                                    <constraint firstAttribute="trailing" secondItem="vJT-7P-4Tp" secondAttribute="trailing" constant="47" id="BO1-Ly-Kn0"/>
+                                    <constraint firstItem="Zdb-ct-yNu" firstAttribute="top" secondItem="kiN-8I-YDU" secondAttribute="bottom" constant="8" id="FIc-c6-rDI"/>
+                                    <constraint firstItem="amw-sy-Ta7" firstAttribute="centerX" secondItem="pb0-gB-Jjg" secondAttribute="centerX" id="HpB-PT-5Ny"/>
+                                    <constraint firstItem="Zdb-ct-yNu" firstAttribute="leading" secondItem="pb0-gB-Jjg" secondAttribute="leading" constant="47" id="LeN-ZS-Wzb"/>
+                                    <constraint firstItem="Fjc-jB-c1M" firstAttribute="top" secondItem="Zdb-ct-yNu" secondAttribute="bottom" constant="8" id="OgR-q1-eKB"/>
+                                    <constraint firstItem="Fjc-jB-c1M" firstAttribute="leading" secondItem="pb0-gB-Jjg" secondAttribute="leading" constant="47" id="SKe-Gu-RVi"/>
+                                    <constraint firstItem="kiN-8I-YDU" firstAttribute="top" secondItem="pb0-gB-Jjg" secondAttribute="top" constant="19" id="fn7-nJ-Clb"/>
+                                    <constraint firstItem="vJT-7P-4Tp" firstAttribute="leading" secondItem="pb0-gB-Jjg" secondAttribute="leading" constant="47" id="fqO-Bj-w16"/>
+                                    <constraint firstAttribute="trailing" secondItem="kiN-8I-YDU" secondAttribute="trailing" constant="47" id="hr0-AI-PbB"/>
+                                    <constraint firstAttribute="height" constant="250" id="ppN-6B-KOe"/>
+                                    <constraint firstItem="amw-sy-Ta7" firstAttribute="top" secondItem="vJT-7P-4Tp" secondAttribute="bottom" constant="8" id="uWG-w5-pf5"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="pb0-gB-Jjg" firstAttribute="leading" secondItem="LfE-Hk-XhY" secondAttribute="leading" id="Clr-mG-M5o"/>
+                            <constraint firstItem="pb0-gB-Jjg" firstAttribute="top" secondItem="pwj-ku-Fxo" secondAttribute="bottom" constant="8" id="XOj-wm-c21"/>
+                            <constraint firstItem="pwj-ku-Fxo" firstAttribute="centerX" secondItem="uXY-px-0em" secondAttribute="centerX" id="dxO-fK-qqW"/>
+                            <constraint firstItem="pb0-gB-Jjg" firstAttribute="top" secondItem="pwj-ku-Fxo" secondAttribute="bottom" constant="8" id="hFi-jT-JmG"/>
+                            <constraint firstItem="pb0-gB-Jjg" firstAttribute="trailing" secondItem="LfE-Hk-XhY" secondAttribute="trailing" id="o9i-h9-LtT"/>
+                            <constraint firstItem="pwj-ku-Fxo" firstAttribute="top" secondItem="LfE-Hk-XhY" secondAttribute="top" constant="58" id="zOF-I2-3U5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="LfE-Hk-XhY"/>
                     </view>
                     <navigationItem key="navigationItem" id="6Yo-0h-jQX"/>
@@ -502,7 +563,7 @@
                     <viewLayoutGuide key="safeArea" id="dIF-Mh-3zm"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="-3500" y="877"/>
+            <point key="canvasLocation" x="-3500.0000000000005" y="876.5625"/>
         </scene>
     </scenes>
     <resources>

@@ -335,7 +335,7 @@ brandNewCard.addSubview(deleteButton)
         //
         
         // Popup for code at register
-        let alert = UIAlertController(title: "Use?", message: "This action cannot be done", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let prompt1 = UIAlertAction(title: "Use", style: .default, handler: {ACTION in
 
@@ -409,18 +409,12 @@ brandNewCard.addSubview(deleteButton)
                 self.view.addSubview(actionButton)})
                 //End of QR Code Generator g
         
-        let prompt4 = UIAlertAction(title: "Delete", style: .destructive, handler: {ACTION in print("Delete");
-                   
-            
-               })
-        
         
         let promptClose = UIAlertAction(title: "Close", style: .cancel, handler: {action in print("User wants to close"); alert.removeFromParent()})
         
         alert.addAction(prompt1)
         alert.addAction(prompt2)
         alert.addAction(promptClose)
-        alert.addAction(prompt4)
         self.present(alert, animated: true, completion: nil)
         
     }
