@@ -13,12 +13,12 @@ class TabBarColorController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tabBar.barTintColor = UIColor.white
-        
-        let gradient = CAGradientLayer()
-        gradient.frame = tabBar.bounds
-        gradient.colors = [Colors.DarkBlueGradient.color1, Colors.DarkBlueGradient.color2]
-        self.tabBar.layer.insertSublayer(gradient, at: 0)
+//        self.tabBar.barTintColor = UIColor.white
+//        
+//        let gradient = CAGradientLayer()
+//        gradient.frame = tabBar.bounds
+//        gradient.colors = [Colors.DarkBlueGradient.color1, Colors.DarkBlueGradient.color2]
+//        self.tabBar.layer.insertSublayer(gradient, at: 0)
 
     }
 

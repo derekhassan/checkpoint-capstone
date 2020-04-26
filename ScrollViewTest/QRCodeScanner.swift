@@ -287,6 +287,8 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                         
                         if response["status"].intValue == 201 {
                             print("Transaction created!")
+                            
+                            
                             } else {
                                print("Unauthenticated")
                             }
