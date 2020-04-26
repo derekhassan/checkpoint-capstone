@@ -6,6 +6,9 @@ import UIKit
 var WV = WalletView()
 open class WalletView: UIView {
     
+    
+    static let WV = WalletView()
+    
     // MARK: Public methods
 
     /**

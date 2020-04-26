@@ -42,13 +42,13 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
             DispatchQueue.main.async {
                 var qrCodeFrameView = UIView()
-                qrCodeFrameView = UIView(frame: CGRect(x:60, y:150, width:250, height:250))
+                qrCodeFrameView = UIView(frame: CGRect(x:0, y:0, width:250, height:250))
                 self.view.addSubview(qrCodeFrameView)
                 self.qrCodeFrameView = UIView()
                 qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
                 qrCodeFrameView.layer.borderWidth = 2
                 qrCodeFrameView.bringSubviewToFront(qrCodeFrameView)
- 
+                qrCodeFrameView.center = self.view.center
             }
         
             //qrCodeFrameView = UIView()
@@ -200,7 +200,8 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                                 newCoupon.setValue(busID, forKey: "bus_id")
                                 newCoupon.setValue(percentage, forKey: "percentage")
                                 newCoupon.setValue(percentageCap, forKey: "percentage_cap")
-
+                                
+                            
 
                                     do
                                     {
@@ -342,6 +343,8 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             print(code)
         }
     }
+    
+     
 
     override var prefersStatusBarHidden: Bool {
         return true

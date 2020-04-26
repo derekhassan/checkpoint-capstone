@@ -54,7 +54,7 @@ class ViewController: UIViewController {
               
 
                 
-                let brandNewCard: CardView = CardView()
+               let brandNewCard: CardView = CardView()
                 
               
                let qrIdLabel  = UILabel(frame: CGRect(x: 104, y: 50, width: 158, height: 39))
@@ -84,6 +84,9 @@ class ViewController: UIViewController {
                 brandNewCard.addSubview(PercentageLabel)
                 brandNewCard.addSubview(actionButton)
                 brandNewCard.addSubview(deleteButton)
+                
+                
+               
                 
                 
                 
@@ -326,6 +329,21 @@ class ViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
         
     }
+    
+//                    override func encodeRestorableState(with coder: NSCoder) {
+//
+//                        if let couponRestoration = wallet{
+//                           coder.encode(couponRestoration, forKey: "id")
+//                       }
+//                       super.encodeRestorableState(with: coder)
+//
+//                   }
+//
+//                    override func applicationFinishedRestoringState() {
+//                        guard let couponRestoration = else { return }
+//                                        }
+
+   
     
 }
 
