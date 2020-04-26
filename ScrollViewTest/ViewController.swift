@@ -134,6 +134,9 @@ brandNewCard.addSubview(actionButton)
 brandNewCard.addSubview(deleteButton)
                 
                 
+               
+                
+                
                 
                 newView.append(brandNewCard)
                 
@@ -421,6 +424,21 @@ brandNewCard.addSubview(deleteButton)
         self.present(alert, animated: true, completion: nil)
         
     }
+    
+//                    override func encodeRestorableState(with coder: NSCoder) {
+//
+//                        if let couponRestoration = wallet{
+//                           coder.encode(couponRestoration, forKey: "id")
+//                       }
+//                       super.encodeRestorableState(with: coder)
+//
+//                   }
+//
+//                    override func applicationFinishedRestoringState() {
+//                        guard let couponRestoration = else { return }
+//                                        }
+
+   
     
 }
 
