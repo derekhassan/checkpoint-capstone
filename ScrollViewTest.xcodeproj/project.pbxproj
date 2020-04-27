@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65B586F124565DE50025CC00 /* PopupHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B586F024565DE50025CC00 /* PopupHandler.swift */; };
 		723839F5240EDF9F00DB3BFF /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723839F3240EDF9E00DB3BFF /* CardView.swift */; };
 		723839F6240EDF9F00DB3BFF /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723839F4240EDF9F00DB3BFF /* WalletView.swift */; };
 		726B0D232433C9FF0024D32C /* ShareQRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726B0D222433C9FF0024D32C /* ShareQRCodeGenerator.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		65B586F024565DE50025CC00 /* PopupHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupHandler.swift; sourceTree = "<group>"; };
 		723839F3240EDF9E00DB3BFF /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		723839F4240EDF9F00DB3BFF /* WalletView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
 		726B0D222433C9FF0024D32C /* ShareQRCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareQRCodeGenerator.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				D2E93B4223E35510004899F1 /* Login.swift */,
 				72B13DF82432662400ED0762 /* GlobalConstants.swift */,
 				726B0D222433C9FF0024D32C /* ShareQRCodeGenerator.swift */,
+				65B586F024565DE50025CC00 /* PopupHandler.swift */,
 			);
 			path = ScrollViewTest;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				D5594DE323EC66260037A335 /* Service.swift in Sources */,
 				C4BE694323973C1000C70BA2 /* TabBarColor.swift in Sources */,
 				726B0D232433C9FF0024D32C /* ShareQRCodeGenerator.swift in Sources */,
+				65B586F124565DE50025CC00 /* PopupHandler.swift in Sources */,
 				E23580AB240F3F3A00CB10C3 /* Dummm.swift in Sources */,
 				C4DCE36123974447002D7487 /* TabBarColorController.swift in Sources */,
 			);
