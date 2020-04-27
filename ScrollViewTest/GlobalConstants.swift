@@ -36,6 +36,7 @@ struct Routes {
     
     // coupon routes
     static let couponRoute = baseUrl + "/api/coupon?id="
+    static let getCouponRoute = baseUrl + "/api/coupon"
     
     //returns user data (requires access token)
     static let userRoute = baseUrl + "/api/user"

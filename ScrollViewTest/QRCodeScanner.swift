@@ -278,8 +278,16 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 if json["user_id"].exists() {
                     
                     print("Should be valid")
+                    var userReceived : Int!
                     
-                    let parameters: [String: AnyObject] = ["userShared": json["user_id"] as AnyObject , "userReceived": 1 as AnyObject, "couponID": json["coupon_id"] as AnyObject]
+                    Service().getUserData() { (response) in
+                        if response["id"].exists() {
+                            print("Finding id of current user...")
+                            userReceived = response["id"].intValue
+                        }
+                    }
+                    
+                    let parameters: [String: AnyObject] = ["userShared": json["user_id"] as AnyObject , "userReceived": userReceived as AnyObject, "couponID": json["coupon_id"] as AnyObject]
                     
                     Service().transaction(parameters: parameters) { (response) in
                         
@@ -287,7 +295,45 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                         
                         if response["status"].intValue == 201 {
                             print("Transaction created!")
-                            
+                            let para: [String: AnyObject] = ["id": json["coupon_id"].int as AnyObject]
+
+                            Service().getCoupon(parameters: para) { (response) in
+                               let name = Notification.Name(rawValue: qrCodeScannerKey)
+
+                               print(response.dictionaryValue.count)
+
+                               guard let id = response.dictionaryValue["id"]?.stringValue else {
+
+                                   print("no id")
+                                   return
+                               }
+
+
+                               guard let busID = response.dictionaryValue["bus_id"]?.stringValue else {
+
+                                   print("no busID")
+                                   return }
+
+                               guard let percentage_cap = response.dictionaryValue["percentage_cap"]?.stringValue else {return }
+
+                               guard let percentage = response.dictionaryValue["percentage"]?.stringValue else { return}
+                               /*
+                               
+                                {
+                                    "id": 1,
+                                    "created_at": "2020-04-19 20:10:32",
+                                    "updated_at": "2020-04-19 20:10:32",
+                                    "percentage": 12,
+                                    "percentage_cap": 25,
+                                    "bus_id": 1
+                                }
+
+                               */
+
+                               print("pass")
+                               NotificationCenter.default.post(name: name, object: ["Qrid:" + id, "BusID:" + busID, "Cap:" + percentage_cap, "Percentage:" + percentage])
+
+                           }
                             
                             } else {
                                print("Unauthenticated")

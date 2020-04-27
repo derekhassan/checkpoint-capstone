@@ -34,6 +34,7 @@ class Login: UIViewController {
             if response["token_type"] == "Bearer" {
                 print("Login was correct")
                 //Add response["access_token"] to local storge, be sure to destroy on logout.
+                UserDefaults.standard.set(response["access_token"].string!, forKey: "Token")
             } else {
                 
             print("Fix login error!")

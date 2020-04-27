@@ -12,6 +12,33 @@ class PopupHandler: UIViewController {
 
     var shareCodeImage : UIImage!
     var useCodeText : String!
+    var couponID : Int!
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("GONE")
+        
+        var userShared : Int!
+        
+         Service().getUserData() { (response) in
+             if response["id"].exists() {
+                 print("Finding id of current user...")
+                 userShared = response["id"].intValue
+            }
+        }
+        
+        let parameters: [String: AnyObject] = ["userShared": userShared as AnyObject , "couponID": couponID as AnyObject]
+        
+        Service().checkTransaction(parameters: parameters) { (response) in
+            if response["status"].intValue == 1 {
+                print("Response")
+            }
+            else {
+                print("Could not find transaction")
+            }
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +53,7 @@ class PopupHandler: UIViewController {
             ShareCode.image = shareCodeImage
             ShareHintText.isHidden = false
             //HintText.text = "Have a friend scan this code to receive an additional 1% off"
+            
         }
         else if useCodeText != nil {
             UseCode.isHidden = false
