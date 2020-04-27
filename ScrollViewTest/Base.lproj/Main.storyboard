@@ -145,6 +145,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="LogoutClick:" destination="RPc-Fp-SHD" eventType="touchUpInside" id="6pg-4c-h0A"/>
+                                                    <segue destination="sMY-9C-jqf" kind="presentation" identifier="ShowLoginScreen" modalPresentationStyle="fullScreen" id="FU9-7q-lrk"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -685,6 +686,9 @@
             <point key="canvasLocation" x="-3500.0000000000005" y="876.5625"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="FU9-7q-lrk"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="CameraIcon-Orange" width="34.666667938232422" height="25.666666030883789"/>
         <image name="CameraIcon-White" width="34.666667938232422" height="25.666666030883789"/>

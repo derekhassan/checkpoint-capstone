@@ -54,7 +54,7 @@ class Login: UIViewController {
         //will have to destroy login tokens and elete the ones stored locally
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let loggedInViewController = storyBoard.instantiateViewController(withIdentifier: "Login") as! Login
-        self.present(loggedInViewController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(loggedInViewController, animated: true)
     }
     
 }
