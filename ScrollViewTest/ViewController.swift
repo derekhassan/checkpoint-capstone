@@ -30,39 +30,15 @@ func setupNewCard(view: UIView!, color: UIColor!){
     
 }
 
+//Adds text to card
 func setupCardAttributes(view: CardView!, text: Array<String>!, walletView: WalletView) {
     
-    //newView.append(view)
     //let qrIdLabel  = UILabel(frame: CGRect(x: 104, y: 50, width: 158, height: 39))
     //let busIdLabel = UILabel(frame: CGRect(x: 104, y: 100, width: 158, height: 39))
     //let CapLabel = UILabel(frame: CGRect(x: 31, y: 104, width: 280, height: 81))
     let PercentageLabel = UILabel(frame: CGRect(x: 31, y: 115, width: 280, height: 81))
     //let actionButton = UIButton(frame: CGRect(x: 15, y: 300, width: 40, height: 40))
     //let deleteButton = UIButton(frame: CGRect(x: walletView.frame.width-55, y: 300, width: 40, height: 40))
-    
-    //actionButton.addTarget(VC, action: #selector(VC.pressed(sender:)), for: .touchUpInside)
-
-//    if #available(iOS 13.0, *) {
-//        let actionImage = UIImage(systemName: "square.and.arrow.up", withConfiguration: UIImage.SymbolConfiguration(scale: .large))?.withTintColor(UIColor.label, renderingMode: .automatic)
-//
-//        let deleteImage = UIImage(systemName: "trash", withConfiguration: UIImage.SymbolConfiguration(scale: .large))?.withTintColor(UIColor.label, renderingMode: .automatic)
-//
-//        let actionImageSelected = UIImage(systemName: "square.and.arrow.up", withConfiguration: UIImage.SymbolConfiguration(scale: .large))?.withTintColor(UIColor.systemGray3, renderingMode: .automatic)
-//
-//        let deleteImageSelected = UIImage(systemName: "trash", withConfiguration: UIImage.SymbolConfiguration(scale: .large))?.withTintColor(UIColor.systemGray3, renderingMode: .automatic)
-//
-//        actionButton.setImage(actionImage, for: UIControl.State.normal)
-//        deleteButton.setImage(deleteImage, for: UIControl.State.normal)
-//        actionButton.setImage(actionImageSelected, for: UIControl.State.selected)
-//        deleteButton.setImage(deleteImageSelected, for: UIControl.State.selected)
-//
-//    } else {
-//        let actionImage = UIImage(named: "ShareIcon")
-//        let deleteImage = UIImage(named: "TrashIcon")
-//        actionButton.setImage(actionImage, for: UIControl.State.normal)
-//        deleteButton.setImage(deleteImage, for: UIControl.State.normal)
-//    }
-    
     
     //qrIdLabel.text = text[0]
      //busIdLabel.text = text[1]
@@ -84,6 +60,7 @@ var VC = ViewController()
 class ViewController: UIViewController {
     
     var brandNewCard2:CardView = CardView()
+    
    // This notification will pass in details about the coupon that was scanned
     let qrNotification = Notification.Name(rawValue: qrCodeScannerKey)
     
@@ -94,8 +71,6 @@ class ViewController: UIViewController {
     func createObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.getCardInfo(notification:)), name: qrNotification, object: nil)
     }
-    
-    
 
     @objc func getCardInfo(notification: NSNotification) {
         if let array = notification.object as? [String] {
@@ -103,11 +78,7 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
 
                let brandNewCard: CardView = CardView()
-              
-//               let qrIdLabel  = UILabel(frame: CGRect(x: 104, y: 50, width: 158, height: 39))
-//               let busIdLabel = UILabel(frame: CGRect(x: 104, y: 100, width: 158, height: 39))
-//               let CapLabel = UILabel(frame: CGRect(x: 104, y: 150, width: 158, height: 39))
-//               let PercentageLabel = UILabel(frame: CGRect(x: 104, y: 200, width: 158, height: 39))
+                
                let actionButton = UIButton(frame: CGRect(x: 104, y: 250, width: 18, height: 25))
                let deleteButton = UIButton(frame: CGRect(x: 104, y: 300, width: 18, height: 25))
                             
@@ -121,38 +92,18 @@ class ViewController: UIViewController {
 
                setupNewCard(view: brandNewCard, color: UIColor.white)
                 setupCardAttributes(view: brandNewCard, text: array, walletView: self.wallet)
-//               qrIdLabel.text = array[0]
-//               busIdLabel.text = array[1]
-//               CapLabel.text = array[2]
-//               PercentageLabel.text = array[3]
-//
-//                brandNewCard.addSubview(qrIdLabel)
-//                brandNewCard.addSubview(busIdLabel)
-//                brandNewCard.addSubview(CapLabel)
-//                brandNewCard.addSubview(PercentageLabel)
+
                 brandNewCard.addSubview(actionButton)
                 brandNewCard.addSubview(deleteButton)
-                                
-                
-               
-                
-                
-                
+
+                //Adds new card to the wallet and refreshes wallet
                 newView.append(brandNewCard)
-                
-                
                 self.wallet.reload(cardViews: newView)
-                
-//                self.brandNewCard2 = brandNewCard
 
            }
         }
     }
-    
-    
-  
 
-    
     override func viewDidLoad() {
     super.viewDidLoad()
         
@@ -237,16 +188,10 @@ class ViewController: UIViewController {
         
         wallet.reload(cardViews: newView)
         
-                       let actionButton = UIButton(frame: CGRect(x: 15, y: 300, width: 40, height: 40))
-                       let deleteButton = UIButton(frame: CGRect(x: wallet.frame.width-55, y: 300, width: 40, height: 40))
-                                    
-//                       let btnImage = UIImage(named: "ShareIcon")
-//                       actionButton.setImage(btnImage, for: UIControl.State.normal)
-//
-                        actionButton.addTarget(self, action: #selector(VC.pressed(sender:)), for: .touchUpInside)
-//                       let deleteImg = UIImage(named: "Rectangle 1")
-//                       deleteButton.setImage(deleteImg, for: UIControl.State.normal)
-                        deleteButton.addTarget(self, action: #selector(VC.deleter(sender:)), for: .touchUpInside)
+            let actionButton = UIButton(frame: CGRect(x: 15, y: 300, width: 40, height: 40))
+            let deleteButton = UIButton(frame: CGRect(x: wallet.frame.width-55, y: 300, width: 40, height: 40))
+            actionButton.addTarget(self, action: #selector(VC.pressed(sender:)), for: .touchUpInside)
+            deleteButton.addTarget(self, action: #selector(VC.deleter(sender:)), for: .touchUpInside)
 
         if #available(iOS 13.0, *) {
             let actionImage = UIImage(systemName: "square.and.arrow.up", withConfiguration: UIImage.SymbolConfiguration(scale: .large))?.withTintColor(UIColor.label, renderingMode: .automatic)
@@ -285,21 +230,22 @@ class ViewController: UIViewController {
             self.view.addSubview(noCouponsLabel)
         }
         
+        
     }
     
     @IBOutlet weak var wallet: WalletView!
     
     @IBOutlet weak var QRValue: UILabel?
 
+    //Called when the delete button is pressed
     @objc func deleter(sender: UIButton!){
         
         let deleteAlert = UIAlertController(title: "Delete Coupon?", message: "This action cannot be done", preferredStyle: .alert)
         let deletePrompt = UIAlertAction(title: "Delete", style: .destructive, handler: {action in
             self.wallet.remove(cardView: sender.superview as! CardView, animated: true)
             if sender.superview != nil {
-                print("Still there")
                 sender.superview?.removeFromSuperview()
-                print(self.wallet.insertedCardViews.count)
+                print(self.wallet.insertedCardViews.count) //Testing if card is actually removed
             }
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -317,20 +263,17 @@ class ViewController: UIViewController {
                 try context.save()
             }
             catch{ /*Add error handling logic here*/ }
-        })
+        }) //end of delete prompt
         
-        let cancelPrompt = UIAlertAction(title: "Cancel", style: .default, handler: {action in
-            // Close alert
-        })
+        let cancelPrompt = UIAlertAction(title: "Cancel", style: .default, handler: {action in /* Close alert */ })
         
         deleteAlert.addAction(deletePrompt)
         deleteAlert.addAction(cancelPrompt)
         self.present(deleteAlert, animated: true, completion: nil)
     }
 
+    //Called when action button is pressed
     @objc func pressed(sender: UIButton!) {
-
-        //
         
         // Action button
         let actionAlert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -341,46 +284,15 @@ class ViewController: UIViewController {
             
             let usePrompt = UIAlertAction(title: "Use", style: .default, handler: {ACTION in
                 
-                self.performSegue(withIdentifier: "PresentPopup", sender: self)
+                let length = 9
+                let characters =    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+                let randomCharacters = (0..<length).map{_ in characters.randomElement()!}
+                let randomString = String(randomCharacters)
                 
-                //self.Popup.isHidden = false
-                       // self.Popup.layer.cornerRadius = 20
-                        let top = UILabel(frame: CGRect(x: 100, y: 20, width: 200, height: 50))
-                        let code = UILabel(frame: CGRect(x: 70, y: 110, width: 300, height: 100))
-                        let lb = UILabel(frame: CGRect(x: 70, y: 250, width: 300, height: 30))
-                        
-//                        let alert2 = UIAlertController(title: "Close?", message: "This will close the coupon", preferredStyle: .actionSheet)
-//                        let close2 = UIAlertAction(title: "Close", style: .default, handler: {ACTION in self.Popup.isHidden = true; code.removeFromSuperview()} )
-                            top.text = "Company name"
-                            top.font = UIFont.boldSystemFont(ofSize: 24.0)
-                            let length = 9
-                            let characters =    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-                            let randomCharacters = (0..<length).map{_ in characters.randomElement()!}
-                            let randomString = String(randomCharacters)
-                            code.text = randomString
-                            code.textColor = UIColor.green
-                            code.font = UIFont.boldSystemFont(ofSize: 40)
-                            code.font = code.font.withSize(40)
-                            lb.text="Show this coupon at register"
-                            code.center.x = code.center.x
-                            lb.center.x = lb.center.x
-                            top.center.x = top.center.x
+                let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "PopupViewController") as! PopupHandler
+                destinationVC.useCodeText = randomString
+                self.present(destinationVC, animated: true, completion: nil)
                 
-//                if #available(iOS 13.0, *) {
-//                    self.Popup.backgroundColor = UIColor.systemGray3
-//                } else {
-//                    self.Popup.backgroundColor = UIColor.gray
-//                }
-//                self.Popup.bringSubviewToFront(self.PopupWindow)
-                
-//                            self.PopupWindow.addSubview(top)
-//                self.PopupWindow.bringSubviewToFront(top)
-//                            self.PopupWindow.addSubview(code)
-//                self.PopupWindow.bringSubviewToFront(code)
-//                            self.PopupWindow.addSubview(lb)
-//                self.PopupWindow.bringSubviewToFront(lb)
-////                            alert2.addAction(close2)
-//                            self.present(alert2, animated: true, completion: nil)
             })
             
             let cancelPrompt = UIAlertAction(title: "Cancel", style: .cancel, handler: {action in /* Closes alert */ })
@@ -393,18 +305,10 @@ class ViewController: UIViewController {
         
         let sharePrompt = UIAlertAction(title: "Share", style: .default, handler: {ACTION in
             
-            //NOTE: The Qr Code Generator is implemented in a seperate file to clean up code
-            let processedImage = createShareQRCode(data: [1,2]) //data will need to be grabbed from local storage most likely
-            
-            
-            
-            let actionButton = UIButton(frame: CGRect(x: 141, y: 274, width: 118, height: 118))
-            actionButton.setImage(processedImage, for: UIControl.State.normal)
-                let cheese = UIAlertController(title: "Close?", message: "This will close", preferredStyle: .actionSheet)
-                let cheeseprompt = UIAlertAction(title: "Close", style: .default, handler: {ACTION in actionButton.removeFromSuperview()})
-                cheese.addAction(cheeseprompt)
-                self.present(cheese, animated: true, completion: nil)
-                self.view.addSubview(actionButton)
+            let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "PopupViewController") as! PopupHandler
+            destinationVC.shareCodeImage = createShareQRCode(data: [1,2]) //NOTE: The QR Code Generator is implemented in a seperate file to clean up code
+            self.present(destinationVC, animated: true, completion: nil)
+
         }) //end of share prompt
         
         let closePrompt = UIAlertAction(title: "Close", style: .cancel, handler: {ACTION in /* Closes actionAlert alert */ })
@@ -415,23 +319,10 @@ class ViewController: UIViewController {
         self.present(actionAlert, animated: true, completion: nil)
         
     }
-    
-//                    override func encodeRestorableState(with coder: NSCoder) {
-//
-//                        if let couponRestoration = wallet{
-//                           coder.encode(couponRestoration, forKey: "id")
-//                       }
-//                       super.encodeRestorableState(with: coder)
-//
-//                   }
-//
-//                    override func applicationFinishedRestoringState() {
-//                        guard let couponRestoration = else { return }
-//                                        }
-
-   
-    
 }
+
+
+
 
 
 

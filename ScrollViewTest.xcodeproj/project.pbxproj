@@ -12,8 +12,6 @@
 		723839F6240EDF9F00DB3BFF /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723839F4240EDF9F00DB3BFF /* WalletView.swift */; };
 		726B0D232433C9FF0024D32C /* ShareQRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726B0D222433C9FF0024D32C /* ShareQRCodeGenerator.swift */; };
 		72B13DF92432662400ED0762 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B13DF82432662400ED0762 /* GlobalConstants.swift */; };
-		C486C2D72394B51B0083805E /* TopBarTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C486C2D62394B51B0083805E /* TopBarTemplate.swift */; };
-		C4BE694323973C1000C70BA2 /* TabBarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE694223973C1000C70BA2 /* TabBarColor.swift */; };
 		C4DA83D123936F100047D7B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA83D023936F100047D7B4 /* AppDelegate.swift */; };
 		C4DA83D323936F100047D7B4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA83D223936F100047D7B4 /* ViewController.swift */; };
 		C4DA83D623936F100047D7B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4DA83D423936F100047D7B4 /* Main.storyboard */; };
@@ -21,7 +19,6 @@
 		C4DA83DB23936F130047D7B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4DA83D923936F130047D7B4 /* LaunchScreen.storyboard */; };
 		C4DA83E623936F130047D7B4 /* ScrollViewTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA83E523936F130047D7B4 /* ScrollViewTestTests.swift */; };
 		C4DA83F123936F140047D7B4 /* ScrollViewTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA83F023936F140047D7B4 /* ScrollViewTestUITests.swift */; };
-		C4DCE36123974447002D7487 /* TabBarColorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DCE36023974447002D7487 /* TabBarColorController.swift */; };
 		C4DCE36323974E77002D7487 /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DCE36223974E77002D7487 /* QRCodeScanner.swift */; };
 		D21C499F23E9ED3A008D106B /* SweetAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21C499E23E9ED3A008D106B /* SweetAlerts.swift */; };
 		D2E93B3C23E34735004899F1 /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E93B3B23E34735004899F1 /* Signup.swift */; };
@@ -57,8 +54,6 @@
 		723839F4240EDF9F00DB3BFF /* WalletView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
 		726B0D222433C9FF0024D32C /* ShareQRCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareQRCodeGenerator.swift; sourceTree = "<group>"; };
 		72B13DF82432662400ED0762 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
-		C486C2D62394B51B0083805E /* TopBarTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarTemplate.swift; sourceTree = "<group>"; };
-		C4BE694223973C1000C70BA2 /* TabBarColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarColor.swift; sourceTree = "<group>"; };
 		C4DA83CD23936F100047D7B4 /* CheckPoint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckPoint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4DA83D023936F100047D7B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4DA83D223936F100047D7B4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,7 +67,6 @@
 		C4DA83EC23936F140047D7B4 /* ScrollViewTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScrollViewTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4DA83F023936F140047D7B4 /* ScrollViewTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewTestUITests.swift; sourceTree = "<group>"; };
 		C4DA83F223936F140047D7B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C4DCE36023974447002D7487 /* TabBarColorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarColorController.swift; sourceTree = "<group>"; };
 		C4DCE36223974E77002D7487 /* QRCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
 		D21C499E23E9ED3A008D106B /* SweetAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweetAlerts.swift; sourceTree = "<group>"; };
 		D2E93B3B23E34735004899F1 /* Signup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
@@ -145,9 +139,6 @@
 				C4DA83D723936F130047D7B4 /* Assets.xcassets */,
 				C4DA83D923936F130047D7B4 /* LaunchScreen.storyboard */,
 				C4DA83DC23936F130047D7B4 /* Info.plist */,
-				C486C2D62394B51B0083805E /* TopBarTemplate.swift */,
-				C4BE694223973C1000C70BA2 /* TabBarColor.swift */,
-				C4DCE36023974447002D7487 /* TabBarColorController.swift */,
 				C4DCE36223974E77002D7487 /* QRCodeScanner.swift */,
 				E23580AA240F3F3A00CB10C3 /* Dummm.swift */,
 				D2E93B3B23E34735004899F1 /* Signup.swift */,
@@ -341,7 +332,6 @@
 				D21C499F23E9ED3A008D106B /* SweetAlerts.swift in Sources */,
 				723839F6240EDF9F00DB3BFF /* WalletView.swift in Sources */,
 				D2E93B4323E35510004899F1 /* Login.swift in Sources */,
-				C486C2D72394B51B0083805E /* TopBarTemplate.swift in Sources */,
 				C4DCE36323974E77002D7487 /* QRCodeScanner.swift in Sources */,
 				E24AD081244687490036FD80 /* Data.xcdatamodeld in Sources */,
 				72B13DF92432662400ED0762 /* GlobalConstants.swift in Sources */,
@@ -349,11 +339,9 @@
 				C4DA83D123936F100047D7B4 /* AppDelegate.swift in Sources */,
 				D2E93B3C23E34735004899F1 /* Signup.swift in Sources */,
 				D5594DE323EC66260037A335 /* Service.swift in Sources */,
-				C4BE694323973C1000C70BA2 /* TabBarColor.swift in Sources */,
 				726B0D232433C9FF0024D32C /* ShareQRCodeGenerator.swift in Sources */,
 				65B586F124565DE50025CC00 /* PopupHandler.swift in Sources */,
 				E23580AB240F3F3A00CB10C3 /* Dummm.swift in Sources */,
-				C4DCE36123974447002D7487 /* TabBarColorController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
