@@ -122,6 +122,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
     super.viewDidLoad()
         
+        
+        //* Fetches Core Data
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
         let context = appDelegate.persistentContainer.viewContext
@@ -152,33 +155,10 @@ class ViewController: UIViewController {
             
         }
         
-    
-//    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//
-//        let context = appDelegate.persistentContainer.viewContext
-//
-//    let newCoupon = NSEntityDescription.insertNewObject(forEntityName: "Coupon", into: context)
-//
-//
-//
-//    newCoupon.setValue("couponID", forKey: "id")
-//    newCoupon.setValue("busID", forKey: "bus_id")
-//    newCoupon.setValue("percentage", forKey: "percentage")
-//    newCoupon.setValue("percentageCap", forKey: "percentage_cap")
-//
-//
-//        do
-//        {
-//            try context.save()
-//
-//            print("saved")
-//        }
-//        catch
-//        {
-//
-//        }
-//
+        //* End of Fetch Core Data
+
         
+
         wallet.reload(cardViews: newView)
     
         createObservers() //creates observers for Notification
@@ -263,6 +243,8 @@ class ViewController: UIViewController {
                 print(self.wallet.insertedCardViews.count) //Testing if card is actually removed
             }
             
+            //* Deletes the Core Data and Card
+            
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     
             let context = appDelegate.persistentContainer.viewContext
@@ -278,6 +260,9 @@ class ViewController: UIViewController {
                 try context.save()
             }
             catch{ /*Add error handling logic here*/ }
+            
+            //* Deletes the Core Data and Card
+
         }) //end of delete prompt
         
         let cancelPrompt = UIAlertAction(title: "Cancel", style: .default, handler: {action in /* Close alert */ })

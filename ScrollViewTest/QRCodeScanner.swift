@@ -187,6 +187,8 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 //                            self.busIDString = busID
 //                            self.percentageString = percentage
 //                            self.percentage_capString = percentageCap
+                            
+                            //* Saves the Core Data
                             DispatchQueue.main.async {
                                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
@@ -213,6 +215,9 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                                     {
 
                                     }
+                                
+                                //* End of Save the Core Data
+
                             }
 
                   //NotificationCenter added for passing coupon data into function that creates new card
