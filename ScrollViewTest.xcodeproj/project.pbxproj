@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C486C2D72394B51B0083805E /* TopBarTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C486C2D62394B51B0083805E /* TopBarTemplate.swift */; };
-		C4BE694323973C1000C70BA2 /* TabBarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE694223973C1000C70BA2 /* TabBarColor.swift */; };
+		65B586F124565DE50025CC00 /* PopupHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B586F024565DE50025CC00 /* PopupHandler.swift */; };
+		723839F5240EDF9F00DB3BFF /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723839F3240EDF9E00DB3BFF /* CardView.swift */; };
+		723839F6240EDF9F00DB3BFF /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723839F4240EDF9F00DB3BFF /* WalletView.swift */; };
+		726B0D232433C9FF0024D32C /* ShareQRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726B0D222433C9FF0024D32C /* ShareQRCodeGenerator.swift */; };
+		72B13DF92432662400ED0762 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B13DF82432662400ED0762 /* GlobalConstants.swift */; };
 		C4DA83D123936F100047D7B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA83D023936F100047D7B4 /* AppDelegate.swift */; };
 		C4DA83D323936F100047D7B4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA83D223936F100047D7B4 /* ViewController.swift */; };
 		C4DA83D623936F100047D7B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4DA83D423936F100047D7B4 /* Main.storyboard */; };
@@ -16,15 +19,16 @@
 		C4DA83DB23936F130047D7B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4DA83D923936F130047D7B4 /* LaunchScreen.storyboard */; };
 		C4DA83E623936F130047D7B4 /* ScrollViewTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA83E523936F130047D7B4 /* ScrollViewTestTests.swift */; };
 		C4DA83F123936F140047D7B4 /* ScrollViewTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA83F023936F140047D7B4 /* ScrollViewTestUITests.swift */; };
-		C4DCE36123974447002D7487 /* TabBarColorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DCE36023974447002D7487 /* TabBarColorController.swift */; };
 		C4DCE36323974E77002D7487 /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DCE36223974E77002D7487 /* QRCodeScanner.swift */; };
-		C4E3503123C66F37009F347E /* DatabaseConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E3503023C66F37009F347E /* DatabaseConnect.swift */; };
 		D21C499F23E9ED3A008D106B /* SweetAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21C499E23E9ED3A008D106B /* SweetAlerts.swift */; };
 		D2E93B3C23E34735004899F1 /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E93B3B23E34735004899F1 /* Signup.swift */; };
 		D2E93B4323E35510004899F1 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E93B4223E35510004899F1 /* Login.swift */; };
 		D5594DDD23EC636A0037A335 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = D5594DDC23EC636A0037A335 /* SwiftyJSON */; };
 		D5594DE023EC640A0037A335 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D5594DDF23EC640A0037A335 /* Alamofire */; };
 		D5594DE323EC66260037A335 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5594DE223EC66260037A335 /* Service.swift */; };
+		E23580AB240F3F3A00CB10C3 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23580AA240F3F3A00CB10C3 /* Test.swift */; };
+		E24AD081244687490036FD80 /* Data.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E24AD07F244687490036FD80 /* Data.xcdatamodeld */; };
+		E2F8C96723FC682B008F1357 /* Qrid-4.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F8C96623FC682B008F1357 /* Qrid-4.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,9 +49,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C486C2D62394B51B0083805E /* TopBarTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarTemplate.swift; sourceTree = "<group>"; };
-		C4BE694223973C1000C70BA2 /* TabBarColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarColor.swift; sourceTree = "<group>"; };
-		C4DA83CD23936F100047D7B4 /* ScrollViewTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScrollViewTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		65B586F024565DE50025CC00 /* PopupHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupHandler.swift; sourceTree = "<group>"; };
+		723839F3240EDF9E00DB3BFF /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		723839F4240EDF9F00DB3BFF /* WalletView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
+		726B0D222433C9FF0024D32C /* ShareQRCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareQRCodeGenerator.swift; sourceTree = "<group>"; };
+		72B13DF82432662400ED0762 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
+		C4DA83CD23936F100047D7B4 /* CheckPoint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckPoint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4DA83D023936F100047D7B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4DA83D223936F100047D7B4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C4DA83D523936F100047D7B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -60,13 +67,14 @@
 		C4DA83EC23936F140047D7B4 /* ScrollViewTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScrollViewTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4DA83F023936F140047D7B4 /* ScrollViewTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewTestUITests.swift; sourceTree = "<group>"; };
 		C4DA83F223936F140047D7B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C4DCE36023974447002D7487 /* TabBarColorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarColorController.swift; sourceTree = "<group>"; };
 		C4DCE36223974E77002D7487 /* QRCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
-		C4E3503023C66F37009F347E /* DatabaseConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseConnect.swift; sourceTree = "<group>"; };
 		D21C499E23E9ED3A008D106B /* SweetAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweetAlerts.swift; sourceTree = "<group>"; };
 		D2E93B3B23E34735004899F1 /* Signup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
 		D2E93B4223E35510004899F1 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		D5594DE223EC66260037A335 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		E23580AA240F3F3A00CB10C3 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		E24AD080244687490036FD80 /* Data.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Data.xcdatamodel; sourceTree = "<group>"; };
+		E2F8C96623FC682B008F1357 /* Qrid-4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Qrid-4.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +119,7 @@
 		C4DA83CE23936F100047D7B4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C4DA83CD23936F100047D7B4 /* ScrollViewTest.app */,
+				C4DA83CD23936F100047D7B4 /* CheckPoint.app */,
 				C4DA83E123936F130047D7B4 /* ScrollViewTestTests.xctest */,
 				C4DA83EC23936F140047D7B4 /* ScrollViewTestUITests.xctest */,
 			);
@@ -121,19 +129,23 @@
 		C4DA83CF23936F100047D7B4 /* ScrollViewTest */ = {
 			isa = PBXGroup;
 			children = (
+				723839F3240EDF9E00DB3BFF /* CardView.swift */,
+				E24AD07F244687490036FD80 /* Data.xcdatamodeld */,
+				723839F4240EDF9F00DB3BFF /* WalletView.swift */,
 				C4DA83D023936F100047D7B4 /* AppDelegate.swift */,
 				C4DA83D223936F100047D7B4 /* ViewController.swift */,
+				E2F8C96623FC682B008F1357 /* Qrid-4.swift */,
 				C4DA83D423936F100047D7B4 /* Main.storyboard */,
 				C4DA83D723936F130047D7B4 /* Assets.xcassets */,
 				C4DA83D923936F130047D7B4 /* LaunchScreen.storyboard */,
 				C4DA83DC23936F130047D7B4 /* Info.plist */,
-				C486C2D62394B51B0083805E /* TopBarTemplate.swift */,
-				C4BE694223973C1000C70BA2 /* TabBarColor.swift */,
-				C4DCE36023974447002D7487 /* TabBarColorController.swift */,
 				C4DCE36223974E77002D7487 /* QRCodeScanner.swift */,
-				C4E3503023C66F37009F347E /* DatabaseConnect.swift */,
+				E23580AA240F3F3A00CB10C3 /* Test.swift */,
 				D2E93B3B23E34735004899F1 /* Signup.swift */,
 				D2E93B4223E35510004899F1 /* Login.swift */,
+				72B13DF82432662400ED0762 /* GlobalConstants.swift */,
+				726B0D222433C9FF0024D32C /* ShareQRCodeGenerator.swift */,
+				65B586F024565DE50025CC00 /* PopupHandler.swift */,
 			);
 			path = ScrollViewTest;
 			sourceTree = "<group>";
@@ -193,7 +205,7 @@
 				D5594DDF23EC640A0037A335 /* Alamofire */,
 			);
 			productName = ScrollViewTest;
-			productReference = C4DA83CD23936F100047D7B4 /* ScrollViewTest.app */;
+			productReference = C4DA83CD23936F100047D7B4 /* CheckPoint.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C4DA83E023936F130047D7B4 /* ScrollViewTestTests */ = {
@@ -238,22 +250,23 @@
 		C4DA83C523936F100047D7B4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = "";
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Derek Hassan";
 				TargetAttributes = {
 					C4DA83CC23936F100047D7B4 = {
 						CreatedOnToolsVersion = 10.1;
-						LastSwiftMigration = 1130;
+						LastSwiftMigration = 1140;
 					};
 					C4DA83E023936F130047D7B4 = {
 						CreatedOnToolsVersion = 10.1;
-						LastSwiftMigration = 1130;
+						LastSwiftMigration = 1140;
 						TestTargetID = C4DA83CC23936F100047D7B4;
 					};
 					C4DA83EB23936F140047D7B4 = {
 						CreatedOnToolsVersion = 10.1;
-						LastSwiftMigration = 1130;
+						LastSwiftMigration = 1140;
 						TestTargetID = C4DA83CC23936F100047D7B4;
 					};
 				};
@@ -314,17 +327,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2F8C96723FC682B008F1357 /* Qrid-4.swift in Sources */,
 				C4DA83D323936F100047D7B4 /* ViewController.swift in Sources */,
 				D21C499F23E9ED3A008D106B /* SweetAlerts.swift in Sources */,
+				723839F6240EDF9F00DB3BFF /* WalletView.swift in Sources */,
 				D2E93B4323E35510004899F1 /* Login.swift in Sources */,
-				C4E3503123C66F37009F347E /* DatabaseConnect.swift in Sources */,
-				C486C2D72394B51B0083805E /* TopBarTemplate.swift in Sources */,
 				C4DCE36323974E77002D7487 /* QRCodeScanner.swift in Sources */,
+				E24AD081244687490036FD80 /* Data.xcdatamodeld in Sources */,
+				72B13DF92432662400ED0762 /* GlobalConstants.swift in Sources */,
+				723839F5240EDF9F00DB3BFF /* CardView.swift in Sources */,
 				C4DA83D123936F100047D7B4 /* AppDelegate.swift in Sources */,
 				D2E93B3C23E34735004899F1 /* Signup.swift in Sources */,
 				D5594DE323EC66260037A335 /* Service.swift in Sources */,
-				C4BE694323973C1000C70BA2 /* TabBarColor.swift in Sources */,
-				C4DCE36123974447002D7487 /* TabBarColorController.swift in Sources */,
+				726B0D232433C9FF0024D32C /* ShareQRCodeGenerator.swift in Sources */,
+				65B586F124565DE50025CC00 /* PopupHandler.swift in Sources */,
+				E23580AB240F3F3A00CB10C3 /* Test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,15 +517,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PK9D8D5B6K;
 				INFOPLIST_FILE = ScrollViewTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = checkpoint.ScrollViewTest;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = checkpoint.RobertLeapTest;
+				PRODUCT_NAME = CheckPoint;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -517,15 +535,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PK9D8D5B6K;
 				INFOPLIST_FILE = ScrollViewTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = checkpoint.ScrollViewTest;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = checkpoint.RobertLeapTest;
+				PRODUCT_NAME = CheckPoint;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -535,6 +554,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PK9D8D5B6K;
 				INFOPLIST_FILE = ScrollViewTestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -555,6 +575,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PK9D8D5B6K;
 				INFOPLIST_FILE = ScrollViewTestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -573,7 +594,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PK9D8D5B6K;
 				INFOPLIST_FILE = ScrollViewTestUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -592,7 +615,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PK9D8D5B6K;
 				INFOPLIST_FILE = ScrollViewTestUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -679,6 +704,19 @@
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		E24AD07F244687490036FD80 /* Data.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E24AD080244687490036FD80 /* Data.xcdatamodel */,
+			);
+			currentVersion = E24AD080244687490036FD80 /* Data.xcdatamodel */;
+			path = Data.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C4DA83C523936F100047D7B4 /* Project object */;
 }

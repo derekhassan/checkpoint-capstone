@@ -21,27 +21,42 @@ class Login: UIViewController {
         super.viewDidLoad()
 
     }
-    
+   
     
     @IBAction func LoginClick(_ sender: Any) {
     
-    let parameters: [String: AnyObject] = ["email": txtEmail.text! as AnyObject , "password": txtPassword.text! as AnyObject]
+    let parameters: [String: AnyObject] = ["username": txtEmail.text! as AnyObject , "password": txtPassword.text! as AnyObject]
     
     Service().login(parameters: parameters) { (response) in
     
-            if response["status"].intValue == 0 {
-                print("Login was incorrect")
+            //"token_type":"Bearer"
+        
+            if response["token_type"] == "Bearer" {
+                print("Login was correct")
+                //Add response["access_token"] to local storge, be sure to destroy on logout.
+                UserDefaults.standard.set(response["access_token"].string!, forKey: "Token")
+                print("Saved token!")
             } else {
                 
-            print("Login was Good!")
+            print("Fix login error!")
             
             let userid = response["message"].intValue
             print("UserID\(userid )")
           
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let loggedInViewController = storyBoard.instantiateViewController(withIdentifier: "Coupon") as! ViewController
-        self.present(loggedInViewController, animated: true, completion: nil)
+//        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let loggedInViewController = storyBoard.instantiateViewController(withIdentifier: "Coupon") as! ViewController
+//        loggedInViewController.modalPresentationStyle = .fullScreen
+//        self.present(loggedInViewController, animated: true, completion: nil)
+                self.performSegue(withIdentifier: "ShowMainScreen", sender: nil)
             }
         }
     }
+    
+    @IBAction func LogoutClick(_ sender: Any) {
+        //will have to destroy login tokens and elete the ones stored locally
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let loggedInViewController = storyBoard.instantiateViewController(withIdentifier: "Login") as! Login
+        self.navigationController?.pushViewController(loggedInViewController, animated: true)
+    }
+    
 }
