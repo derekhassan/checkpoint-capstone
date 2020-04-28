@@ -12,6 +12,20 @@ import SwiftyJSON
 
 func createShareQRCode(data: [Int]) -> (UIImage)? {
     
+    var userShared : Int!
+    
+     Service().getUserData() { (response) in
+        print("Finding id of current user...")
+        if response["id"].exists() {
+             userShared = response["id"].intValue
+            
+        }
+        else {
+            print("No user found")
+        }
+    }
+
+    //print("User ID: " + String(userShared))
     let qrCodeParams = JSON([
         "user_id": data[0],
         "coupon_id": data[1]
@@ -33,16 +47,16 @@ func createShareQRCode(data: [Int]) -> (UIImage)? {
             let transform = CGAffineTransform(scaleX: 20, y: 20)
             let scaledQrImage = qrImage.transformed(by: transform)
             // Invert the colors
-            guard let colorInvertFilter = CIFilter(name: "CIColorInvert") else { return nil}
-            colorInvertFilter.setValue(scaledQrImage, forKey: "inputImage")
-            guard let outputInvertedImage = colorInvertFilter.outputImage else { return nil}
+            //guard let colorInvertFilter = CIFilter(name: "CIColorInvert") else { return nil}
+            //colorInvertFilter.setValue(scaledQrImage, forKey: "inputImage")
+            //guard let outputInvertedImage = colorInvertFilter.outputImage else { return nil}
             // Replace the black with transparency
-            guard let maskToAlphaFilter = CIFilter(name: "CIMaskToAlpha") else { return nil}
-            maskToAlphaFilter.setValue(outputInvertedImage, forKey: "inputImage")
-            guard let outputCIImage = maskToAlphaFilter.outputImage else { return nil}
+            //guard let maskToAlphaFilter = CIFilter(name: "CIMaskToAlpha") else { return nil}
+            //maskToAlphaFilter.setValue(outputInvertedImage, forKey: "inputImage")
+            //guard let outputCIImage = maskToAlphaFilter.outputImage else { return nil}
             // Do some processing to get the UIImage
             let context = CIContext()
-            guard let cgImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) else { return nil}
+            guard let cgImage = context.createCGImage(scaledQrImage, from: scaledQrImage.extent) else { return nil}
             let processedImage = UIImage(cgImage: cgImage) 
             
             return processedImage

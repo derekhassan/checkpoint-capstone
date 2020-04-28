@@ -79,20 +79,35 @@ class ViewController: UIViewController {
 
                let brandNewCard: CardView = CardView()
                 
-               let actionButton = UIButton(frame: CGRect(x: 104, y: 250, width: 18, height: 25))
-               let deleteButton = UIButton(frame: CGRect(x: 104, y: 300, width: 18, height: 25))
-                            
-               let btnImage = UIImage(named: "ShareIcon")
-               actionButton.setImage(btnImage, for: UIControl.State.normal)
-                                                            
-               //actionButton.addTarget(self, action: #selector(VC.pressed(sender:)), for: .touchUpInside)
-               let deleteImg = UIImage(named: "Rectangle 1")
-               deleteButton.setImage(deleteImg, for: UIControl.State.normal)
-               deleteButton.addTarget(self, action: #selector(VC.deleter(sender:)), for: .touchUpInside)
-
                setupNewCard(view: brandNewCard, color: UIColor.white)
                 setupCardAttributes(view: brandNewCard, text: array, walletView: self.wallet)
+                
+                    let actionButton = UIButton(frame: CGRect(x: 15, y: 300, width: 40, height: 40))
+                let deleteButton = UIButton(frame: CGRect(x: self.wallet.frame.width-55, y: 300, width: 40, height: 40))
+                    actionButton.addTarget(self, action: #selector(VC.pressed(sender:)), for: .touchUpInside)
+                    deleteButton.addTarget(self, action: #selector(VC.deleter(sender:)), for: .touchUpInside)
 
+                if #available(iOS 13.0, *) {
+                    let actionImage = UIImage(systemName: "square.and.arrow.up", withConfiguration: UIImage.SymbolConfiguration(scale: .large))?.withTintColor(UIColor.label, renderingMode: .automatic)
+                    
+                    let deleteImage = UIImage(systemName: "trash", withConfiguration: UIImage.SymbolConfiguration(scale: .large))?.withTintColor(UIColor.label, renderingMode: .automatic)
+                    
+                    let actionImageSelected = UIImage(systemName: "square.and.arrow.up", withConfiguration: UIImage.SymbolConfiguration(scale: .large))?.withTintColor(UIColor.systemGray3, renderingMode: .automatic)
+                    
+                    let deleteImageSelected = UIImage(systemName: "trash", withConfiguration: UIImage.SymbolConfiguration(scale: .large))?.withTintColor(UIColor.systemGray3, renderingMode: .automatic)
+
+                    actionButton.setImage(actionImage, for: UIControl.State.normal)
+                    deleteButton.setImage(deleteImage, for: UIControl.State.normal)
+                    actionButton.setImage(actionImageSelected, for: UIControl.State.selected)
+                    deleteButton.setImage(deleteImageSelected, for: UIControl.State.selected)
+
+                } else {
+                    let actionImage = UIImage(named: "ShareIcon")
+                    let deleteImage = UIImage(named: "TrashIcon")
+                    actionButton.setImage(actionImage, for: UIControl.State.normal)
+                    deleteButton.setImage(deleteImage, for: UIControl.State.normal)
+                }
+                
                 brandNewCard.addSubview(actionButton)
                 brandNewCard.addSubview(deleteButton)
 
@@ -171,23 +186,23 @@ class ViewController: UIViewController {
         wallet.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
 
         let testCard1 = CardView()
-        let testCard2 = CardView()
-        let testCard3 = CardView()
-        
+        //let testCard2 = CardView()
+        //let testCard3 = CardView()
+
         let textArray = ["1", "2", "3", "4"]
-        
+
         setupNewCard(view: testCard1, color: UIColor.white)
         setupCardAttributes(view: testCard1, text: textArray, walletView: self.wallet)
         newView.append(testCard1)
-        
-        setupNewCard(view: testCard2, color: UIColor.white)
-        newView.append(testCard2)
-        
-        setupNewCard(view: testCard3, color: UIColor.white)
-        newView.append(testCard3)
-        
+
+        //setupNewCard(view: testCard2, color: UIColor.white)
+        //newView.append(testCard2)
+
+        //setupNewCard(view: testCard3, color: UIColor.white)
+        //newView.append(testCard3)
+
         wallet.reload(cardViews: newView)
-        
+
             let actionButton = UIButton(frame: CGRect(x: 15, y: 300, width: 40, height: 40))
             let deleteButton = UIButton(frame: CGRect(x: wallet.frame.width-55, y: 300, width: 40, height: 40))
             actionButton.addTarget(self, action: #selector(VC.pressed(sender:)), for: .touchUpInside)
@@ -195,11 +210,11 @@ class ViewController: UIViewController {
 
         if #available(iOS 13.0, *) {
             let actionImage = UIImage(systemName: "square.and.arrow.up", withConfiguration: UIImage.SymbolConfiguration(scale: .large))?.withTintColor(UIColor.label, renderingMode: .automatic)
-            
+
             let deleteImage = UIImage(systemName: "trash", withConfiguration: UIImage.SymbolConfiguration(scale: .large))?.withTintColor(UIColor.label, renderingMode: .automatic)
-            
+
             let actionImageSelected = UIImage(systemName: "square.and.arrow.up", withConfiguration: UIImage.SymbolConfiguration(scale: .large))?.withTintColor(UIColor.systemGray3, renderingMode: .automatic)
-            
+
             let deleteImageSelected = UIImage(systemName: "trash", withConfiguration: UIImage.SymbolConfiguration(scale: .large))?.withTintColor(UIColor.systemGray3, renderingMode: .automatic)
 
             actionButton.setImage(actionImage, for: UIControl.State.normal)
@@ -213,22 +228,22 @@ class ViewController: UIViewController {
             actionButton.setImage(actionImage, for: UIControl.State.normal)
             deleteButton.setImage(deleteImage, for: UIControl.State.normal)
         }
-        
+
         testCard1.addSubview(actionButton)
         testCard1.addSubview(deleteButton)
-        
-        //TODO: Add listener for when wallet is reloaded to remove textlabel
-        if wallet.insertedCardViews.count == 0 {
-            let noCouponsLabel = UILabel(frame: CGRect(x: 114, y: 237, width: 130, height: 29))
-            noCouponsLabel.font = noCouponsLabel.font.withSize(24)
-            if #available(iOS 13.0, *) {
-                noCouponsLabel.textColor = UIColor.placeholderText
-            } else {
-                noCouponsLabel.textColor = UIColor.gray
-            }
-            noCouponsLabel.text = "No Coupons"
-            self.view.addSubview(noCouponsLabel)
-        }
+//
+//        //TODO: Add listener for when wallet is reloaded to remove textlabel
+//        if wallet.insertedCardViews.count == 0 {
+//            let noCouponsLabel = UILabel(frame: CGRect(x: 114, y: 237, width: 130, height: 29))
+//            noCouponsLabel.font = noCouponsLabel.font.withSize(24)
+//            if #available(iOS 13.0, *) {
+//                noCouponsLabel.textColor = UIColor.placeholderText
+//            } else {
+//                noCouponsLabel.textColor = UIColor.gray
+//            }
+//            noCouponsLabel.text = "No Coupons"
+//            self.view.addSubview(noCouponsLabel)
+//        }
         
         
     }
@@ -307,6 +322,7 @@ class ViewController: UIViewController {
             
             let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "PopupViewController") as! PopupHandler
             destinationVC.shareCodeImage = createShareQRCode(data: [1,2]) //NOTE: The QR Code Generator is implemented in a seperate file to clean up code
+            
             self.present(destinationVC, animated: true, completion: nil)
 
         }) //end of share prompt

@@ -84,7 +84,7 @@ class Service{
             "Authorization" : "Bearer " + (UserDefaults.standard.string(forKey: "Token") ?? "")
         ]
         
-        Alamofire.request(url , method: .post, headers: transHeaders).responseJSON { response in
+        Alamofire.request(url , method: .get, headers: transHeaders).responseJSON { response in
             if let json = response.result.value {
                 completion(JSON(json))
             } else {

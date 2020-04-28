@@ -21,19 +21,25 @@ class PopupHandler: UIViewController {
         var userShared : Int!
         
          Service().getUserData() { (response) in
-             if response["id"].exists() {
-                 print("Finding id of current user...")
+            print("Finding id of current user...")
+            if response["id"].exists() {
                  userShared = response["id"].intValue
             }
+            else {
+                print("No user found")
+            }
         }
+        
+        //couponID = 1
         
         let parameters: [String: AnyObject] = ["userShared": userShared as AnyObject , "couponID": couponID as AnyObject]
         
         Service().checkTransaction(parameters: parameters) { (response) in
             if response["status"].intValue == 1 {
-                print("Response")
+                print(response)
             }
             else {
+                print(response)
                 print("Could not find transaction")
             }
             

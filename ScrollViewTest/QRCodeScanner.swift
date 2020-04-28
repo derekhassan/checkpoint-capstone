@@ -286,6 +286,8 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                             userReceived = response["id"].intValue
                         }
                     }
+                    print("User who is sharing" + String(json["user_id"].intValue))
+                    print("User who is receiving" + String(userReceived))
                     
                     let parameters: [String: AnyObject] = ["userShared": json["user_id"] as AnyObject , "userReceived": userReceived as AnyObject, "couponID": json["coupon_id"] as AnyObject]
                     
@@ -337,6 +339,7 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                             
                             } else {
                                print("Unauthenticated")
+                                print(response)
                             }
                     }
                 }
